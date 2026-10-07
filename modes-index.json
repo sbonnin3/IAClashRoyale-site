@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T18:12:24.311151+00:00",
+  "updatedAt": "2026-10-07T22:50:56.392760+00:00",
   "metaSince": "20261007T000000.000Z",
   "configuredMetaSince": "20261007T000000.000Z",
   "source": "Journaux de combats de l’API officielle Clash Royale",
@@ -16,9 +16,9 @@
       "description": "Arènes saisonnières identifiées dans les journaux officiels, séparées de la Route des trophées permanente.",
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 79855,
-      "recentBattles": 35349,
-      "lastBattle": "20261007T180944.000Z",
+      "battles": 242654,
+      "recentBattles": 102848,
+      "lastBattle": "20261007T224019.000Z",
       "eventTags": [
         "#2CJUJ028",
         "#2C9JG9GP",
@@ -40,9 +40,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 5897,
-      "recentBattles": 446,
-      "lastBattle": "20261007T171255.000Z",
+      "battles": 7211,
+      "recentBattles": 783,
+      "lastBattle": "20261007T215204.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -58,9 +58,9 @@
       "teamSize": 1,
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 150788,
-      "recentBattles": 54081,
-      "lastBattle": "20261007T180944.000Z",
+      "battles": 222324,
+      "recentBattles": 88844,
+      "lastBattle": "20261007T223937.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -75,7 +75,7 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 620,
+      "battles": 640,
       "recentBattles": 0,
       "lastBattle": "20260928T094906.000Z",
       "eventTags": [],
@@ -92,9 +92,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 10059,
-      "recentBattles": 3853,
-      "lastBattle": "20261007T180906.000Z",
+      "battles": 23272,
+      "recentBattles": 10281,
+      "lastBattle": "20261007T221019.000Z",
       "eventTags": [
         "#2CJUGQ8G"
       ],
@@ -113,9 +113,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2002,
-      "recentBattles": 705,
-      "lastBattle": "20261007T180141.000Z",
+      "battles": 2844,
+      "recentBattles": 1151,
+      "lastBattle": "20261007T220141.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -130,12 +130,13 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2135,
-      "recentBattles": 655,
-      "lastBattle": "20261007T174642.000Z",
+      "battles": 4750,
+      "recentBattles": 1742,
+      "lastBattle": "20261007T213926.000Z",
       "eventTags": [
         "#2CJUJ028",
-        "#2C9JG9GP"
+        "#2C9JG9GP",
+        "#2RC8C0JU"
       ],
       "eventTitles": [
         "Seasonal Trophy Road"
@@ -152,9 +153,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2134,
-      "recentBattles": 499,
-      "lastBattle": "20261007T171617.000Z",
+      "battles": 5342,
+      "recentBattles": 2020,
+      "lastBattle": "20261007T223611.000Z",
       "eventTags": [
         "#2RC8LG28",
         "#2CJYY8JP"
@@ -174,7 +175,7 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 127,
+      "battles": 130,
       "recentBattles": 0,
       "lastBattle": "20260921T072050.000Z",
       "eventTags": [],
@@ -191,9 +192,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 827,
+      "battles": 1019,
       "recentBattles": 0,
-      "lastBattle": "20261005T093059.000Z",
+      "lastBattle": "20261005T093530.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -208,9 +209,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 240,
+      "battles": 664,
       "recentBattles": 0,
-      "lastBattle": "20261005T084257.000Z",
+      "lastBattle": "20261005T085229.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -228,9 +229,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 226,
+      "battles": 636,
       "recentBattles": 0,
-      "lastBattle": "20261005T075537.000Z",
+      "lastBattle": "20261005T084625.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -248,9 +249,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 244,
+      "battles": 696,
       "recentBattles": 0,
-      "lastBattle": "20261005T083044.000Z",
+      "lastBattle": "20261005T085216.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -268,9 +269,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 242,
+      "battles": 619,
       "recentBattles": 0,
-      "lastBattle": "20261005T083237.000Z",
+      "lastBattle": "20261005T085056.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -288,9 +289,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 261,
+      "battles": 675,
       "recentBattles": 0,
-      "lastBattle": "20261005T084722.000Z",
+      "lastBattle": "20261005T084848.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -308,9 +309,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 261,
+      "battles": 686,
       "recentBattles": 0,
-      "lastBattle": "20261005T084219.000Z",
+      "lastBattle": "20261005T084220.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -328,9 +329,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 247,
+      "battles": 677,
       "recentBattles": 0,
-      "lastBattle": "20261005T083008.000Z",
+      "lastBattle": "20261005T084938.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -348,13 +349,14 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2858,
-      "recentBattles": 1172,
-      "lastBattle": "20261007T175705.000Z",
+      "battles": 11381,
+      "recentBattles": 5928,
+      "lastBattle": "20261007T222803.000Z",
       "eventTags": [
         "#2C9JGGCL",
         "#2CJUJP00",
-        "#2RC8CPRJ"
+        "#2RC8CPRJ",
+        "#2R2GU0PG"
       ],
       "eventTitles": [
         "Classic 1v1"
@@ -371,9 +373,9 @@
       "rules": "standard",
       "strategy": "draft",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2012,
-      "recentBattles": 645,
-      "lastBattle": "20261007T180148.000Z",
+      "battles": 4307,
+      "recentBattles": 1577,
+      "lastBattle": "20261007T220110.000Z",
       "eventTags": [
         "#2CJUCGP0",
         "#2C9JRV2L",
@@ -392,9 +394,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 235,
+      "battles": 674,
       "recentBattles": 0,
-      "lastBattle": "20261005T082901.000Z",
+      "lastBattle": "20261005T083636.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -412,12 +414,13 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 108,
-      "recentBattles": 87,
-      "lastBattle": "20261007T133554.000Z",
+      "battles": 147,
+      "recentBattles": 101,
+      "lastBattle": "20261007T173559.000Z",
       "eventTags": [
         "#2CJUJJQL",
-        "#2C9JR2PU"
+        "#2C9JR2PU",
+        "#2RC8CC98"
       ],
       "eventTitles": []
     },
@@ -432,7 +435,7 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 254,
+      "battles": 686,
       "recentBattles": 0,
       "lastBattle": "20261005T085246.000Z",
       "eventTags": [
@@ -452,9 +455,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 213,
+      "battles": 634,
       "recentBattles": 0,
-      "lastBattle": "20261005T083009.000Z",
+      "lastBattle": "20261005T085038.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -472,12 +475,13 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 317,
-      "recentBattles": 140,
-      "lastBattle": "20261007T175712.000Z",
+      "battles": 847,
+      "recentBattles": 406,
+      "lastBattle": "20261007T213534.000Z",
       "eventTags": [
         "#2C9JRJLU",
-        "#2CJUCYRL"
+        "#2CJUCYRL",
+        "#2RC8ULY8"
       ],
       "eventTitles": []
     },
@@ -492,9 +496,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 159,
-      "recentBattles": 42,
-      "lastBattle": "20261007T163823.000Z",
+      "battles": 342,
+      "recentBattles": 123,
+      "lastBattle": "20261007T215235.000Z",
       "eventTags": [
         "#2CJUCLVJ",
         "#2RC8UQRL",
@@ -513,9 +517,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 222,
+      "battles": 661,
       "recentBattles": 0,
-      "lastBattle": "20261005T084634.000Z",
+      "lastBattle": "20261005T085055.000Z",
       "eventTags": [
         "#2C9J8JQL",
         "#2C9J8QUU"
@@ -533,9 +537,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 852,
-      "recentBattles": 426,
-      "lastBattle": "20261007T174121.000Z",
+      "battles": 2266,
+      "recentBattles": 1099,
+      "lastBattle": "20261007T220249.000Z",
       "eventTags": [
         "#2PRCR998",
         "#2PRCRPQL"
@@ -556,7 +560,7 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 96,
+      "battles": 110,
       "recentBattles": 0,
       "lastBattle": "20260907T084759.000Z",
       "eventTags": [],
@@ -573,7 +577,7 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 5,
+      "battles": 7,
       "recentBattles": 0,
       "lastBattle": "20260814T204849.000Z",
       "eventTags": [],
@@ -590,9 +594,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 139,
-      "recentBattles": 64,
-      "lastBattle": "20261007T163934.000Z",
+      "battles": 219,
+      "recentBattles": 99,
+      "lastBattle": "20261007T213016.000Z",
       "eventTags": [
         "#2CJUCRGP",
         "#2C9JJ0YJ"
@@ -610,9 +614,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2,
-      "recentBattles": 1,
-      "lastBattle": "20261007T015959.000Z",
+      "battles": 3,
+      "recentBattles": 2,
+      "lastBattle": "20261007T164535.000Z",
       "eventTags": [
         "#2CJUJ028"
       ],
@@ -631,9 +635,9 @@
       "rules": "standard",
       "strategy": "draft",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 662,
-      "recentBattles": 250,
-      "lastBattle": "20261007T165149.000Z",
+      "battles": 1436,
+      "recentBattles": 578,
+      "lastBattle": "20261007T215701.000Z",
       "eventTags": [
         "#2CJUCVQ8",
         "#2C9JJPPG",
@@ -652,9 +656,9 @@
       "rules": "standard",
       "strategy": "draft",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 746,
-      "recentBattles": 206,
-      "lastBattle": "20261007T171441.000Z",
+      "battles": 1790,
+      "recentBattles": 628,
+      "lastBattle": "20261007T215854.000Z",
       "eventTags": [
         "#2PRCR2UU",
         "#2CJUJQUU",
@@ -674,9 +678,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 122,
-      "recentBattles": 42,
-      "lastBattle": "20261007T163154.000Z",
+      "battles": 326,
+      "recentBattles": 141,
+      "lastBattle": "20261007T205642.000Z",
       "eventTags": [
         "#2C9JJ2J0",
         "#2CJUCJUG",
@@ -695,9 +699,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 137,
-      "recentBattles": 46,
-      "lastBattle": "20261007T151026.000Z",
+      "battles": 301,
+      "recentBattles": 126,
+      "lastBattle": "20261007T213127.000Z",
       "eventTags": [
         "#2C9JRR8G",
         "#2CJUCPY8"
@@ -715,9 +719,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 235,
+      "battles": 367,
       "recentBattles": 0,
-      "lastBattle": "20260907T032109.000Z",
+      "lastBattle": "20260907T052359.000Z",
       "eventTags": [
         "#2RC8LYLG",
         "#2RC8YR0P"
@@ -735,9 +739,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 82,
-      "recentBattles": 54,
-      "lastBattle": "20261007T162335.000Z",
+      "battles": 109,
+      "recentBattles": 70,
+      "lastBattle": "20261007T193859.000Z",
       "eventTags": [
         "#2C9JRLG0"
       ],
@@ -754,8 +758,8 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 9,
-      "recentBattles": 9,
+      "battles": 12,
+      "recentBattles": 12,
       "lastBattle": "20261007T014717.000Z",
       "eventTags": [],
       "eventTitles": []
@@ -771,9 +775,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 19,
-      "recentBattles": 6,
-      "lastBattle": "20261007T093526.000Z",
+      "battles": 52,
+      "recentBattles": 15,
+      "lastBattle": "20261007T180713.000Z",
       "eventTags": [
         "#2C9JRY9J",
         "#2CJUC0LP"
@@ -791,10 +795,13 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 30,
-      "recentBattles": 16,
+      "battles": 48,
+      "recentBattles": 19,
       "lastBattle": "20261007T173712.000Z",
-      "eventTags": [],
+      "eventTags": [
+        "#2CJUJV80",
+        "#2C9JR9VL"
+      ],
       "eventTitles": []
     },
     {
@@ -808,8 +815,8 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 70,
-      "recentBattles": 45,
+      "battles": 92,
+      "recentBattles": 53,
       "lastBattle": "20261007T041536.000Z",
       "eventTags": [],
       "eventTitles": []
@@ -825,9 +832,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 12,
-      "recentBattles": 5,
-      "lastBattle": "20261007T155319.000Z",
+      "battles": 55,
+      "recentBattles": 22,
+      "lastBattle": "20261007T220236.000Z",
       "eventTags": [
         "#2C9JR8R8",
         "#2CJUJCCJ"
@@ -862,9 +869,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 7010,
+      "battles": 14962,
       "recentBattles": 0,
-      "lastBattle": "20260928T093812.000Z",
+      "lastBattle": "20260928T095321.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -879,9 +886,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 1630,
-      "recentBattles": 95,
-      "lastBattle": "20261007T174538.000Z",
+      "battles": 1983,
+      "recentBattles": 197,
+      "lastBattle": "20261007T214024.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -896,9 +903,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 76,
+      "battles": 136,
       "recentBattles": 0,
-      "lastBattle": "20260907T061223.000Z",
+      "lastBattle": "20260907T080151.000Z",
       "eventTags": [
         "#2RC8YLYJ"
       ],
@@ -915,7 +922,7 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 177,
+      "battles": 368,
       "recentBattles": 0,
       "lastBattle": "20260926T080101.000Z",
       "eventTags": [
@@ -933,15 +940,16 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 26609,
-      "recentBattles": 14291,
-      "lastBattle": "20261007T180726.000Z",
+      "battles": 84888,
+      "recentBattles": 45531,
+      "lastBattle": "20261007T223823.000Z",
       "eventTags": [
         "#2CJUJYPP",
         "#2C9JGJ2J",
         "#2RC8CL00",
         "#2R2GU2GU",
-        "#2CJUJ028"
+        "#2CJUJ028",
+        "#2C9JG9GP"
       ],
       "eventTitles": [
         "Classic 2v2",
@@ -959,9 +967,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 203,
+      "battles": 636,
       "recentBattles": 0,
-      "lastBattle": "20261005T082439.000Z",
+      "lastBattle": "20261005T085249.000Z",
       "eventTags": [
         "#2C9J8QUU",
         "#2C9J8JQL"
@@ -978,7 +986,7 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 301,
+      "battles": 654,
       "recentBattles": 0,
       "lastBattle": "20260921T085709.000Z",
       "eventTags": [
@@ -997,7 +1005,7 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 101,
+      "battles": 193,
       "recentBattles": 0,
       "lastBattle": "20260907T084010.000Z",
       "eventTags": [
@@ -1016,9 +1024,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 7,
-      "recentBattles": 3,
-      "lastBattle": "20261007T103738.000Z",
+      "battles": 17,
+      "recentBattles": 7,
+      "lastBattle": "20261007T142242.000Z",
       "eventTags": [
         "#2CJUC90U",
         "#2C9JRQUP"
@@ -1036,9 +1044,9 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 12,
-      "recentBattles": 0,
-      "lastBattle": "20261006T195315.000Z",
+      "battles": 54,
+      "recentBattles": 15,
+      "lastBattle": "20261007T205848.000Z",
       "eventTags": [
         "#2C9JR00G",
         "#2CJUJR98"
@@ -1056,7 +1064,7 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 8,
+      "battles": 27,
       "recentBattles": 0,
       "lastBattle": "20260824T044057.000Z",
       "eventTags": [
@@ -1075,9 +1083,9 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 3,
+      "battles": 6,
       "recentBattles": 0,
-      "lastBattle": "20260828T172053.000Z",
+      "lastBattle": "20260829T190503.000Z",
       "eventTags": [
         "#2RC8YY2L"
       ],
@@ -1094,8 +1102,8 @@
       "rules": "unverified",
       "strategy": "special",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 4,
-      "recentBattles": 1,
+      "battles": 29,
+      "recentBattles": 6,
       "lastBattle": "20261007T072820.000Z",
       "eventTags": [
         "#2CJUCU8U"
@@ -1113,7 +1121,7 @@
       "rules": "standard",
       "strategy": "constructed",
       "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2,
+      "battles": 3,
       "recentBattles": 2,
       "lastBattle": "20261007T163641.000Z",
       "eventTags": [],
@@ -1133,6 +1141,40 @@
       "battles": 4,
       "recentBattles": 4,
       "lastBattle": "20261007T024634.000Z",
+      "eventTags": [],
+      "eventTitles": []
+    },
+    {
+      "id": "api-72000024",
+      "label": "Overtime_Tournament",
+      "apiGameModeIds": [
+        72000024
+      ],
+      "apiName": "Overtime_Tournament",
+      "teamSize": 1,
+      "rules": "unverified",
+      "strategy": "special",
+      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
+      "battles": 70,
+      "recentBattles": 66,
+      "lastBattle": "20261007T180059.000Z",
+      "eventTags": [],
+      "eventTitles": []
+    },
+    {
+      "id": "api-72000457",
+      "label": "202410_Event_Spooky_Chess",
+      "apiGameModeIds": [
+        72000457
+      ],
+      "apiName": "202410_Event_Spooky_Chess",
+      "teamSize": 1,
+      "rules": "unverified",
+      "strategy": "special",
+      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
+      "battles": 7,
+      "recentBattles": 7,
+      "lastBattle": "20261007T132741.000Z",
       "eventTags": [],
       "eventTitles": []
     },
@@ -1240,7 +1282,7 @@
     "api-72000268": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 446
+      "availableBattles": 783
     },
     "api-72000070": {
       "status": "collecting",
@@ -1274,17 +1316,17 @@
     "api-72000062": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 705
+      "availableBattles": 1151
     },
     "api-72000007": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 655
+      "availableBattles": 1742
     },
     "api-72000512-modified": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 499
+      "availableBattles": 2020
     },
     "api-72000060": {
       "status": "collecting",
@@ -1334,12 +1376,12 @@
     "api-72000065": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 1172
+      "availableBattles": 5928
     },
     "api-72000194": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 645
+      "availableBattles": 1577
     },
     "api-72000527": {
       "status": "rules_pending",
@@ -1349,7 +1391,7 @@
     "api-72000031": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 87
+      "availableBattles": 101
     },
     "api-72000520": {
       "status": "rules_pending",
@@ -1364,12 +1406,12 @@
     "api-72000232": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 140
+      "availableBattles": 406
     },
     "api-72000087": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 42
+      "availableBattles": 123
     },
     "api-72000531": {
       "status": "rules_pending",
@@ -1379,7 +1421,7 @@
     "api-72000474": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 426
+      "availableBattles": 1099
     },
     "api-72000261": {
       "status": "collecting",
@@ -1394,32 +1436,32 @@
     "api-72000032": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 64
+      "availableBattles": 99
     },
     "api-72000054": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 1
+      "availableBattles": 2
     },
     "api-72000005": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 250
+      "availableBattles": 578
     },
     "api-72000042": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 206
+      "availableBattles": 628
     },
     "api-72000050": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 42
+      "availableBattles": 141
     },
     "api-72000254": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 46
+      "availableBattles": 126
     },
     "api-72000505-modified": {
       "status": "rules_pending",
@@ -1429,32 +1471,32 @@
     "api-72000011": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 54
+      "availableBattles": 70
     },
     "api-72000129": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 9
+      "availableBattles": 12
     },
     "api-72000091": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 6
+      "availableBattles": 15
     },
     "api-72000071": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 16
+      "availableBattles": 19
     },
     "api-72000009": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 45
+      "availableBattles": 53
     },
     "api-72000033": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 5
+      "availableBattles": 22
     },
     "api-72000001": {
       "status": "rules_pending",
@@ -1469,7 +1511,7 @@
     "api-72000267": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 95
+      "availableBattles": 197
     },
     "api-72000510-modified": {
       "status": "rules_pending",
@@ -1523,12 +1565,12 @@
     "api-72000051": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 3
+      "availableBattles": 7
     },
     "api-72000286": {
       "status": "collecting",
       "minimumBattles": 2000,
-      "availableBattles": 0
+      "availableBattles": 15
     },
     "api-72000504-modified": {
       "status": "rules_pending",
@@ -1543,7 +1585,7 @@
     "api-72000314": {
       "status": "rules_pending",
       "minimumBattles": 2000,
-      "availableBattles": 1
+      "availableBattles": 6
     },
     "api-72000027": {
       "status": "collecting",
@@ -1554,6 +1596,16 @@
       "status": "rules_pending",
       "minimumBattles": 2000,
       "availableBattles": 4
+    },
+    "api-72000024": {
+      "status": "rules_pending",
+      "minimumBattles": 2000,
+      "availableBattles": 66
+    },
+    "api-72000457": {
+      "status": "rules_pending",
+      "minimumBattles": 2000,
+      "availableBattles": 7
     },
     "classic-challenge-1v1": {
       "status": "collecting",

@@ -1,5 +1,5 @@
 {
-  "source_commit": "1a47720381d1ba6ddb8c9996d00d4e5812a47a46",
+  "source_commit": "ff7f81f6b445a2e49e4221e3fa2637943c294d69",
   "model_versions": {
     "classic-1v1": "20261007T172653Z",
     "seasonal-1v1": "20261007T174242Z",
@@ -195,7 +195,7 @@
     "card-filters.js": "1f0e0784c4ef3f4ae6185d03661e3498044eadd382dddee3c41b96e37683fee8",
     "catalogue-overrides.json": "9efca03aef1348d9010985bff6c77a66e154d307aca06f5204ed660cd737d754",
     "catalogue.js": "56d64132fe90e8c59f773a2b2da203e9c37f2725f86890a681c7fc3d2d8c02fa",
-    "catalogue.json": "c9f8e20752c80e8bdb3d827e8480dccc4895fdfda7b724ec900832ea5253efb1",
+    "catalogue.json": "d3def0d75797d983a5bdcab51e732c428a3d616c47345845bcea482e0496128a",
     "data.json": "0ae84908f934965aa98526ab8d5400952b7e0654ba2f8925637dc8cbc374ae34",
     "deck-rules.js": "a5d35740a5e8f48f2c8a2f6d7ff1599f5eb9004a939bc349b7d6efccfe53f7ba",
     "engine.js": "559bc47d7cabb32a0727dff145976304e48ece5cadc2beabcb704e89d2c10610",
@@ -203,7 +203,7 @@
     "meta-decks.json": "3e37a6a1d72a7d0c296f10513da607b5a4a5e914f84649fbd15c50a6330768b1",
     "mode-worker.js": "b40f240832dfbe19765767ab2a6d033a1199e0bde70321949d32ecc9bdb507ae",
     "model.json": "00fef5a3c0120fe02fb5eb80c660870b087b54ab27700000646310df390b7c54",
-    "modes-index.json": "2261eab9d67562a8232c8d26b7f19dd1ec761446fff9847feece7cf0cd0dce0a",
+    "modes-index.json": "f6115dea8ef61e342477abafaf5c9a7ead7b0ea95da0ca0c546c7cbf347b31be",
     "modes.css": "bbee50cdce20aabc22a1ad1133afd939c4bbda72265ffaf0265eb2f5676e0d7c",
     "modes/api-72000533/fixtures.json": "801da129f89f2e954936a9492b99363a87e47bf33692845df59c1965346c4f71",
     "modes/api-72000533/meta-decks.json": "dbe5df2b8df642bb097fbcd110b7a95710860c8ad83f73c52d04474f1da85f41",
@@ -223,6 +223,5 @@
     "team-engine.js": "af5d09dfce259979af8184fc3a75f387bda8d325c85a92e502225f649911f750",
     "training-report.json": "bce9550b695e43be4b213acb90618904a0fcb8dad714e0aebda33e05ca9b7948",
     "worker.js": "095a8364f1e0bee9a758667db719f4f592a6071f4cedf46284f59106df2dbb00"
-  },
-  "catalogue_checked_at": "2026-10-07T22:45:51.843204+00:00"
+  }
 }
