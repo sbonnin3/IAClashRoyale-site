@@ -1,5 +1,5 @@
 'use strict';
-importScripts('engine.js','deck-rules.js','team-engine.js','advice-engine.js');
+importScripts(...['engine.js','deck-rules.js','team-engine.js','advice-engine.js'].map(file=>file+(self.location?.search||'')));
 let model,meta,mode,generation=0;
 self.onmessage=async event=>{
  const message=event.data,{id,type,catalogue}=message;

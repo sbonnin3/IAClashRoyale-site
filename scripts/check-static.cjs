@@ -11,6 +11,9 @@ for(const [id,info] of Object.entries(registry.models)){
  assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root,info.modelPath))).digest('hex'),report.model_sha256);
 }
 const files=new Set([...Object.keys(manifest.files),'catalogue.json',...catalogue.cards.flatMap(card=>[card.image,...Object.values(card.images)])]);
+const indexPath=path.join(root,'index.html');
+const html=fs.readFileSync(indexPath,'utf8').replace(/((?:src|href)=")([a-z][a-z0-9.-]+\.(?:js|css))(?:\?[^"\s]*)?(")/g,(_,prefix,file,suffix)=>`${prefix}${file}?version=${crypto.createHash('sha256').update(fs.readFileSync(path.join(root,file))).digest('hex').slice(0,16)}${suffix}`);
+fs.writeFileSync(indexPath,html);
 const site=path.join(root,'_site');fs.mkdirSync(site,{recursive:true});
 for(const file of files){assert.ok(!file.includes('..')&&!path.isAbsolute(file));const content=fs.readFileSync(path.join(root,file));manifest.files[file]=crypto.createHash('sha256').update(content).digest('hex');const target=path.join(site,file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,content);}
 manifest.catalogue_checked_at=catalogue.checkedAt;

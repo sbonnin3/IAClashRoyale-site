@@ -76,7 +76,7 @@ function modeSend(type,payload){return new Promise((resolve,reject)=>{const id=+
 function modeLoad(){
  multi.ready=false;multi.worker?.terminate();multi.pending.forEach(call=>call.reject(new Error('Mode changé.')));multi.pending.clear();
  const identity=multi.mode.id,info=multi.index.models[identity];if(info?.status!=='ready'){modeControls();return;}
- multi.worker=new Worker('mode-worker.js');multi.worker.onmessage=event=>{
+ multi.worker=new Worker(`mode-worker.js?version=${encodeURIComponent(info.modelVersion)}&check=${Math.floor(Date.now()/60000)}`);multi.worker.onmessage=event=>{
   const message=event.data;if(message.type==='progress'){$('#mode-action-hint').textContent=`Recherche : ${message.step} / ${message.total||8}`;return;}
   const call=multi.pending.get(message.id);if(!call)return;multi.pending.delete(message.id);
   if(message.type==='error')call.reject(new Error(message.message));else call.resolve(message.result||message);
