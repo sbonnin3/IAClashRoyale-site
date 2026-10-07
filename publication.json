@@ -1,5 +1,5 @@
 {
-  "source_commit": "c79e75f934c6ab5b27fa084f0bd79cccfe5cf11f",
+  "source_commit": "aac0cf5ed8f7e2a844267d9d9309a2602a6da369",
   "model_versions": {
     "classic-1v1": "20261007T172653Z",
     "seasonal-1v1": "20261007T174242Z",
@@ -7,7 +7,7 @@
     "standard-2v2": "20261007T171916Z"
   },
   "files": {
-    "advice-engine.js": "088e310e493e368f81e0747e79db111c8e6d393e352fcbde54d43dd1f6b9e246",
+    "advice-engine.js": "4669dba306b693852ffb60ec5c4bd05f13c7fba967279abce4821b4a30e18bae",
     "app.js": "beeddffc15a4c175175e240f28ff6c385b4d392cb8a782c13fc4ff457e48e512",
     "assets/card-0.png": "0d6078b239f30681017512edbc3bb8750874e77fac04c585b6918965317d1d86",
     "assets/card-1.png": "cf4991ca55be74e38801f21e83f234579dde63dc1b1a179921304aac8ce181d5",

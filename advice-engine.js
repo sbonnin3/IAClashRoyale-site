@@ -5,9 +5,9 @@
   const core=root.createClashEngine(model),team=model.teamSize===2,own=context.own;
   if(meta.mode?.id!==model.mode?.id||meta.modelVersion!==model.modelVersion)throw new Error('Référence de mode incompatible.');
   if(team&&!rules.validate(own).valid)throw new Error('Complète ton deck de départ.');
-  let reference=context.enemies?[{decks:team?context.enemies:context.enemies[0],weight:1}]:(team?meta.teams.map(row=>({decks:row.decks,weight:row.weight})):meta.decks.map(row=>({decks:rules.arrange(row.cards),weight:row.weight})));
+  let reference=context.enemies?[{decks:team?context.enemies:context.enemies[0],weight:1}]:(team?meta.teams.map(row=>({decks:row.decks.map(deck=>rules.arrange(deck)),weight:row.weight})):meta.decks.map(row=>({decks:rules.arrange(row.cards),weight:row.weight})));
   const total=reference.reduce((sum,row)=>sum+row.weight,0);
-  if(!(total>0)||reference.some(row=>!(row.weight>0)||(team?row.decks: [row.decks]).some(deck=>!rules.validate(deck).valid)))throw new Error('Méta invalide.');
+  if(!(total>0)||reference.some(row=>!(row.weight>0)||(team?row.decks.length!==2:false)||(team?row.decks: [row.decks]).some(deck=>!deck||!rules.validate(deck).valid)))throw new Error('Méta invalide.');
   reference=reference.map(row=>({...row,weight:row.weight/total}));
   const preview=reference.length<=4?reference:Array.from({length:2},(_,i)=>{let sum=0;return {...(reference.find(row=>(sum+=row.weight)>=(i+.5)/2)||reference.at(-1)),weight:.5};});
   const memo=new Map();let tested=0;
