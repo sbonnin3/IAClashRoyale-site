@@ -184,7 +184,7 @@ async function modeStart(){
  window.clashChooseResearch=route=>{if(route==='stats'){$('#model-details').open=true;return;}const type={analyse:'predict',contre:'counter',completer:'complete',ameliorer:'improve',allie:'generate'}[route];if(type)researchChoose(type);};
  $('.brand').onclick=event=>{event.preventDefault();modeChoose('classic-1v1');researchChoose('predict');};
   $('#refresh-modes').onclick=()=>modeRefresh().then(()=>modeChoose(multi.mode.id)).catch(error=>toast(error.message));
- const route=location.hash.slice(1);let identity='classic-1v1';try{identity=localStorage.getItem('clash-mode-v1')||identity;}catch{}if(!multi.index.modes.some(mode=>mode.id===identity))identity='classic-1v1';modeChoose(identity);window.clashChooseResearch(route);
+ const route=location.hash.slice(1);let identity='classic-1v1';try{identity=localStorage.getItem('clash-mode-v1')||identity;}catch{}if(!multi.index.modes.some(mode=>mode.id===identity))identity='classic-1v1';modeChoose(identity);window.clashChooseResearch(route);window.restoreClashUpdateDraft?.();
   setInterval(()=>{if(!state.busy)modeRefresh().then(()=>modeChoose(multi.mode.id)).catch(()=>{});},30*60*1000);
  }catch(error){$('#mode-description').textContent=error.message;}
 }
