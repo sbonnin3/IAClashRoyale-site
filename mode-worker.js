@@ -6,7 +6,7 @@ self.onmessage=async event=>{
  try{
   if(type==='load'){
    const token=++generation;mode=message.mode;model=null;meta=null;
-   const get=async path=>{if(!/^(?:modes\/[a-z0-9-]+\/)?(?:model|meta-decks)\.json$/.test(path))throw new Error('Chemin de modèle invalide.');const response=await fetch(path,{cache:'no-store'});if(!response.ok)throw new Error('Modèle indisponible.');return response.json();};
+   const get=async path=>{if(!/^(?:modes\/[a-z0-9-]+\/)?(?:model|meta-decks)\.json$/.test(path))throw new Error('Chemin de modèle invalide.');const url=message.modelVersion?`${path}?version=${encodeURIComponent(message.modelVersion)}`:path;const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error('Modèle indisponible.');return response.json();};
    const [next,reference]=await Promise.all([get(message.modelPath),get(message.metaPath)]);if(token!==generation)return;
    if(next.mode?.id!==mode.id||reference.mode?.id!==mode.id||next.modelVersion!==reference.modelVersion||next.deckInputContract!=='slot-activation-v1'||(next.teamSize||1)!==mode.teamSize)throw new Error('Le modèle ne correspond pas au mode choisi.');
    model=next;meta=reference;self.postMessage({id,type:'ready',modelVersion:model.modelVersion,cards:model.cardNames});return;

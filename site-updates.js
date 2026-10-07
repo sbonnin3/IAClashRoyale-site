@@ -13,7 +13,7 @@
   }catch{}
  };
  root.checkClashSiteUpdate=async(force=false)=>{
-  if(running||!multi.ready||!state.rules||state.busy||$('#selector').open||document.hidden||!force&&Date.now()-lastCheck<15*60*1000)return;
+  if(running||!multi.index||!multi.mode||!state.rules||state.busy||$('#selector').open||document.hidden||!force&&Date.now()-lastCheck<15*60*1000)return;
   running=true;
   try{
    const response=await fetch(`publication.json?check=${Math.floor(Date.now()/60000)}`,{cache:'no-store',signal:AbortSignal.timeout(15000)});

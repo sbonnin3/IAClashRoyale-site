@@ -82,7 +82,7 @@ function modeLoad(){
   if(message.type==='error')call.reject(new Error(message.message));else call.resolve(message.result||message);
  };
  multi.worker.onerror=()=>{multi.ready=false;multi.pending.forEach(call=>call.reject(new Error('Calcul interrompu. Recharge la page.')));multi.pending.clear();modeControls();};
- modeSend('load',{mode:multi.mode,modelPath:info.modelPath,metaPath:info.metaPath}).then(message=>{
+ modeSend('load',{mode:multi.mode,modelPath:info.modelPath,metaPath:info.metaPath,modelVersion:info.modelVersion}).then(message=>{
   if(multi.mode.id!==identity)return;
   if(message.modelVersion!==info.modelVersion)throw new Error('Le modèle a changé : actualise les modes.');
   multi.ready=true;modeControls();
@@ -160,7 +160,7 @@ async function modeRun(type,adviceOptions=null){
  }catch(error){if(identity===multi.mode.id)toast(error.message);}finally{state.busy=false;updateControls();modeControls();}
 }
 async function modeRefresh(){
- const response=await fetch('modes-index.json',{cache:'no-store'});if(!response.ok)throw new Error('Catalogue des modes indisponible.');
+ const response=await fetch(`modes-index.json?check=${Math.floor(Date.now()/60000)}`,{cache:'no-store'});if(!response.ok)throw new Error('Catalogue des modes indisponible.');
  const next=await response.json();if(next.schemaVersion!==1||!next.modes?.length||!next.models)throw new Error('Catalogue des modes incompatible.');multi.index=next;
  const sorted=[...next.modes].sort((a,b)=>(a.id==='classic-1v1'?-2:a.id==='standard-2v2'?-1:0)-(b.id==='classic-1v1'?-2:b.id==='standard-2v2'?-1:0)||a.label.localeCompare(b.label,'fr'));
  $('#mode-select').innerHTML=sorted.map(mode=>`<option value="${escapeHtml(mode.id)}">${escapeHtml(mode.label)}${next.models[mode.id]?.status==='ready'?'':' · collecte'}</option>`).join('');
