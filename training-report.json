@@ -1,0 +1,350 @@
+{
+  "schema_version": 2,
+  "mode": {
+    "id": "classic-1v1",
+    "label": "1V1 classique",
+    "description": "Duels à huit cartes avec les règles normales, issus de la Route des trophées et du Classé. Hors 2V2, draft, événements, guerre et modes à élixir modifié.",
+    "apiGameModeIds": [
+      72000006,
+      72000450,
+      72000464
+    ]
+  },
+  "deck_input_contract": "slot-activation-v1",
+  "trained_at": "2026-10-07T17:26:52.989138+00:00",
+  "source": "API officielle Clash Royale",
+  "source_battles": 20006,
+  "excluded": {
+    "niveaux_desequilibres": 28991,
+    "mode_special": 14880
+  },
+  "meta_since": "20261007T000000.000Z",
+  "feature_count": 738,
+  "split": {
+    "train": {
+      "battles": 14004,
+      "from": "20261007T000009.000Z",
+      "to": "20261007T131617.000Z",
+      "ids_sha256": "39dbf76d2c9272916ee7150496fa836d37ad54c56cdb6c23422484f88e5faa6e"
+    },
+    "validation": {
+      "battles": 3001,
+      "from": "20261007T131618.000Z",
+      "to": "20261007T143822.000Z",
+      "ids_sha256": "de59ce6d567cf3ef3866fbf6f5782a920567164826b1eae222dbd7ab685f58af"
+    },
+    "test": {
+      "battles": 3001,
+      "from": "20261007T143826.000Z",
+      "to": "20261007T172335.000Z",
+      "ids_sha256": "988ff35fd264c8888352728684c2bc50ce20eb408bae1ab345dbe4a21eff3559"
+    }
+  },
+  "candidates": [
+    {
+      "depth": 3,
+      "trees": 250,
+      "validation": {
+        "accuracy": 0.5994668443852049,
+        "log_loss": 0.6648478326166427,
+        "brier": 0.23618780501471973,
+        "auc": 0.6405029824002906,
+        "confusion": [
+          [
+            1798,
+            1203
+          ],
+          [
+            1201,
+            1800
+          ]
+        ]
+      }
+    },
+    {
+      "depth": 5,
+      "trees": 350,
+      "validation": {
+        "accuracy": 0.6011329556814395,
+        "log_loss": 0.6575264130477123,
+        "brier": 0.23284358423686427,
+        "auc": 0.6487845715318041,
+        "confusion": [
+          [
+            1803,
+            1198
+          ],
+          [
+            1196,
+            1805
+          ]
+        ]
+      }
+    },
+    {
+      "depth": 7,
+      "trees": 400,
+      "validation": {
+        "accuracy": 0.6094635121626124,
+        "log_loss": 0.655609433057549,
+        "brier": 0.23196399195652234,
+        "auc": 0.6517002385409463,
+        "confusion": [
+          [
+            1828,
+            1173
+          ],
+          [
+            1171,
+            1830
+          ]
+        ]
+      }
+    }
+  ],
+  "calibration_scale": 1.0858188211850495,
+  "test": {
+    "accuracy": 0.5973008997000999,
+    "log_loss": 0.6627145127917433,
+    "brier": 0.2354083704055441,
+    "auc": 0.6347619770417525,
+    "confusion": [
+      [
+        1792,
+        1209
+      ],
+      [
+        1208,
+        1793
+      ]
+    ]
+  },
+  "baseline_random_log_loss": 0.6931471805599453,
+  "card_counts": {
+    "Goblin Cage": 1249,
+    "Mega Minion": 1058,
+    "Princess": 4226,
+    "Electro Wizard": 5350,
+    "Minion Giant": 759,
+    "Executioner": 2960,
+    "Electro Giant": 2284,
+    "Hog Rider": 7768,
+    "Skeleton Army": 8222,
+    "Cannon": 4620,
+    "Minions": 2773,
+    "Balloon": 3133,
+    "Lightning": 1592,
+    "Arrows": 9095,
+    "Lava Hound": 324,
+    "Wall Breakers": 2115,
+    "Monk": 577,
+    "Elite Barbarians": 3366,
+    "Heal Spirit": 559,
+    "Bomber": 1649,
+    "Ice Spirit": 4287,
+    "The Log": 9551,
+    "Dart Goblin": 5886,
+    "Battle Ram": 1824,
+    "Golden Knight": 4050,
+    "Royal Ghost": 2152,
+    "Barbarian Barrel": 3678,
+    "Hunter": 1093,
+    "Elixir Collector": 850,
+    "Ice Golem": 1578,
+    "Three Musketeers": 646,
+    "Royal Hogs": 2990,
+    "Mighty Miner": 1117,
+    "Baby Dragon": 3889,
+    "Tombstone": 1781,
+    "Earthquake": 894,
+    "Firecracker": 7355,
+    "Bats": 4800,
+    "Mega Knight": 8724,
+    "Giant": 1128,
+    "Furnace": 1622,
+    "Mini P.E.K.K.A": 8088,
+    "Wizard": 7422,
+    "Flying Machine": 663,
+    "Archer Queen": 941,
+    "Goblin Barrel": 7593,
+    "Fireball": 7452,
+    "Archers": 2481,
+    "Knight": 6952,
+    "Tesla": 5450,
+    "Electro Spirit": 2989,
+    "X-Bow": 665,
+    "Skeletons": 5839,
+    "Witch": 11865,
+    "Skeleton Dragons": 1047,
+    "Inferno Tower": 2359,
+    "Royal Recruits": 1253,
+    "Clone": 992,
+    "Giant Skeleton": 1582,
+    "Mother Witch": 1447,
+    "Mirror": 1836,
+    "Giant Snowball": 1983,
+    "Goblin Demolisher": 456,
+    "Goblin Drill": 529,
+    "Poison": 1852,
+    "Fire Spirit": 1285,
+    "Dark Prince": 2440,
+    "Ice Wizard": 2087,
+    "Minion Horde": 2744,
+    "Barbarians": 2845,
+    "Skeleton King": 1535,
+    "Prince": 2434,
+    "Valkyrie": 9536,
+    "Skeleton Barrel": 2712,
+    "Goblins": 1193,
+    "Zappies": 759,
+    "Berserker": 1466,
+    "Freeze": 2036,
+    "Miner": 1889,
+    "Tornado": 2079,
+    "Musketeer": 3467,
+    "Zap": 5019,
+    "P.E.K.K.A": 2643,
+    "Ronin": 3026,
+    "Bowler": 2436,
+    "Goblin Hut": 891,
+    "Graveyard": 1098,
+    "Guards": 2047,
+    "Rocket": 2037,
+    "Goblin Gang": 4414,
+    "Boss Bandit": 1927,
+    "Royal Giant": 1418,
+    "Barbarian Hut": 250,
+    "Magic Archer": 2120,
+    "Bandit": 1783,
+    "Ram Rider": 1293,
+    "Mortar": 807,
+    "Royal Delivery": 1809,
+    "Rage": 2656,
+    "Elixir Golem": 2287,
+    "Inferno Dragon": 2841,
+    "Sparky": 1941,
+    "Phoenix": 338,
+    "Rascals": 812,
+    "Spear Goblins": 1308,
+    "Lumberjack": 2167,
+    "Suspicious Bush": 478,
+    "Bomb Tower": 1336,
+    "Fisherman": 654,
+    "Goblin Curse": 1136,
+    "Goblinstein": 960,
+    "Vines": 1295,
+    "Void": 457,
+    "Night Witch": 794,
+    "Little Prince": 623,
+    "Rune Giant": 260,
+    "Golem": 1172,
+    "Battle Healer": 742,
+    "Electro Dragon": 1286,
+    "Spirit Empress": 377,
+    "Goblin Giant": 544,
+    "Cannon Cart": 607,
+    "Goblin Machine": 190
+  },
+  "form_counts": {
+    "Goblin Cage::evolution": 764,
+    "Mega Minion::hero": 577,
+    "Princess::evolution": 933,
+    "Cannon::evolution": 1602,
+    "Wall Breakers::evolution": 860,
+    "Elite Barbarians::evolution": 1705,
+    "Battle Ram::evolution": 1092,
+    "Royal Ghost::evolution": 1020,
+    "Royal Hogs::evolution": 1512,
+    "Baby Dragon::evolution": 1228,
+    "Mega Knight::evolution": 5878,
+    "Giant::hero": 466,
+    "Firecracker::evolution": 3452,
+    "Goblin Barrel::evolution": 1619,
+    "Archers::evolution": 1429,
+    "Knight::hero": 4027,
+    "Tesla::evolution": 2049,
+    "Witch::evolution": 7782,
+    "Royal Recruits::evolution": 743,
+    "Balloon::hero": 1757,
+    "Mini P.E.K.K.A::hero": 4568,
+    "Giant Snowball::evolution": 821,
+    "Dark Prince::hero": 1075,
+    "Ice Wizard::hero": 777,
+    "Barbarians::evolution": 1299,
+    "Wizard::evolution": 1742,
+    "Valkyrie::hero": 2885,
+    "Skeleton Barrel::evolution": 1588,
+    "Furnace::evolution": 830,
+    "Berserker::hero": 656,
+    "Executioner::evolution": 1551,
+    "Zap::evolution": 841,
+    "Dart Goblin::evolution": 1531,
+    "Electro Giant::evolution": 317,
+    "Bowler::hero": 1485,
+    "Musketeer::evolution": 1278,
+    "Wizard::hero": 3689,
+    "Mortar::evolution": 631,
+    "Valkyrie::evolution": 3570,
+    "P.E.K.K.A::evolution": 1234,
+    "Skeleton Army::evolution": 2330,
+    "Hunter::evolution": 465,
+    "Knight::evolution": 734,
+    "Musketeer::hero": 1183,
+    "Ice Golem::hero": 659,
+    "Bats::evolution": 878,
+    "Magic Archer::hero": 1303,
+    "Lumberjack::evolution": 1055,
+    "Electro Wizard::hero": 785,
+    "Minion Horde::evolution": 747,
+    "Goblin Drill::evolution": 205,
+    "Barbarian Barrel::hero": 807,
+    "Inferno Dragon::evolution": 1162,
+    "Bomber::evolution": 326,
+    "Goblins::hero": 652,
+    "Royal Giant::evolution": 876,
+    "Electro Dragon::evolution": 963,
+    "Skeletons::evolution": 1219,
+    "Tombstone::hero": 477,
+    "Ice Spirit::evolution": 173,
+    "Goblin Giant::evolution": 369
+  },
+  "caveat": "Échantillon de joueurs suivis, niveaux comparables. Les niveaux, troupes de tour et compétences individuelles ne sont pas des entrées du modèle.",
+  "comparison_previous": {
+    "battles": 3001,
+    "previous": {
+      "accuracy": 0.5794735088303898,
+      "log_loss": 0.6721112996350724,
+      "brier": 0.23972859726820742,
+      "auc": 0.613962179218057,
+      "confusion": [
+        [
+          1740,
+          1261
+        ],
+        [
+          1263,
+          1738
+        ]
+      ]
+    },
+    "candidate": {
+      "accuracy": 0.5973008997000999,
+      "log_loss": 0.6627145127917433,
+      "brier": 0.2354083704055441,
+      "auc": 0.6347619770417525,
+      "confusion": [
+        [
+          1792,
+          1209
+        ],
+        [
+          1208,
+          1793
+        ]
+      ]
+    }
+  },
+  "model_version": "20261007T172653Z",
+  "model_sha256": "00fef5a3c0120fe02fb5eb80c660870b087b54ab27700000646310df390b7c54",
+  "promotion_eligible": true
+}

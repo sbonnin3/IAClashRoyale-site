@@ -1,0 +1,206 @@
+{
+  "schema_version": 3,
+  "mode": {
+    "id": "seasonal-1v1",
+    "label": "Route des trophées saisonnière",
+    "teamSize": 1,
+    "apiGameModeIds": [
+      72000006
+    ],
+    "description": "Arènes saisonnières identifiées dans les journaux officiels, séparées de la Route des trophées permanente.",
+    "rules": "standard",
+    "strategy": "constructed",
+    "eventTags": [
+      "#2CJUJ028",
+      "#2C9JG9GP",
+      "#2RC8C0JU",
+      "#2R2GCR2L"
+    ],
+    "eventTitles": [
+      "Seasonal Trophy Road"
+    ]
+  },
+  "team_size": 1,
+  "model_version": "20261007T174242Z",
+  "trained_at": "2026-10-07T17:42:42.031422+00:00",
+  "source": "API officielle Clash Royale",
+  "source_battles": 17809,
+  "feature_count": 738,
+  "split": {
+    "train": {
+      "battles": 12466,
+      "from": "20261007T000002.000Z",
+      "to": "20261007T130558.000Z",
+      "ids_sha256": "45ca71b7968b321c269d272bcfe8e8329c0ca0a647ffe5510a9bd4f3f7be354c"
+    },
+    "validation": {
+      "battles": 2671,
+      "from": "20261007T130604.000Z",
+      "to": "20261007T152445.000Z",
+      "ids_sha256": "493e13a1ea51e78056a564838a845a7fece0084824f4cc56c124b6bccb981b70"
+    },
+    "test": {
+      "battles": 2672,
+      "from": "20261007T152450.000Z",
+      "to": "20261007T173651.000Z",
+      "ids_sha256": "16558a7c1e0baa8b149d530a010802acd0e42abb5cf4ce17f289e019603e892c"
+    }
+  },
+  "candidates": [
+    {
+      "depth": 3,
+      "trees": 250,
+      "validation": {
+        "accuracy": 0.7195806813927368,
+        "log_loss": 0.5876001061585863,
+        "brier": 0.19976712683778483,
+        "auc": 0.7579038891453204,
+        "confusion": [
+          [
+            1922,
+            749
+          ],
+          [
+            749,
+            1922
+          ]
+        ]
+      }
+    },
+    {
+      "depth": 5,
+      "trees": 350,
+      "validation": {
+        "accuracy": 0.7278172968925496,
+        "log_loss": 0.5754954602030856,
+        "brier": 0.19418737273485923,
+        "auc": 0.7683439625883118,
+        "confusion": [
+          [
+            1944,
+            727
+          ],
+          [
+            727,
+            1944
+          ]
+        ]
+      }
+    },
+    {
+      "depth": 7,
+      "trees": 400,
+      "validation": {
+        "accuracy": 0.7289404717334331,
+        "log_loss": 0.5723236518859757,
+        "brier": 0.19267915290761073,
+        "auc": 0.772374945001157,
+        "confusion": [
+          [
+            1947,
+            724
+          ],
+          [
+            724,
+            1947
+          ]
+        ]
+      }
+    }
+  ],
+  "calibration_scale": 0.9103381698002715,
+  "test": {
+    "accuracy": 0.7365269461077845,
+    "log_loss": 0.5508886550867911,
+    "brier": 0.1842135911827582,
+    "auc": 0.7938784668686578,
+    "confusion": [
+      [
+        1968,
+        704
+      ],
+      [
+        704,
+        1968
+      ]
+    ]
+  },
+  "calibration": {
+    "bins": [
+      {
+        "from": 0.0,
+        "to": 0.1,
+        "examples": 41,
+        "meanPrediction": 0.08616337180137634,
+        "observedWins": 0.024390243902439025
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "examples": 513,
+        "meanPrediction": 0.16516710817813873,
+        "observedWins": 0.1539961013645224
+      },
+      {
+        "from": 0.2,
+        "to": 0.3,
+        "examples": 987,
+        "meanPrediction": 0.2484958916902542,
+        "observedWins": 0.22188449848024316
+      },
+      {
+        "from": 0.3,
+        "to": 0.4,
+        "examples": 693,
+        "meanPrediction": 0.34620651602745056,
+        "observedWins": 0.3116883116883117
+      },
+      {
+        "from": 0.4,
+        "to": 0.5,
+        "examples": 438,
+        "meanPrediction": 0.4449651837348938,
+        "observedWins": 0.4315068493150685
+      },
+      {
+        "from": 0.5,
+        "to": 0.6,
+        "examples": 438,
+        "meanPrediction": 0.5550348162651062,
+        "observedWins": 0.5684931506849316
+      },
+      {
+        "from": 0.6,
+        "to": 0.7,
+        "examples": 693,
+        "meanPrediction": 0.6537935137748718,
+        "observedWins": 0.6883116883116883
+      },
+      {
+        "from": 0.7,
+        "to": 0.8,
+        "examples": 987,
+        "meanPrediction": 0.751504123210907,
+        "observedWins": 0.7781155015197568
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "examples": 513,
+        "meanPrediction": 0.8348329067230225,
+        "observedWins": 0.8460038986354775
+      },
+      {
+        "from": 0.9,
+        "to": 1.0,
+        "examples": 41,
+        "meanPrediction": 0.9138367176055908,
+        "observedWins": 0.975609756097561
+      }
+    ],
+    "ece": 0.02408110500943518
+  },
+  "caveat": "Test chronologique, deux orientations groupées par combat. Échantillon de joueurs suivis ; coordination, talent et troupes de tour non modélisés. En 2c2, les cartes sont comptées par équipe sans modéliser leur répartition entre les deux joueurs.",
+  "model_sha256": "cb2be525681aae1e9f4a3c5406f54a3c2fdc4bfcb6063754e9c41cd073b6a1dd",
+  "promotion_eligible": true
+}

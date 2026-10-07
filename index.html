@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101826">
+  <meta name="description" content="Composez, complétez et améliorez vos decks Clash Royale en 1c1 et 2c2, avec des modèles et une collecte séparés par mode.">
+  <title>IA Clash Royale — Atelier de decks</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23101826'/%3E%3Ctext x='24' y='34' text-anchor='middle' font-size='34' fill='%23f6c85d'%3E♛%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="modes.css">
+  <script src="deck-rules.js" defer></script>
+  <script src="catalogue.js" defer></script>
+  <script src="card-filters.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="multi-mode.js" defer></script>
+</head>
+<body data-interface="unified">
+  <header class="topbar">
+    <a class="brand" href="#analyse" aria-label="IA Clash Royale, accueil"><span class="brand-icon" aria-hidden="true">♛</span><span>IA CLASH <strong>ROYALE</strong></span></a>
+    <span id="model-status" class="header-status" role="status">Chargement…</span>
+    <a class="source-link" href="https://github.com/sbonnin3/IAClashRoyale-site" target="_blank" rel="noopener">GitHub</a>
+  </header>
+  <main>
+    <section class="research-settings" aria-labelledby="research-title">
+      <div class="research-heading"><h1 id="research-title">Ton atelier de decks</h1><button id="multi-example" class="button subtle">Essayer un exemple</button></div>
+      <div class="research-fields">
+        <label for="mode-select">Mode de combat<select id="mode-select"><option value="classic-1v1">1V1 classique</option></select></label>
+        <label for="research-select">Que veux-tu faire ?<select id="research-select"><option value="predict">Comparer deux decks</option><option value="complete">Compléter mon deck</option><option value="improve">Améliorer mon deck</option><option value="counter">Trouver un contre-deck</option></select></label>
+      </div>
+      <p id="multi-intro" class="research-description">Choisis une recherche, puis ajoute tes cartes.</p>
+      <label class="enemy-option" id="enemy-option"><input id="mode-use-enemies" type="checkbox"><span id="enemy-option-label">Optimiser contre un deck précis</span></label>
+      <p id="mode-objective" class="result-note"></p>
+      <label id="generation-options" class="generation-options" hidden>Priorité de génération<select id="generation-goal"><option value="meta">Meilleur score moyen face à la méta</option><option value="robust">Meilleure résistance au contre recherché</option></select></label>
+      <div id="draft-settings" hidden><label for="draft-pool">Cartes disponibles dans ce tirage</label><textarea id="draft-pool" rows="3" placeholder="Noms français ou anglais, séparés par des virgules"></textarea><p class="result-note">Ajoute aussi les cartes déjà conservées.</p></div>
+      <div class="research-launch"><p id="mode-action-hint" class="action-hint" role="status">Chargement des cartes…</p><button id="run-research" class="button primary" disabled>Lancer la recherche</button></div>
+      <p id="mode-status" class="mode-status" role="status"></p>
+      <span id="mode-description" hidden></span>
+    </section>
+    <section id="multi" class="view" aria-labelledby="multi-title">
+      <h2 id="multi-title" class="sr-only">Composer les decks</h2>
+      <div id="multi-composers">
+        <div id="mode-allies"><h3 id="multi-ally-heading" class="composer-heading">Mon deck</h3><div class="deck-pair team-grid"><article class="deck-panel ally" id="mode-own-panel"></article><article class="deck-panel ally" id="mode-ally-panel" hidden></article></div></div>
+        <div id="mode-enemies" hidden><h3 id="multi-enemy-heading" class="composer-heading">Deck adverse</h3><div class="deck-pair team-grid"><article class="deck-panel enemy" id="mode-enemy1-panel"></article><article class="deck-panel enemy" id="mode-enemy2-panel" hidden></article></div></div>
+        <div id="mode-result" class="result-box" hidden aria-live="polite"></div>
+      </div>
+    </section>
+    <details id="model-details" class="workspace-details"><summary>Fiabilité du modèle</summary><div id="mode-quality" class="stats-panel"></div><div id="classic-model-details" hidden><div id="stats-content"></div></div></details>
+    <details class="workspace-details"><summary>Cartes, emplacements et options</summary>
+      <div class="catalogue-state"><p id="catalogue-status" role="status">Chargement du catalogue…</p><button id="refresh-catalogue" class="button subtle">Actualiser les cartes</button></div>
+      <p class="slot-explanation">8 cartes : 1 emplacement évolution, 1 héros / champion, 1 mixte et 5 classiques. La forme compatible s’active automatiquement et peut être désactivée. Dans le mixte, le choix évolution / héros apparaît seulement si la carte possède les deux. Les champions gardent leur nature. Glisse une carte sur une autre pour les échanger ; au clavier, utilise Alt + flèches.</p>
+      <p id="multi-explanation" class="completion-explanation"></p>
+      <p class="result-note">Les recherches retiennent le meilleur score trouvé, sans garantir la victoire. Niveaux comparables ; talent, coordination et troupes de tour non modélisés. <a href="https://supercell.com/en/games/clashroyale/blog/news/mid-march-update/" target="_blank" rel="noopener">Règles des emplacements</a>.</p>
+      <details class="mode-inventory"><summary>Modes disponibles et état des modèles</summary><p>Chaque mode utilise ses propres données. Les formats sans modèle validé ou sans règles vérifiées restent visibles avec leur état.</p><button id="refresh-modes" class="button subtle">Actualiser les modes</button><div id="mode-inventory"></div></details>
+    </details>
+  </main>
+  <div id="legacy-tools" hidden aria-hidden="true">
+    <section id="analyse" class="legacy-view">
+      <div class="section-heading"><div><h2>Deux decks. Une estimation.</h2><p>Choisis huit cartes différentes pour chaque camp.</p></div><button id="example" class="button subtle">Essayer un duel</button></div>
+      <div class="deck-pair">
+        <article class="deck-panel ally" id="deck1-panel"></article>
+        <div class="versus" aria-hidden="true">VS</div>
+        <article class="deck-panel enemy" id="deck2-panel"></article>
+      </div>
+      <div class="action-row"><p id="duel-hint" class="action-hint">Complète les deux decks pour les comparer.</p><button id="predict" class="button primary" disabled>Analyser le duel</button></div>
+      <div id="duel-result" class="result-box" hidden aria-live="polite"></div>
+    </section>
+
+    <section id="contre" class="legacy-view" hidden>
+      <div class="section-heading"><div><h2>À chaque deck, son contre.</h2><p>Choisis le deck adverse. Le modèle construit une réponse carte par carte.</p></div></div>
+      <p class="completion-explanation">Le contre respecte les activations de ses emplacements. Après génération, tu peux échanger ses cartes et recalculer son estimation.</p>
+      <div class="counter-layout"><article class="deck-panel enemy" id="enemy-panel"></article><article id="counter-result" class="counter-empty"><span class="empty-mark" aria-hidden="true">♜</span><h3>Ton prochain contre</h3><p>Ajoute les huit cartes de l’adversaire, puis lance la recherche.</p></article></div>
+      <div class="action-row"><p id="counter-hint" class="action-hint">Sélectionne huit cartes adverses.</p><button id="generate" class="button primary" disabled>Générer un contre-deck</button></div>
+    </section>
+
+    <section id="completer" class="legacy-view" hidden>
+      <div class="section-heading"><div><h2>Tes cartes. Une composition complète.</h2><p>Choisis de 1 à 7 cartes : l’IA les garde, complète le deck et peut réorganiser les emplacements et le mixte.</p></div><button id="completion-example" class="button subtle">Essayer avec 3 cartes</button></div>
+      <article class="deck-panel ally" id="complete-panel"></article>
+      <div class="action-row"><p id="completion-hint" class="action-hint">Choisis entre une et sept cartes pour commencer.</p><button id="complete-deck" class="button primary" disabled>Compléter mon deck</button></div>
+      <div id="completion-result" class="result-box" hidden aria-live="polite"></div>
+      <p class="completion-explanation">Toutes tes cartes sont conservées. L’IA peut les déplacer pour libérer un emplacement spécial et comparer leurs formes disponibles, ainsi que les deux réglages du mixte. Les activations désactivées restent désactivées. Le score est une moyenne estimée face aux decks récents du 1V1 classique, pondérée par la fréquence observée. Avec sept cartes, tous les ajouts et toutes les répartitions légales des formes sont comparés ; avec plusieurs places libres, la recherche retient le meilleur résultat trouvé, sans garantie de maximum absolu ni de victoire.</p>
+    </section>
+
+    <section id="ameliorer" class="legacy-view" hidden>
+      <div class="section-heading"><div><h2>Quelle carte changer ?</h2><p>Compose ton deck : l’IA compare les remplacements possibles pour chacune des huit cartes.</p></div><button id="improvement-example" class="button subtle">Essayer un deck</button></div>
+      <article class="deck-panel ally" id="improve-panel"></article>
+      <div class="action-row"><p id="improvement-hint" class="action-hint">Choisis huit cartes pour analyser ton deck.</p><button id="improve-deck" class="button primary" disabled>Analyser mon deck</button></div>
+      <div id="improvement-result" hidden aria-live="polite"></div>
+      <p class="completion-explanation">Chaque proposition remplace une seule carte et conserve les sept autres, avec leurs formes actives. Les suggestions respectent tes réglages d’activation. Tous les remplacements légaux sont évalués face à la même méta du 1V1 classique. Les gains sont exprimés en points de probabilité et ne s’additionnent pas : applique un changement, puis relance l’analyse. Le score reste une estimation du modèle.</p>
+    </section>
+
+    <div hidden><button id="mode-generate"></button><button id="mode-complete"></button><button id="mode-improve"></button><button id="mode-predict"></button><button id="mode-counter"></button></div>
+  </div>
+
+  <dialog id="selector" aria-labelledby="selector-title">
+    <div class="dialog-head"><div><p class="eyebrow">COMPOSITION</p><h2 id="selector-title">Choisir les cartes</h2></div><button id="close-selector" class="icon-button" aria-label="Fermer la sélection">✕</button></div>
+    <div class="selection-controls"><label class="search"><span aria-hidden="true">⌕</span><input id="card-search" type="search" placeholder="Rechercher une carte…" aria-label="Rechercher une carte par nom français ou anglais" autocomplete="off"></label><span id="selection-count" class="count-badge" aria-live="polite">0 / 8</span></div>
+    <div class="card-filter-controls"><label>Rareté<select id="filter-rarity"><option value="all">Toutes</option><option value="common">Commune</option><option value="rare">Rare</option><option value="epic">Épique</option><option value="legendary">Légendaire</option><option value="champion">Champion</option></select></label><label>Élixir<select id="filter-elixir"><option value="all">Tous les coûts</option><option value="0">0 élixir</option><option value="1">1 élixir</option><option value="2">2 élixir</option><option value="3">3 élixir</option><option value="4">4 élixir</option><option value="5">5 élixir</option><option value="6">6 élixir</option><option value="7">7 élixir</option><option value="8">8 élixir</option><option value="9">9 élixir</option><option value="10+">10 et plus</option><option value="variable">Variable · Miroir</option></select></label><label>Type<select id="filter-type"><option value="all">Tous</option><option value="troop">Troupe</option><option value="spell">Sort</option><option value="building">Bâtiment</option></select></label><label>Trier par<select id="filter-sort"><option value="name">Nom</option><option value="elixir">Élixir</option><option value="rarity">Rareté</option></select></label></div>
+    <div class="catalogue-filters" aria-label="Disponibilité des formes"><button data-filter="all" aria-pressed="true">Toutes</button><button data-filter="evolution" aria-pressed="false">Avec évolution</button><button data-filter="hero" aria-pressed="false">Avec héros</button><button data-filter="champion" aria-pressed="false">Champions</button><button id="reset-card-filters">Réinitialiser</button></div><p id="slot-target" class="selection-hint"></p>
+    <p id="selection-hint" class="selection-hint">Clique sur une carte pour l’ajouter ou la retirer.</p>
+    <div id="card-catalogue" class="card-catalogue"></div>
+    <div class="dialog-bottom"><span id="catalogue-count"></span><button id="done-selecting" class="button primary">Valider le deck</button></div>
+  </dialog>
+  <div id="toast" class="toast" role="alert" hidden></div>
+  <noscript><p class="noscript">Active JavaScript dans ton navigateur pour sélectionner les cartes et utiliser le modèle.</p></noscript>
+</body>
+</html>

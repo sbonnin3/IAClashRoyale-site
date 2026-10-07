@@ -1,0 +1,12 @@
+{
+  "verifiedAt": "2026-10-07",
+  "sources": [
+    "https://supercell.com/en/games/clashroyale/blog/release-notes/new-season-shocktober/",
+    "https://supercell.com/en/games/clashroyale/blog/news/mid-march-update/"
+  ],
+  "cards": {
+    "Electro Wizard": {"hasHero": true},
+    "Electro Giant": {"hasEvolution": true}
+  },
+  "names": {"Minion Giant": "Géant gargouille", "Ronin": "Ronin"}
+}

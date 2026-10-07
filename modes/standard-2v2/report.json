@@ -1,0 +1,172 @@
+{
+  "schema_version": 3,
+  "mode": {
+    "id": "standard-2v2",
+    "label": "2c2 classique",
+    "teamSize": 2,
+    "description": "Deux decks par équipe, règles normales. Modèle entraîné uniquement sur des combats 2c2.",
+    "apiGameModeIds": [
+      72000014
+    ],
+    "rules": "standard",
+    "strategy": "constructed",
+    "battles": 7946,
+    "recentBattles": 4269,
+    "lastBattle": "20261007T171729.000Z"
+  },
+  "team_size": 2,
+  "model_version": "20261007T171916Z",
+  "trained_at": "2026-10-07T17:19:16.819983+00:00",
+  "source": "API officielle Clash Royale",
+  "source_battles": 4323,
+  "feature_count": 738,
+  "split": {
+    "train": {
+      "battles": 3026,
+      "from": "20261007T000248.000Z",
+      "to": "20261007T134455.000Z",
+      "ids_sha256": "3f2287997e90adf00dd975b48b21977fc2a1afa9615b6e05b263281f424826f1"
+    },
+    "validation": {
+      "battles": 648,
+      "from": "20261007T134501.000Z",
+      "to": "20261007T153328.000Z",
+      "ids_sha256": "acb7e9859f7fda6c330ced13812141de35a519f000631255c50273a537e9718a"
+    },
+    "test": {
+      "battles": 649,
+      "from": "20261007T153332.000Z",
+      "to": "20261007T171729.000Z",
+      "ids_sha256": "10fbf1908c7263e79d917cd130e8691fa0b6c01a88efab6d223a85752f82e903"
+    }
+  },
+  "candidates": [
+    {
+      "depth": 3,
+      "trees": 250,
+      "validation": {
+        "accuracy": 0.5709876543209876,
+        "log_loss": 0.6809619745452778,
+        "brier": 0.2440173124172567,
+        "auc": 0.5863435451912818,
+        "confusion": [
+          [
+            370,
+            278
+          ],
+          [
+            278,
+            370
+          ]
+        ]
+      }
+    },
+    {
+      "depth": 5,
+      "trees": 350,
+      "validation": {
+        "accuracy": 0.5555555555555556,
+        "log_loss": 0.6820146884799664,
+        "brier": 0.24438819633451672,
+        "auc": 0.592921239140375,
+        "confusion": [
+          [
+            360,
+            288
+          ],
+          [
+            288,
+            360
+          ]
+        ]
+      }
+    },
+    {
+      "depth": 7,
+      "trees": 400,
+      "validation": {
+        "accuracy": 0.5447530864197531,
+        "log_loss": 0.6801600610721519,
+        "brier": 0.24351069279811388,
+        "auc": 0.5995965744551135,
+        "confusion": [
+          [
+            353,
+            295
+          ],
+          [
+            295,
+            353
+          ]
+        ]
+      }
+    }
+  ],
+  "calibration_scale": 0.63993868044281,
+  "test": {
+    "accuracy": 0.5639445300462249,
+    "log_loss": 0.6806164672115466,
+    "brier": 0.24379427594278982,
+    "auc": 0.5902170222767753,
+    "confusion": [
+      [
+        366,
+        283
+      ],
+      [
+        283,
+        366
+      ]
+    ]
+  },
+  "calibration": {
+    "bins": [
+      {
+        "from": 0.2,
+        "to": 0.3,
+        "examples": 14,
+        "meanPrediction": 0.27741751074790955,
+        "observedWins": 0.2857142857142857
+      },
+      {
+        "from": 0.3,
+        "to": 0.4,
+        "examples": 187,
+        "meanPrediction": 0.36223721504211426,
+        "observedWins": 0.40106951871657753
+      },
+      {
+        "from": 0.4,
+        "to": 0.5,
+        "examples": 448,
+        "meanPrediction": 0.45454639196395874,
+        "observedWins": 0.45535714285714285
+      },
+      {
+        "from": 0.5,
+        "to": 0.6,
+        "examples": 448,
+        "meanPrediction": 0.545453667640686,
+        "observedWins": 0.5446428571428571
+      },
+      {
+        "from": 0.6,
+        "to": 0.7,
+        "examples": 187,
+        "meanPrediction": 0.6377627849578857,
+        "observedWins": 0.5989304812834224
+      },
+      {
+        "from": 0.7,
+        "to": 0.8,
+        "examples": 14,
+        "meanPrediction": 0.7225824594497681,
+        "observedWins": 0.7142857142857143
+      }
+    ],
+    "ece": 0.011927619691255116
+  },
+  "caveat": "Test chronologique, deux orientations groupées par combat. Échantillon de joueurs suivis ; coordination, talent et troupes de tour non modélisés. En 2c2, les cartes sont comptées par équipe sans modéliser leur répartition entre les deux joueurs.",
+  "model_sha256": "1a2efff1b2fb08050395be6c99a6ba33cd06ca57b73074169cf208c6a73ceb6b",
+  "promotion_eligible": true
+}
