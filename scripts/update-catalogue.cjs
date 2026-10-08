@@ -20,8 +20,10 @@ async function main() {
     if (!fs.existsSync(path.join(web,card.image))) requests.push({card, dest:card.image, url:card.sourceImage});
     const slug = card.name==='Mini P.E.K.K.A'?'mini-pekka':card.name.toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/ +/g,'-');
     for (const [mode,suffix] of [['evolution','-ev1'],['hero','-hero-ev1']]) {
-      if (!card[mode==='hero'?'hasHero':'hasEvolution'] || card.images[mode]) continue;
-      requests.push({card,mode,dest:`assets/variant-${card.id}-${mode}.png`,url:`https://cdn.royaleapi.com/static/img/cards-150/${slug}${suffix}.png`});
+      if (!card[mode==='hero'?'hasHero':'hasEvolution'] || card.images[mode]&&fs.existsSync(path.join(web,card.images[mode]))) continue;
+      const urls=[`https://cdn.royaleapi.com/static/img/cards-150/${slug}${suffix}.png`];
+      if(mode==='hero')urls.push(`https://cdn.royaleapi.com/static/img/cards-150/${slug}-hero.png`);
+      requests.push({card,mode,dest:`assets/variant-${card.id}-${mode}.png`,urls});
     }
   }
   let downloaded=0, fallback=0, index=0;
@@ -29,10 +31,16 @@ async function main() {
     while(index<requests.length) {
       const request = requests[index++];
       try {
-        const response=await fetch(request.url,{signal:AbortSignal.timeout(20000)});
-        if(!response.ok) throw new Error('image');
-        const buffer=Buffer.from(await response.arrayBuffer());
-        if(buffer.subarray(0,8).toString('hex')!=='89504e470d0a1a0a') throw new Error('image format');
+        let buffer;
+        for(const url of request.urls||[request.url]){
+          try{
+            const response=await fetch(url,{signal:AbortSignal.timeout(20000)});
+            if(!response.ok)continue;
+            const candidate=Buffer.from(await response.arrayBuffer());
+            if(candidate.subarray(0,8).toString('hex')==='89504e470d0a1a0a'){buffer=candidate;break;}
+          }catch{}
+        }
+        if(!buffer)throw new Error('image');
         fs.writeFileSync(path.join(web,request.dest),buffer);
         if(request.mode) request.card.images[request.mode]=request.dest;
         downloaded++;

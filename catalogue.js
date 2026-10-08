@@ -38,6 +38,13 @@
     if (new Set(catalogue.cards.map(card=>card.name)).size !== catalogue.cards.length) throw new Error('Catalogue local dupliqué.');
     return catalogue;
   }
-  root.ClashCatalogue = {sources, namesInExport, merge, validate};
+  function withBundledImages(catalogue, bundled) {
+    const images = new Map(bundled.cards.map(card=>[card.id,card]));
+    return {...catalogue,cards:catalogue.cards.map(card=>{
+      const known=images.get(card.id);
+      return known?.name===card.name?{...card,images:{...card.images,...known.images}}:card;
+    })};
+  }
+  root.ClashCatalogue = {sources, namesInExport, merge, validate, withBundledImages};
   if (typeof module !== 'undefined') module.exports = root.ClashCatalogue;
 })(typeof self !== 'undefined' ? self : globalThis);
