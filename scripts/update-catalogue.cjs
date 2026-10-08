@@ -20,10 +20,12 @@ async function main() {
     if (!fs.existsSync(path.join(web,card.image))) requests.push({card, dest:card.image, url:card.sourceImage});
     const slug = card.name==='Mini P.E.K.K.A'?'mini-pekka':card.name.toLowerCase().replace(/[^a-z0-9 ]/g,'').replace(/ +/g,'-');
     for (const [mode,suffix] of [['evolution','-ev1'],['hero','-hero-ev1']]) {
-      if (!card[mode==='hero'?'hasHero':'hasEvolution'] || card.images[mode]&&fs.existsSync(path.join(web,card.images[mode]))) continue;
-      const urls=[`https://cdn.royaleapi.com/static/img/cards-150/${slug}${suffix}.png`];
-      if(mode==='hero')urls.push(`https://cdn.royaleapi.com/static/img/cards-150/${slug}-hero.png`);
-      requests.push({card,mode,dest:`assets/variant-${card.id}-${mode}.png`,urls});
+      if (!card[mode==='hero'?'hasHero':'hasEvolution']) continue;
+      const heroOnly=mode==='hero'&&!card.hasEvolution,dest=`assets/variant-${card.id}-${heroOnly?'hero-only':mode}.png`;
+      if(card.images[mode]===dest&&fs.existsSync(path.join(web,dest)))continue;
+      const heroUrl=`https://cdn.royaleapi.com/static/img/cards-150/${slug}-hero.png`;
+      const urls=heroOnly?[heroUrl]:[`https://cdn.royaleapi.com/static/img/cards-150/${slug}${suffix}.png`,...(mode==='hero'?[heroUrl]:[])];
+      requests.push({card,mode,dest,urls});
     }
   }
   let downloaded=0, fallback=0, index=0;
