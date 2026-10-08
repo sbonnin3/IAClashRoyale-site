@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-08T00:11:43.091109+00:00",
+  "updatedAt": "2026-10-08T01:12:43.783166+00:00",
   "metaSince": "20261007T000000.000Z",
   "configuredMetaSince": "20261007T000000.000Z",
   "source": "Journaux de combats de l’API officielle Clash Royale",
   "coverage": "Quatre familles de combats à deck libre. Les contextes aux mêmes règles sont regroupés ; tirages, decks imposés et autres formats sont exclus des modèles et de l’interface.",
-  "excludedBattles": 68158,
+  "excludedBattles": 102167,
   "modes": [
     {
       "id": "classic-1v1",
@@ -23,9 +23,9 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 559736,
-      "recentBattles": 229578,
-      "lastBattle": "20261008T000828.000Z",
+      "battles": 670471,
+      "recentBattles": 280086,
+      "lastBattle": "20261008T010922.000Z",
       "eventTags": [
         "#2CJUJ028",
         "#2C9JG9GP",
@@ -51,9 +51,9 @@
       "description": "Combats d’échecs à huit cartes avec un deck choisi par le joueur. Modèle propre aux règles de ce mode.",
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 34083,
-      "recentBattles": 15761,
-      "lastBattle": "20261007T235801.000Z",
+      "battles": 51753,
+      "recentBattles": 24659,
+      "lastBattle": "20261008T010406.000Z",
       "eventTags": [
         "#2CJUGQ8G"
       ],
@@ -73,9 +73,9 @@
       "description": "Triple élixir avec deck libre : combats amicaux, de guerre et de tournoi regroupés dans un seul modèle.",
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 13448,
-      "recentBattles": 6365,
-      "lastBattle": "20261007T235126.000Z",
+      "battles": 29046,
+      "recentBattles": 14116,
+      "lastBattle": "20261008T003745.000Z",
       "eventTags": [
         "#2CJUCRGP",
         "#2C9JJ0YJ"
@@ -92,9 +92,9 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 105884,
-      "recentBattles": 56355,
-      "lastBattle": "20261008T000733.000Z",
+      "battles": 127360,
+      "recentBattles": 68281,
+      "lastBattle": "20261008T010317.000Z",
       "eventTags": [
         "#2CJUJYPP",
         "#2C9JGJ2J",
@@ -116,24 +116,24 @@
       "modelPath": "model.json",
       "metaPath": "meta-decks.json",
       "reportPath": "training-report.json",
-      "modelVersion": "20261007T235458Z",
+      "modelVersion": "20261008T010423Z",
       "metrics": {
-        "accuracy": 0.654058226731363,
-        "log_loss": 0.6126694045242683,
-        "brier": 0.21247060131199605,
-        "auc": 0.7212458462153033,
+        "accuracy": 0.6352904015477554,
+        "log_loss": 0.6310954168096423,
+        "brier": 0.22080675970824762,
+        "auc": 0.6934336397198696,
         "confusion": [
           [
-            11853,
-            6283
+            16093,
+            9234
           ],
           [
-            6265,
-            11871
+            9240,
+            16087
           ]
         ]
       },
-      "sourceBattles": 120900
+      "sourceBattles": 136184
     },
     "api-72000533": {
       "status": "ready",
@@ -162,7 +162,7 @@
     "triple-elixir-1v1": {
       "status": "validation_pending",
       "minimumBattles": 2000,
-      "availableBattles": 6365,
+      "availableBattles": 14116,
       "candidateBattles": 3009,
       "candidateMetrics": {
         "accuracy": 0.5685840707964602,

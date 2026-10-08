@@ -12,6 +12,9 @@
     const featureCount = featureKeys.length;
     const featureIndices = new Map(featureKeys.map((name,index)=>[name,index]));
     const indices = new Map(model.cardNames.map((name, index) => [name, index]));
+    // Slot order and teammate order do not change the model's input. Reuse exact
+    // results when the search examines equivalent placements, with bounded memory.
+    const predictionCache = new Map();
     function vectorFor(deck1, deck2) {
       if(model.teamSize===2&&[deck1,deck2].some(team=>!Array.isArray(team)||team.length!==2||team.some(deck=>!Array.isArray(deck))))throw new Error('Le modèle 2c2 exige deux decks par équipe.');
       const vector = new Uint8Array(featureCount * 2);
@@ -43,7 +46,14 @@
       return f(f(f(forward+1)-rawProbability(reverse))/2);
     }
     function predict(deck1, deck2) {
+      if(model.teamSize===2&&[deck1,deck2].some(team=>!Array.isArray(team)||team.length!==2||team.some(deck=>!Array.isArray(deck))))throw new Error('Le modèle 2c2 exige deux decks par équipe.');
+      const canonical=deck=>(model.teamSize===2?deck.flat():deck).filter(Boolean).slice().sort();
+      const key=JSON.stringify([canonical(deck1),canonical(deck2)]);
+      const cached=predictionCache.get(key);
+      if(cached!==undefined)return {p1:percent(cached),p2:percent(f(1-cached)),raw:cached};
       const p1 = probability(vectorFor(deck1, deck2));
+      if(predictionCache.size>=10000)predictionCache.delete(predictionCache.keys().next().value);
+      predictionCache.set(key,p1);
       return { p1: percent(p1), p2: percent(f(1 - p1)), raw: p1 };
     }
     function counter(enemy, progress) {

@@ -1,13 +1,13 @@
 {
-  "source_commit": "d5f7d777f208349496258ec8ece11dcaceaa63a1",
+  "source_commit": "9031a2fcaecd714370b696e1a51bf9fed6cd7c89",
   "model_versions": {
-    "classic-1v1": "20261007T235458Z",
+    "classic-1v1": "20261008T010423Z",
     "api-72000533": "20261007T234350Z",
     "standard-2v2": "20261007T232835Z"
   },
   "files": {
     "advice-engine.js": "4669dba306b693852ffb60ec5c4bd05f13c7fba967279abce4821b4a30e18bae",
-    "app.js": "a1081589c24472a9fc3fc1086d5e2b0eb87b7e6ea187fc40a65dc4ff678b3cb7",
+    "app.js": "95c3da83cb5d940929eb937c89f21b5f2ea75ac663792fdac1c08ba85f4c4c07",
     "assets/card-0.png": "0d6078b239f30681017512edbc3bb8750874e77fac04c585b6918965317d1d86",
     "assets/card-1.png": "cf4991ca55be74e38801f21e83f234579dde63dc1b1a179921304aac8ce181d5",
     "assets/card-10.png": "7eccf9628278c70b28b22a7510c8d8ba2cc1acd481a5c1d3d5c63a57aaae41a4",
@@ -209,15 +209,15 @@
     "card-filters.js": "1f0e0784c4ef3f4ae6185d03661e3498044eadd382dddee3c41b96e37683fee8",
     "catalogue-overrides.json": "9efca03aef1348d9010985bff6c77a66e154d307aca06f5204ed660cd737d754",
     "catalogue.js": "cc201bc6979210cbdfaf0b2edede78789353fcfb5cf9090e79e9a781e8fd8aab",
-    "catalogue.json": "ef0db9d0e999e0539818a28f7265381254893d66409c26dd0dcc66ebd52a5a02",
-    "data.json": "d3fb5ce580a5334a8cc7bd301878b0adfeba8d25e6eb4ae75a843502b62360c7",
+    "catalogue.json": "ada9defb1ea5bd92dad08ea04440d70febed18ccb039c8752e22ae1ed193b897",
+    "data.json": "373201cac98abda33a859bca7d4033d2a140fef63a2c781bcd47f5f30e083cce",
     "deck-rules.js": "a5d35740a5e8f48f2c8a2f6d7ff1599f5eb9004a939bc349b7d6efccfe53f7ba",
-    "engine.js": "559bc47d7cabb32a0727dff145976304e48ece5cadc2beabcb704e89d2c10610",
-    "index.html": "3c194aceab8fd739ab02fea5d302adcb0e47aa826e9d26bebea90e7cc49655ce",
-    "meta-decks.json": "e3941187d99a391a81200bfd40d4df26893962d0c64da3d182fe7fada6a65e15",
+    "engine.js": "ea3941fa5b6e0d9621044da6d9384ed4e16b9b20b02d2579a80544cd4e6c460d",
+    "index.html": "af74d536a48248b04d2fe9ca9bda9aed1a1c86a5e6adef321b81e4ad73d7d809",
+    "meta-decks.json": "6600977afbfbaeaecfa44fc0d2c1dc2692de95315d3fbd43fee03b6e5d5bc8c9",
     "mode-worker.js": "125a3e2c025aa4b22d1dab709b2147e4eef4d0bfb71cd6e9638cc908a5140644",
-    "model.json": "1c712172b0a06f4bf5c136ae5624b75e012d356272f5ec4a5dabb72c9bf32ea2",
-    "modes-index.json": "fb36785c9052c24ab69f115a9cf8b281662405de000e3202938eab17efa9b7d0",
+    "model.json": "98ab44cf6b15c95938716803a12ec22aabc072a38de3e7449d6988e51621073c",
+    "modes-index.json": "6813c081eac2c81ef0b9fbfd00b9ed8c6fbc361c65f529781087d890b3f9bcb8",
     "modes.css": "ffeac480474a2fd904ae038c45890850a65df0be4061c8d0a4d072902766f510",
     "modes/api-72000533/fixtures.json": "40316a8915ef7556a4752726b311a8e988dce1704b1503fc8bbad5a33e5caadb",
     "modes/api-72000533/meta-decks.json": "a52e79cc747436ebee0f941cdde3d3ab871786175cc604a37dc37f9b2507d415",
@@ -231,9 +231,8 @@
     "site-updates.js": "7060247bc5554ac58a3f2a67cae4cc4a9d280405697760cb065a66a1b1714017",
     "styles.css": "bfa8ef9d50979eabcdc2a9e9e9ad1bef54dec5aa14ac7f606ad527831520ff61",
     "team-engine.js": "af5d09dfce259979af8184fc3a75f387bda8d325c85a92e502225f649911f750",
-    "training-report.json": "1dd1d8160b60e3eb2dce72bc4f8d0bb1857cf0a6a9c072ad247d7337e2723bb9",
+    "training-report.json": "8f956400d038b048d3e03c879aa5fccd618e70282a1af6247c50cdd261fb147f",
     "war-engine.js": "573bf70d335c17ca7c0eea0f22249b9d107af701e21b0e7815b96131da000b45",
     "worker.js": "095a8364f1e0bee9a758667db719f4f592a6071f4cedf46284f59106df2dbb00"
-  },
-  "catalogue_checked_at": "2026-10-08T00:09:20.242958+00:00"
+  }
 }

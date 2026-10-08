@@ -16,341 +16,553 @@
     ]
   },
   "deck_input_contract": "slot-activation-v1",
-  "trained_at": "2026-10-07T23:54:55.586148+00:00",
+  "trained_at": "2026-10-08T01:04:20.230270+00:00",
   "source": "API officielle Clash Royale",
-  "source_battles": 120900,
+  "source_battles": 136184,
   "excluded": {
-    "niveaux_desequilibres": 103816,
-    "mode_special": 80026,
+    "niveaux_desequilibres": 115365,
+    "mode_special": 106759,
     "deck_ou_activation_incompatible": 9
   },
   "meta_since": "20261007T000000.000Z",
   "feature_count": 738,
   "split": {
     "train": {
-      "battles": 84628,
+      "battles": 95327,
       "from": "20261007T000001.000Z",
-      "to": "20261007T151818.000Z",
-      "ids_sha256": "22311a70e2ae69b293a5fc1a5ce92062aba20e58702f3654708c2792cdf64225"
+      "to": "20261007T153921.000Z",
+      "ids_sha256": "fba0c97e9d26a4e4190a2693dcbd8fbaefee48e217ec2f4d4990c5ad1896c2bb"
     },
     "validation": {
-      "battles": 18136,
-      "from": "20261007T151819.000Z",
-      "to": "20261007T173740.000Z",
-      "ids_sha256": "f7fac22f07a0dc3dc65e369cb7cd05102c4dbd1a760edeacbd9685903b50d545"
+      "battles": 20429,
+      "from": "20261007T153922.000Z",
+      "to": "20261007T180911.000Z",
+      "ids_sha256": "f25ec7dc4e754cbde5ab387877974227347ca06d6970ada956f391a41b669eb9"
     },
     "test": {
-      "battles": 18136,
-      "from": "20261007T173741.000Z",
-      "to": "20261007T234916.000Z",
-      "ids_sha256": "252b1ded81cf03704a8222633b0182d40606464109ed65fafbf788078e30786c"
+      "battles": 25327,
+      "from": "20261007T180912.000Z",
+      "to": "20261008T010805.000Z",
+      "ids_sha256": "de4da14482e67ee211680db594b3005c42334cf3ae002dc7e01239892a9e8aab"
     }
   },
   "candidates": [
     {
-      "depth": 3,
-      "trees": 250,
-      "validation": {
-        "accuracy": 0.6348147331274813,
-        "log_loss": 0.6422834990080312,
-        "brier": 0.2253769540701483,
-        "auc": 0.6905348647205868,
-        "confusion": [
-          [
-            11502,
-            6634
-          ],
-          [
-            6612,
-            11524
-          ]
-        ]
-      }
-    },
-    {
-      "depth": 5,
-      "trees": 350,
-      "validation": {
-        "accuracy": 0.6494265549183944,
-        "log_loss": 0.6238002967654436,
-        "brier": 0.21717626937907986,
-        "auc": 0.7098501703007947,
-        "confusion": [
-          [
-            11761,
-            6375
-          ],
-          [
-            6341,
-            11795
-          ]
-        ]
-      }
-    },
-    {
-      "depth": 7,
+      "max_depth": 7,
+      "n_estimators": 400,
+      "learning_rate": 0.04,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
       "trees": 400,
       "validation": {
-        "accuracy": 0.6534516982796648,
-        "log_loss": 0.614663368148639,
-        "brier": 0.21326528864036798,
-        "auc": 0.7199017674186059,
+        "accuracy": 0.6464339908952959,
+        "log_loss": 0.6209003371609364,
+        "brier": 0.2160881639417706,
+        "auc": 0.7107382276005709,
         "confusion": [
           [
-            11836,
-            6300
+            13189,
+            7240
           ],
           [
-            6270,
-            11866
+            7206,
+            13223
+          ]
+        ]
+      }
+    },
+    {
+      "max_depth": 5,
+      "n_estimators": 1400,
+      "learning_rate": 0.03,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "trees": 1396,
+      "validation": {
+        "accuracy": 0.6497870674041804,
+        "log_loss": 0.6180987149804519,
+        "brier": 0.21487917831734932,
+        "auc": 0.7142782350161794,
+        "confusion": [
+          [
+            13268,
+            7161
+          ],
+          [
+            7148,
+            13281
+          ]
+        ]
+      }
+    },
+    {
+      "max_depth": 7,
+      "n_estimators": 1200,
+      "learning_rate": 0.03,
+      "min_child_weight": 20,
+      "reg_lambda": 10,
+      "trees": 1200,
+      "validation": {
+        "accuracy": 0.6537520191884086,
+        "log_loss": 0.6144771343878566,
+        "brier": 0.21330086531674078,
+        "auc": 0.7191537496997591,
+        "confusion": [
+          [
+            13338,
+            7091
+          ],
+          [
+            7056,
+            13373
+          ]
+        ]
+      }
+    },
+    {
+      "max_depth": 9,
+      "n_estimators": 900,
+      "learning_rate": 0.03,
+      "min_child_weight": 40,
+      "reg_lambda": 15,
+      "trees": 899,
+      "validation": {
+        "accuracy": 0.6539722942875325,
+        "log_loss": 0.6150973071734281,
+        "brier": 0.213570740532049,
+        "auc": 0.718287635739838,
+        "confusion": [
+          [
+            13342,
+            7087
+          ],
+          [
+            7051,
+            13378
           ]
         ]
       }
     }
   ],
-  "calibration_scale": 1.1521350287230159,
+  "calibration_scale": 1.088128709939551,
   "test": {
-    "accuracy": 0.654058226731363,
-    "log_loss": 0.6126694045242683,
-    "brier": 0.21247060131199605,
-    "auc": 0.7212458462153033,
+    "accuracy": 0.6352904015477554,
+    "log_loss": 0.6310954168096423,
+    "brier": 0.22080675970824762,
+    "auc": 0.6934336397198696,
     "confusion": [
       [
-        11853,
-        6283
+        16093,
+        9234
       ],
       [
-        6265,
-        11871
+        9240,
+        16087
       ]
+    ]
+  },
+  "reliability": {
+    "ece": 0.005912972834138793,
+    "bins": [
+      {
+        "from": 0.0,
+        "to": 0.1,
+        "predictions": 160,
+        "predicted": 0.07925176620483398,
+        "observed": 0.125
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "predictions": 2414,
+        "predicted": 0.16167299449443817,
+        "observed": 0.15451532725766362
+      },
+      {
+        "from": 0.2,
+        "to": 0.30000000000000004,
+        "predictions": 4449,
+        "predicted": 0.252261757850647,
+        "observed": 0.2533153517644414
+      },
+      {
+        "from": 0.30000000000000004,
+        "to": 0.4,
+        "predictions": 7066,
+        "predicted": 0.3546830117702484,
+        "observed": 0.3703651287857345
+      },
+      {
+        "from": 0.4,
+        "to": 0.5,
+        "predictions": 11244,
+        "predicted": 0.45298272371292114,
+        "observed": 0.45384204909284953
+      },
+      {
+        "from": 0.5,
+        "to": 0.6,
+        "predictions": 11232,
+        "predicted": 0.5470675230026245,
+        "observed": 0.5462072649572649
+      },
+      {
+        "from": 0.6000000000000001,
+        "to": 0.7000000000000001,
+        "predictions": 7066,
+        "predicted": 0.6453169584274292,
+        "observed": 0.6296348712142655
+      },
+      {
+        "from": 0.7000000000000001,
+        "to": 0.8,
+        "predictions": 4449,
+        "predicted": 0.747738242149353,
+        "observed": 0.7466846482355586
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "predictions": 2414,
+        "predicted": 0.8383269906044006,
+        "observed": 0.8454846727423364
+      },
+      {
+        "from": 0.9,
+        "to": 1.0,
+        "predictions": 160,
+        "predicted": 0.9207483530044556,
+        "observed": 0.875
+      }
+    ],
+    "confidence": [
+      {
+        "threshold": 0.5,
+        "battles": 25327,
+        "accuracy": 0.6352904015477554
+      },
+      {
+        "threshold": 0.6,
+        "battles": 14089,
+        "accuracy": 0.7063666690325786
+      },
+      {
+        "threshold": 0.7,
+        "battles": 7023,
+        "accuracy": 0.7835682756656699
+      },
+      {
+        "threshold": 0.8,
+        "battles": 2574,
+        "accuracy": 0.8473193473193473
+      },
+      {
+        "threshold": 0.9,
+        "battles": 160,
+        "accuracy": 0.875
+      }
     ]
   },
   "baseline_random_log_loss": 0.6931471805599453,
   "card_counts": {
-    "Tesla": 29485,
-    "Knight": 37901,
-    "Firecracker": 44875,
-    "Rocket": 13400,
-    "Goblin Gang": 26645,
-    "Ice Spirit": 23443,
-    "Skeletons": 31624,
-    "The Log": 51370,
-    "Royal Giant": 9053,
-    "Ice Wizard": 13228,
-    "Witch": 61737,
-    "Wizard": 41440,
-    "Minions": 17230,
-    "Miner": 11160,
-    "Zap": 32481,
-    "Inferno Dragon": 16585,
-    "Dark Prince": 13510,
-    "Goblin Cage": 8559,
-    "Tornado": 15515,
-    "Mother Witch": 10131,
-    "Lightning": 14881,
-    "Electro Giant": 14931,
-    "Bomber": 10572,
-    "Skeleton Barrel": 18988,
-    "Berserker": 9366,
-    "Mortar": 7376,
-    "Dart Goblin": 35321,
-    "Rascals": 6042,
-    "Cannon Cart": 5541,
-    "Fireball": 43187,
-    "Barbarian Barrel": 22093,
-    "Mini P.E.K.K.A": 44931,
-    "Royal Hogs": 16632,
-    "Skeleton Army": 41906,
-    "Royal Delivery": 9370,
-    "Electro Spirit": 18198,
-    "Elite Barbarians": 20203,
-    "Skeleton Dragons": 6336,
-    "Elixir Collector": 6320,
-    "Arrows": 56192,
-    "Golem": 8050,
-    "Skeleton King": 7839,
-    "Electro Wizard": 31452,
-    "Giant Skeleton": 11300,
-    "Mega Minion": 8613,
-    "Fisherman": 4527,
-    "Mega Knight": 51192,
-    "Goblin Barrel": 38963,
-    "Princess": 22706,
-    "Mirror": 13961,
-    "Bats": 28691,
-    "Furnace": 13855,
-    "Goblin Hut": 5627,
-    "Poison": 13545,
-    "Graveyard": 6091,
-    "Valkyrie": 59576,
-    "Hog Rider": 46081,
-    "Inferno Tower": 16015,
-    "X-Bow": 3664,
-    "Musketeer": 22157,
-    "Executioner": 17419,
-    "Minion Horde": 14539,
-    "Guards": 13212,
-    "Boss Bandit": 12061,
-    "Bowler": 12646,
-    "Sparky": 11840,
-    "Tombstone": 12822,
-    "Mighty Miner": 7652,
-    "Earthquake": 6998,
-    "Electro Dragon": 9924,
-    "Spear Goblins": 7017,
-    "Cannon": 26540,
-    "Magic Archer": 13539,
-    "Rune Giant": 2197,
-    "Giant Snowball": 12019,
-    "Ram Rider": 9534,
-    "P.E.K.K.A": 17433,
-    "Battle Ram": 11885,
-    "Bandit": 12081,
-    "Lumberjack": 15751,
-    "Barbarians": 13477,
-    "Golden Knight": 20969,
-    "Ronin": 16837,
-    "Wall Breakers": 11911,
-    "Monk": 5178,
-    "Three Musketeers": 5134,
-    "Archers": 14008,
-    "Baby Dragon": 20671,
-    "Lava Hound": 3211,
-    "Flying Machine": 6005,
-    "Ice Golem": 10033,
-    "Battle Healer": 5567,
-    "Spirit Empress": 3678,
-    "Royal Recruits": 8323,
-    "Zappies": 6083,
-    "Minion Giant": 4181,
-    "Balloon": 16976,
-    "Heal Spirit": 4808,
-    "Royal Ghost": 13233,
-    "Hunter": 6900,
-    "Goblinstein": 6308,
-    "Giant": 6912,
-    "Prince": 15405,
-    "Archer Queen": 6378,
-    "Freeze": 12749,
-    "Goblin Drill": 3899,
-    "Fire Spirit": 7661,
-    "Goblin Demolisher": 3373,
-    "Night Witch": 6638,
-    "Goblin Curse": 7800,
-    "Rage": 15018,
-    "Elixir Golem": 12617,
-    "Clone": 7222,
-    "Bomb Tower": 6140,
-    "Vines": 9296,
-    "Goblins": 7840,
-    "Suspicious Bush": 4246,
-    "Little Prince": 4698,
-    "Goblin Giant": 3935,
-    "Goblin Machine": 1304,
-    "Phoenix": 3310,
-    "Barbarian Hut": 1888,
-    "Void": 3808
+    "Elite Barbarians": 22767,
+    "Golden Knight": 23108,
+    "Bats": 32407,
+    "Bomber": 11576,
+    "Cannon": 30123,
+    "Skeleton Barrel": 21565,
+    "Inferno Dragon": 18624,
+    "Mega Knight": 57781,
+    "Skeleton Army": 47184,
+    "Mini P.E.K.K.A": 50971,
+    "Wizard": 47295,
+    "Clone": 8014,
+    "Elixir Golem": 14117,
+    "Princess": 25628,
+    "Witch": 69767,
+    "Electro Giant": 16808,
+    "Dark Prince": 14933,
+    "Archers": 15841,
+    "Phoenix": 3552,
+    "Lightning": 17068,
+    "Tornado": 17656,
+    "Barbarian Barrel": 25481,
+    "Giant Snowball": 13127,
+    "Goblin Drill": 4308,
+    "Minions": 19411,
+    "Firecracker": 51285,
+    "Royal Ghost": 14882,
+    "Wall Breakers": 13289,
+    "Royal Recruits": 9377,
+    "Goblin Cage": 9693,
+    "Flying Machine": 6684,
+    "Royal Hogs": 18464,
+    "Fireball": 49587,
+    "Electro Spirit": 20714,
+    "Zappies": 6867,
+    "Bowler": 14199,
+    "Arrows": 64475,
+    "Giant": 7809,
+    "Graveyard": 6794,
+    "Guards": 14703,
+    "Knight": 43404,
+    "Valkyrie": 67717,
+    "The Log": 58622,
+    "Skeletons": 36049,
+    "Inferno Tower": 17911,
+    "Hog Rider": 52560,
+    "Electro Dragon": 10871,
+    "Monk": 5571,
+    "Mirror": 15481,
+    "Rage": 16761,
+    "Minion Horde": 16223,
+    "Prince": 17060,
+    "Goblin Gang": 30212,
+    "Zap": 37117,
+    "Balloon": 19480,
+    "Goblin Barrel": 44001,
+    "Dart Goblin": 39889,
+    "Ronin": 19337,
+    "Ice Spirit": 26481,
+    "Battle Ram": 13328,
+    "Electro Wizard": 35594,
+    "P.E.K.K.A": 19685,
+    "Poison": 15441,
+    "Bandit": 13500,
+    "Spirit Empress": 3982,
+    "Goblin Hut": 6335,
+    "Mortar": 8062,
+    "Ice Wizard": 14932,
+    "Musketeer": 25186,
+    "Minion Giant": 4938,
+    "Tesla": 33307,
+    "Berserker": 10471,
+    "Furnace": 15329,
+    "Royal Delivery": 10401,
+    "Bomb Tower": 6822,
+    "Miner": 12463,
+    "Ice Golem": 11233,
+    "Archer Queen": 7074,
+    "Earthquake": 7862,
+    "Freeze": 14171,
+    "Magic Archer": 15171,
+    "Mighty Miner": 8463,
+    "Goblins": 8690,
+    "Rocket": 15012,
+    "Royal Giant": 9987,
+    "Goblinstein": 6958,
+    "Fisherman": 4936,
+    "Lumberjack": 18126,
+    "Spear Goblins": 7798,
+    "Suspicious Bush": 4720,
+    "Fire Spirit": 8497,
+    "Skeleton King": 8662,
+    "Giant Skeleton": 12706,
+    "Baby Dragon": 23431,
+    "Tombstone": 14267,
+    "Executioner": 19492,
+    "Goblin Demolisher": 3710,
+    "Goblin Curse": 8442,
+    "Golem": 8958,
+    "Night Witch": 7395,
+    "Barbarians": 14786,
+    "Mega Minion": 9658,
+    "Lava Hound": 3507,
+    "Skeleton Dragons": 6909,
+    "Boss Bandit": 13021,
+    "Sparky": 13245,
+    "Cannon Cart": 6115,
+    "Rascals": 6711,
+    "X-Bow": 4095,
+    "Three Musketeers": 5527,
+    "Little Prince": 5210,
+    "Battle Healer": 6035,
+    "Hunter": 7589,
+    "Rune Giant": 2476,
+    "Mother Witch": 11197,
+    "Vines": 10172,
+    "Goblin Machine": 1408,
+    "Ram Rider": 10523,
+    "Void": 4166,
+    "Elixir Collector": 6836,
+    "Heal Spirit": 5182,
+    "Goblin Giant": 4296,
+    "Barbarian Hut": 2062
   },
   "form_counts": {
-    "Tesla::evolution": 12198,
-    "Knight::hero": 21267,
-    "Firecracker::evolution": 23758,
-    "Royal Giant::evolution": 6846,
-    "Ice Wizard::hero": 4630,
-    "Witch::evolution": 42246,
-    "Inferno Dragon::evolution": 7300,
-    "Dark Prince::hero": 6529,
-    "Goblin Cage::evolution": 4759,
-    "Skeleton Barrel::evolution": 11368,
-    "Berserker::hero": 4033,
-    "Mortar::evolution": 5804,
-    "Mini P.E.K.K.A::hero": 24736,
-    "Royal Hogs::evolution": 9238,
-    "Elite Barbarians::evolution": 9590,
-    "Mega Knight::evolution": 37391,
-    "Bats::evolution": 5824,
-    "Barbarian Barrel::hero": 4243,
-    "Furnace::evolution": 8843,
-    "Valkyrie::evolution": 22835,
-    "Knight::evolution": 4238,
-    "Valkyrie::hero": 18861,
-    "Musketeer::evolution": 7153,
-    "Wizard::hero": 20505,
-    "Princess::evolution": 6538,
-    "Goblin Barrel::evolution": 9422,
-    "Dart Goblin::evolution": 9396,
-    "Electro Dragon::evolution": 7925,
-    "Cannon::evolution": 9034,
-    "Magic Archer::hero": 8926,
-    "Giant Snowball::evolution": 5843,
-    "Battle Ram::evolution": 7356,
-    "P.E.K.K.A::evolution": 9242,
-    "Lumberjack::evolution": 8466,
-    "Barbarians::evolution": 5262,
-    "Skeleton Army::evolution": 11890,
-    "Executioner::evolution": 10926,
-    "Skeletons::evolution": 6204,
-    "Bomber::evolution": 3169,
-    "Royal Recruits::evolution": 4834,
-    "Mega Minion::hero": 4992,
-    "Wall Breakers::evolution": 4244,
-    "Royal Ghost::evolution": 7282,
-    "Baby Dragon::evolution": 7659,
-    "Giant::hero": 3057,
-    "Archers::evolution": 8087,
-    "Goblin Drill::evolution": 1344,
-    "Bowler::hero": 7849,
-    "Wizard::evolution": 10679,
-    "Musketeer::hero": 7691,
-    "Ice Golem::hero": 4683,
-    "Balloon::hero": 9762,
-    "Minion Horde::evolution": 5576,
-    "Goblins::hero": 4306,
-    "Zap::evolution": 5278,
-    "Hunter::evolution": 3739,
-    "Goblin Giant::evolution": 2995,
-    "Electro Giant::evolution": 1959,
-    "Electro Wizard::hero": 4623,
-    "Tombstone::hero": 4640,
-    "Ice Spirit::evolution": 1229
+    "Elite Barbarians::evolution": 11152,
+    "Mini P.E.K.K.A::hero": 27982,
+    "Electro Giant::evolution": 2361,
+    "Dark Prince::hero": 7180,
+    "Archers::evolution": 9148,
+    "Giant Snowball::evolution": 6295,
+    "Skeleton Army::evolution": 13218,
+    "Royal Recruits::evolution": 5445,
+    "Barbarian Barrel::hero": 4823,
+    "Goblin Cage::evolution": 5401,
+    "Witch::evolution": 47501,
+    "Bowler::hero": 8852,
+    "Firecracker::evolution": 27238,
+    "Knight::hero": 24400,
+    "Valkyrie::evolution": 25956,
+    "Electro Dragon::evolution": 8597,
+    "Minion Horde::evolution": 6135,
+    "Wizard::evolution": 12211,
+    "Zap::evolution": 5986,
+    "Goblin Barrel::evolution": 10754,
+    "Dart Goblin::evolution": 10502,
+    "Battle Ram::evolution": 8239,
+    "Mortar::evolution": 6307,
+    "Ice Wizard::hero": 5418,
+    "Musketeer::evolution": 8151,
+    "Valkyrie::hero": 21582,
+    "Berserker::hero": 4741,
+    "Furnace::evolution": 9753,
+    "Balloon::hero": 11178,
+    "Skeletons::evolution": 7210,
+    "Royal Hogs::evolution": 10254,
+    "Cannon::evolution": 10220,
+    "P.E.K.K.A::evolution": 10412,
+    "Wizard::hero": 23271,
+    "Tesla::evolution": 13868,
+    "Skeleton Barrel::evolution": 12845,
+    "Royal Giant::evolution": 7490,
+    "Princess::evolution": 7288,
+    "Lumberjack::evolution": 9785,
+    "Mega Knight::evolution": 42166,
+    "Musketeer::hero": 8691,
+    "Inferno Dragon::evolution": 8143,
+    "Executioner::evolution": 12146,
+    "Knight::evolution": 4911,
+    "Baby Dragon::evolution": 8830,
+    "Giant::hero": 3492,
+    "Bats::evolution": 6489,
+    "Barbarians::evolution": 5898,
+    "Mega Minion::hero": 5631,
+    "Royal Ghost::evolution": 8182,
+    "Goblin Drill::evolution": 1509,
+    "Magic Archer::hero": 9881,
+    "Tombstone::hero": 5145,
+    "Hunter::evolution": 4076,
+    "Wall Breakers::evolution": 4779,
+    "Ice Golem::hero": 5222,
+    "Goblin Giant::evolution": 3240,
+    "Goblins::hero": 4719,
+    "Bomber::evolution": 3376,
+    "Electro Wizard::hero": 5395,
+    "Ice Spirit::evolution": 1416
   },
   "caveat": "Échantillon de joueurs suivis, niveaux comparables. Les niveaux, troupes de tour et compétences individuelles ne sont pas des entrées du modèle.",
   "comparison_previous": {
-    "battles": 18136,
+    "previous_version": "20261007T235458Z",
+    "battles": 25327,
+    "fresh_battles": 1344,
     "previous": {
-      "accuracy": 0.6529554477282753,
-      "log_loss": 0.6135263334727687,
-      "brier": 0.21283354559866605,
-      "auc": 0.7201546112458357,
+      "accuracy": 0.6230110159118727,
+      "log_loss": 0.637722226269045,
+      "brier": 0.22390526210544165,
+      "auc": 0.6815032502361511,
       "confusion": [
         [
-          11845,
-          6291
+          15762,
+          9565
         ],
         [
-          6297,
-          11839
+          9531,
+          15796
         ]
       ]
     },
     "candidate": {
-      "accuracy": 0.654058226731363,
-      "log_loss": 0.6126694045242683,
-      "brier": 0.21247060131199605,
-      "auc": 0.7212458462153033,
+      "accuracy": 0.6352904015477554,
+      "log_loss": 0.6310954168096423,
+      "brier": 0.22080675970824762,
+      "auc": 0.6934336397198696,
       "confusion": [
         [
-          11853,
-          6283
+          16093,
+          9234
         ],
         [
-          6265,
-          11871
+          9240,
+          16087
         ]
       ]
     }
   },
-  "model_version": "20261007T235458Z",
-  "model_sha256": "1c712172b0a06f4bf5c136ae5624b75e012d356272f5ec4a5dabb72c9bf32ea2",
-  "promotion_eligible": true
+  "model_version": "20261008T010423Z",
+  "model_sha256": "98ab44cf6b15c95938716803a12ec22aabc072a38de3e7449d6988e51621073c",
+  "promotion_eligible": true,
+  "initial_holdout": {
+    "test": {
+      "accuracy": 0.6412277266496965,
+      "log_loss": 0.6241623815879991,
+      "brier": 0.21769365641671237,
+      "auc": 0.7039575871053023,
+      "confusion": [
+        [
+          13085,
+          7343
+        ],
+        [
+          7315,
+          13113
+        ]
+      ]
+    },
+    "split": {
+      "battles": 20428,
+      "from": "20261007T180912.000Z",
+      "to": "20261008T003925.000Z",
+      "ids_sha256": "caa9e0144ce5cec7387fd0fe7bc974af2b38cc72527802f165e8a7771edfd847"
+    },
+    "comparison_previous": {
+      "battles": 20428,
+      "previous_version": "20261007T235458Z",
+      "fresh_battles": 460,
+      "previous": {
+        "accuracy": 0.6303847660074408,
+        "log_loss": 0.631060775250112,
+        "brier": 0.22088119552813668,
+        "auc": 0.692406805360009,
+        "confusion": [
+          [
+            12861,
+            7567
+          ],
+          [
+            7534,
+            12894
+          ]
+        ]
+      },
+      "candidate": {
+        "accuracy": 0.6412277266496965,
+        "log_loss": 0.6241623815879991,
+        "brier": 0.21769365641671237,
+        "auc": 0.7039575871053023,
+        "confusion": [
+          [
+            13085,
+            7343
+          ],
+          [
+            7315,
+            13113
+          ]
+        ]
+      }
+    }
+  },
+  "frozen_model_audit": {
+    "at": "2026-10-08T01:09:00.667866+00:00",
+    "additional_test_battles": 4899,
+    "excluded": {
+      "niveaux_desequilibres": 22372,
+      "mode_special": 22988,
+      "deck_ou_activation_incompatible": 2
+    },
+    "protocol": "Tous les combats admissibles depuis la borne de test initiale. Aucun apprentissage, changement de paramètres ni recalibration. Le jeu de données à l’entraînement et sa référence de méta restent inchangés."
+  },
+  "previous_model_available": true
 }
