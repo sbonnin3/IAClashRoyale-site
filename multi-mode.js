@@ -135,7 +135,7 @@ function modeChoose(identity){
 function showAdvice(){
  const session=multi.advice;if(!session)return;
  const choice=session.result.suggestions[session.cursor];
- if(!choice){$('#mode-result').innerHTML='<h3>Aucun autre changement améliorant le score</h3><p>La recherche ne trouve plus de proposition meilleure que ton deck avec ces exclusions. Une nouvelle analyse repart sans les refus de cette session.</p>';$('#mode-result').hidden=false;return;}
+ if(!choice){$('#mode-result').innerHTML=`<h3>Aucun autre changement améliorant le score</h3><p><strong class="generated-score">${number(session.result.baseline)} %</strong> de victoire estimée pour le deck analysé ${session.enemies?'contre les adversaires renseignés':'en moyenne face à la méta de ce mode'}.</p><p>La recherche ne trouve plus de proposition meilleure que ton deck avec ces exclusions. Une nouvelle analyse repart sans les refus de cette session.</p><p class="result-note">Le score reste une estimation, sans garantie de victoire.</p>`;$('#mode-result').hidden=false;resultControls();return;}
  const changes=choice.changes,items=[];
  changes.removed.forEach((from,index)=>items.push(`Remplacer <strong>${escapeHtml(cardLabel(from))}</strong> par <strong>${escapeHtml(cardLabel(changes.added[index]))}</strong>.`));
  changes.moves.forEach(move=>items.push(`Déplacer <strong>${escapeHtml(state.rules.entry(move.name).fr)}</strong> de l’emplacement ${move.from+1} vers l’emplacement ${move.to+1} (<strong>${escapeHtml(ClashDeckRules.slots[move.to])}</strong>).`));
