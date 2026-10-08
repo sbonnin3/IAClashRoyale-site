@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-08T01:12:43.783166+00:00",
+  "updatedAt": "2026-10-08T01:27:50.439775+00:00",
   "metaSince": "20261007T000000.000Z",
   "configuredMetaSince": "20261007T000000.000Z",
   "source": "Journaux de combats de l’API officielle Clash Royale",
-  "coverage": "Quatre familles de combats à deck libre. Les contextes aux mêmes règles sont regroupés ; tirages, decks imposés et autres formats sont exclus des modèles et de l’interface.",
-  "excludedBattles": 102167,
+  "coverage": "Trois familles de combats à deck libre : 1c1 classique, ligue échecs et 2c2 classique. Les contextes aux mêmes règles sont regroupés ; triple élixir, tirages, decks imposés et autres formats sont exclus des modèles et de l’interface.",
+  "excludedBattles": 142321,
   "modes": [
     {
       "id": "classic-1v1",
@@ -23,9 +23,9 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 670471,
-      "recentBattles": 280086,
-      "lastBattle": "20261008T010922.000Z",
+      "battles": 712289,
+      "recentBattles": 300757,
+      "lastBattle": "20261008T012339.000Z",
       "eventTags": [
         "#2CJUJ028",
         "#2C9JG9GP",
@@ -51,36 +51,15 @@
       "description": "Combats d’échecs à huit cartes avec un deck choisi par le joueur. Modèle propre aux règles de ce mode.",
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 51753,
-      "recentBattles": 24659,
-      "lastBattle": "20261008T010406.000Z",
+      "battles": 57344,
+      "recentBattles": 27678,
+      "lastBattle": "20261008T011647.000Z",
       "eventTags": [
         "#2CJUGQ8G"
       ],
       "eventTitles": [
         "Spooky Chess League"
       ]
-    },
-    {
-      "id": "triple-elixir-1v1",
-      "label": "1c1 triple élixir",
-      "teamSize": 1,
-      "apiGameModeIds": [
-        72000032,
-        72000062,
-        72000027
-      ],
-      "description": "Triple élixir avec deck libre : combats amicaux, de guerre et de tournoi regroupés dans un seul modèle.",
-      "rules": "standard",
-      "strategy": "constructed",
-      "battles": 29046,
-      "recentBattles": 14116,
-      "lastBattle": "20261008T003745.000Z",
-      "eventTags": [
-        "#2CJUCRGP",
-        "#2C9JJ0YJ"
-      ],
-      "eventTitles": []
     },
     {
       "id": "standard-2v2",
@@ -92,9 +71,9 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 127360,
-      "recentBattles": 68281,
-      "lastBattle": "20261008T010317.000Z",
+      "battles": 141716,
+      "recentBattles": 76494,
+      "lastBattle": "20261008T011958.000Z",
       "eventTags": [
         "#2CJUJYPP",
         "#2C9JGJ2J",
@@ -158,29 +137,6 @@
         ]
       },
       "sourceBattles": 14054
-    },
-    "triple-elixir-1v1": {
-      "status": "validation_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 14116,
-      "candidateBattles": 3009,
-      "candidateMetrics": {
-        "accuracy": 0.5685840707964602,
-        "log_loss": 0.6955795662343857,
-        "brier": 0.2503246548734197,
-        "auc": 0.5774678909859817,
-        "confusion": [
-          [
-            257,
-            195
-          ],
-          [
-            195,
-            257
-          ]
-        ]
-      },
-      "reason": "Le dernier candidat ne passe pas les critères de validation. La collecte continue ; aucun pourcentage de victoire ne sera proposé avant validation."
     },
     "standard-2v2": {
       "status": "ready",

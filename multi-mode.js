@@ -191,11 +191,11 @@ async function modeRun(type,adviceOptions=null){
 async function modeRefresh(){
  const response=await fetch(`modes-index.json?check=${Math.floor(Date.now()/60000)}`,{cache:'no-store'});if(!response.ok)throw new Error('Catalogue des modes indisponible.');
  const next=await response.json();if(next.schemaVersion!==1||!next.modes?.length||!next.models)throw new Error('Catalogue des modes incompatible.');multi.index=next;
- const order=['classic-1v1','triple-elixir-1v1','api-72000533','standard-2v2'];next.modes=next.modes.filter(mode=>order.includes(mode.id));
+ const order=['classic-1v1','api-72000533','standard-2v2'];next.modes=next.modes.filter(mode=>order.includes(mode.id));
  const sorted=[...next.modes].sort((a,b)=>order.indexOf(a.id)-order.indexOf(b.id));
  $('#mode-select').innerHTML=sorted.map(mode=>`<option value="${escapeHtml(mode.id)}">${escapeHtml(mode.label)}${next.models[mode.id]?.status==='ready'?'':next.models[mode.id]?.status==='validation_pending'?' · validation en attente':' · collecte'}</option>`).join('');
  $('#mode-inventory').innerHTML=`<table><thead><tr><th>Mode</th><th>Combats récents</th><th>État</th></tr></thead><tbody>${sorted.map(mode=>`<tr><td>${escapeHtml(mode.label)}</td><td>${mode.recentBattles.toLocaleString('fr-FR')}</td><td>${next.models[mode.id]?.status==='ready'?'Modèle validé':next.models[mode.id]?.status==='validation_pending'?'Dernier candidat non validé':mode.rules==='standard'?'Collecte à enrichir':'Règles à vérifier'}</td></tr>`).join('')}</tbody></table><p class="result-note">Mis à jour le ${new Date(next.updatedAt).toLocaleString('fr-FR')}. Les volumes collectés incluent les combats exclus ensuite pour niveaux, formes ou résultat incompatibles.</p>`;
- $('#mode-select').value=multi.mode?.id||'classic-1v1';
+ $('#mode-select').value=next.modes.some(mode=>mode.id===multi.mode?.id)?multi.mode.id:'classic-1v1';
 }
 async function modeStart(){
  try{
@@ -214,9 +214,9 @@ async function modeStart(){
   window.addEventListener('clash:controls',modeControls);
  window.clashChooseResearch=route=>{if(route==='stats'){$('#model-details').open=true;return;}const type={analyse:'predict',contre:'counter',completer:'complete',ameliorer:'improve',allie:'generate',guerre:'war'}[route];if(type)researchChoose(type);};
  $('.brand').onclick=event=>{event.preventDefault();modeChoose('classic-1v1');researchChoose('predict');};
-  $('#refresh-modes').onclick=()=>modeRefresh().then(()=>modeChoose(multi.mode.id)).catch(error=>toast(error.message));
+  $('#refresh-modes').onclick=()=>modeRefresh().then(()=>modeChoose($('#mode-select').value)).catch(error=>toast(error.message));
  const route=location.hash.slice(1);let identity='classic-1v1';try{identity=localStorage.getItem('clash-mode-v1')||identity;}catch{}if(route==='guerre'||!multi.index.modes.some(mode=>mode.id===identity))identity='classic-1v1';modeChoose(identity);window.clashChooseResearch(route);window.restoreClashUpdateDraft?.();
-  setInterval(()=>{if(!state.busy)modeRefresh().then(()=>modeChoose(multi.mode.id)).catch(()=>{});},30*60*1000);
+  setInterval(()=>{if(!state.busy)modeRefresh().then(()=>modeChoose($('#mode-select').value)).catch(()=>{});},30*60*1000);
  }catch(error){$('#mode-description').textContent=error.message;}
 }
 modeStart();
