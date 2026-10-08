@@ -209,7 +209,7 @@
     "card-filters.js": "1f0e0784c4ef3f4ae6185d03661e3498044eadd382dddee3c41b96e37683fee8",
     "catalogue-overrides.json": "9efca03aef1348d9010985bff6c77a66e154d307aca06f5204ed660cd737d754",
     "catalogue.js": "cc201bc6979210cbdfaf0b2edede78789353fcfb5cf9090e79e9a781e8fd8aab",
-    "catalogue.json": "77ac106f658ed299896434dcc221b4f02ece14bb7d4d584f69c6b604e673fdd3",
+    "catalogue.json": "26873f376fe189c77a228fe30d2bc5065649f8cbfc738ef0dd1d374784f9a35b",
     "data.json": "373201cac98abda33a859bca7d4033d2a140fef63a2c781bcd47f5f30e083cce",
     "deck-rules.js": "a5d35740a5e8f48f2c8a2f6d7ff1599f5eb9004a939bc349b7d6efccfe53f7ba",
     "engine.js": "ea3941fa5b6e0d9621044da6d9384ed4e16b9b20b02d2579a80544cd4e6c460d",
@@ -234,5 +234,6 @@
     "training-report.json": "8f956400d038b048d3e03c879aa5fccd618e70282a1af6247c50cdd261fb147f",
     "war-engine.js": "573bf70d335c17ca7c0eea0f22249b9d107af701e21b0e7815b96131da000b45",
     "worker.js": "095a8364f1e0bee9a758667db719f4f592a6071f4cedf46284f59106df2dbb00"
-  }
+  },
+  "catalogue_checked_at": "2026-10-08T01:58:37.552458+00:00"
 }
