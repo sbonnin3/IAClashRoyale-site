@@ -1,5 +1,5 @@
 'use strict';
-const multi={index:null,mode:null,ready:false,worker:null,pending:new Map(),nextId:0,saved:new Map(),result:null,action:'predict',specificEnemies:false,counterVisible:false,advice:null};
+const multi={index:null,mode:null,ready:false,worker:null,pending:new Map(),nextId:0,saved:new Map(),result:null,resultSnapshot:null,action:'predict',specificEnemies:false,counterVisible:false,advice:null};
 const modeKeys=['modeOwn','modeAlly','modeEnemy1','modeEnemy2'];
 const modePanels={modeOwn:{title:'Mon deck de départ',element:'#mode-own-panel'},modeAlly:{title:'Deck de mon allié',element:'#mode-ally-panel'},modeEnemy1:{title:'Adversaire 1',element:'#mode-enemy1-panel'},modeEnemy2:{title:'Adversaire 2',element:'#mode-enemy2-panel'}};
 const modeSnapshot=()=>JSON.stringify({id:multi.mode?.id,action:multi.action,decks:modeKeys.map(key=>state.decks[key]),layouts:modeKeys.map(key=>layoutFor(key)),enemies:$('#mode-use-enemies').checked,pool:$('#draft-pool').value,goal:$('#generation-goal').value,warGoal:$('#war-goal').value,keepWarCards:$('#war-keep-cards').checked});
@@ -10,6 +10,14 @@ function modeCards(){
  return result;
 }
 function modeEnemies(){if(!$('#mode-use-enemies').checked)return null;return [state.decks.modeEnemy1,...(multi.mode.teamSize===2?[state.decks.modeEnemy2]:[])];}
+function resultControls(){
+ const container=$('#mode-result');if(container.hidden||!multi.result)return;
+ let note=$('#mode-result-status');if(!note){note=document.createElement('p');note.id='mode-result-status';note.className='result-note';note.setAttribute('role','status');container.append(note);}
+ const changed=multi.resultSnapshot!==modeSnapshot(),applied=!!multi.advice?.applied;
+ note.textContent=applied?'Changement appliqué. Les conseils et pourcentages de cette recherche restent affichés. Relance l’analyse pour évaluer ton nouveau deck.':changed?'Deck ou réglages modifiés : ces conseils et pourcentages correspondent à la dernière recherche. Relance la recherche pour les actualiser.':'Ces résultats restent affichés pendant tes modifications. Relance la recherche pour les actualiser.';
+ const accept=$('#accept-advice');if(accept){accept.disabled=state.busy||changed||applied;accept.textContent=applied?'Changement appliqué':'Accepter ce changement';}
+ for(const id of ['reject-advice','exclude-resource']){const button=$(`#${id}`);if(button)button.disabled=state.busy||changed&&$('#mode-improve').disabled;}
+}
 function researchActions(){const team=multi.mode?.teamSize===2;return {predict:team?'Comparer deux équipes':'Comparer deux decks',complete:team?'Compléter le deck allié':'Compléter mon deck',improve:team?'Améliorer le deck allié':'Améliorer mon deck',counter:team?'Trouver une contre-équipe':'Trouver un contre-deck',...(team?{generate:'Créer un deck allié'}:multi.mode?.id==='classic-1v1'?{war:'Créer 4 decks de guerre'}:{})};}
 function researchLayout(){
  if(!multi.mode)return;
@@ -74,6 +82,7 @@ function modeControls(){
  $('#run-research').textContent=state.busy?'Recherche en cours…':multi.action==='complete'&&n===0?(isTeam?'Générer un deck allié':'Générer mon deck'):researchActions()[multi.action];
  const partial=state.rules.validate(ally,false),unknown=state.rules.coverage(ally).unknown.length;
  $('#mode-action-hint').textContent=state.busy?'Recherche en cours…':!multi.ready?'Un modèle validé est nécessaire pour ce mode.':multi.action==='war'?$('#mode-war').disabled?'Les cartes à conserver sont incompatibles avec le modèle.':`${$('#war-keep-cards').checked?count(own):0} carte(s) conservée(s) · 4 decks et 32 cartes différentes.`:!enemyReady?'Ajoute huit cartes dans chaque deck adverse.':!ownReady?'Ajoute huit cartes dans ton deck de départ.':!candidates&&multi.action!=='predict'?'Indique au moins huit cartes disponibles dans ce tirage.':multi.action==='complete'?(n===0?'Deck vide : l’IA crée une composition complète.':n===8?'Retire une carte pour rechercher une nouvelle composition.':!partial.valid?partial.reason:unknown?'Une carte choisie est absente de ce modèle.':`${n} carte(s) conservée(s) · ${8-n} place(s) à compléter.`):['predict','improve'].includes(multi.action)&&!complete(ally)?'Ajoute huit cartes dans chaque deck de ton équipe.':'Prêt à lancer la recherche.';
+ resultControls();
 }
 function modeSend(type,payload){return new Promise((resolve,reject)=>{const id=++multi.nextId;multi.pending.set(id,{resolve,reject});multi.worker.postMessage({id,type,catalogue:state.catalogue,...payload});});}
 function modeLoad(){
@@ -95,10 +104,11 @@ function modeChoose(identity){
  if(!multi.index||!state.rules)return;
  if(multi.mode){multi.saved.set(multi.mode.id,{decks:modeKeys.map(key=>[...state.decks[key]]),layouts:modeKeys.map(key=>({...layoutFor(key)})),pool:$('#draft-pool').value,enemies:multi.specificEnemies,action:multi.action});}
  const mode=multi.index.modes.find(mode=>mode.id===identity);if(!mode)return;
- multi.mode=mode;$('#mode-select').value=identity;multi.result=null;multi.advice=null;$('#mode-result').hidden=true;
+ const sameMode=multi.mode?.id===identity,counterVisible=multi.counterVisible;
+ multi.mode=mode;$('#mode-select').value=identity;if(!sameMode){multi.result=null;multi.advice=null;$('#mode-result').hidden=true;}
  try{localStorage.setItem('clash-mode-v1',identity);}catch{}
  const saved=multi.saved.get(identity);modeKeys.forEach((key,index)=>{state.decks[key]=saved?.decks[index]||Array(8).fill(null);state.layouts[key]=saved?.layouts[index]||state.rules.layoutOptions();});
- $('#draft-pool').value=saved?.pool||'';multi.specificEnemies=saved?.enemies||false;multi.counterVisible=false;
+ $('#draft-pool').value=saved?.pool||'';multi.specificEnemies=saved?.enemies||false;multi.counterVisible=sameMode&&counterVisible;
  const classic=identity==='classic-1v1',isTeam=mode.teamSize===2,info=multi.index.models[identity],supported=mode.rules==='standard';
  modePanels.modeOwn.title=isTeam?'Mon deck de départ':'Mon deck';modePanels.modeEnemy1.title=isTeam?'Adversaire 1':'Deck adverse';
  $('#mode-description').textContent=mode.label;
@@ -123,7 +133,7 @@ function modeChoose(identity){
  modeControls();
 }
 function showAdvice(){
- const session=multi.advice;if(!session||session.snapshot!==modeSnapshot())return;
+ const session=multi.advice;if(!session)return;
  const choice=session.result.suggestions[session.cursor];
  if(!choice){$('#mode-result').innerHTML='<h3>Aucun autre changement améliorant le score</h3><p>La recherche ne trouve plus de proposition meilleure que ton deck avec ces exclusions. Une nouvelle analyse repart sans les refus de cette session.</p>';$('#mode-result').hidden=false;return;}
  const changes=choice.changes,items=[];
@@ -131,12 +141,23 @@ function showAdvice(){
  changes.moves.forEach(move=>items.push(`Déplacer <strong>${escapeHtml(state.rules.entry(move.name).fr)}</strong> de l’emplacement ${move.from+1} vers l’emplacement ${move.to+1} (<strong>${escapeHtml(ClashDeckRules.slots[move.to])}</strong>).`));
  changes.forms.forEach(form=>items.push(`Passer de <strong>${escapeHtml(cardLabel(form.from))}</strong> à <strong>${escapeHtml(cardLabel(form.to))}</strong>.`));
  const resources=choice.deck.flatMap(key=>{const card=state.rules.entry(key),options=[{value:`cards:${card.name}`,label:`La carte ${card.fr}`}];if(card.mode==='evolution')options.push({value:`evolutions:${card.name}`,label:`L’évolution de ${card.fr}`});if(card.mode==='hero')options.push({value:`heroes:${card.name}`,label:`Le pouvoir héros de ${card.fr}`});return options;});
- $('#mode-result').innerHTML=`<h3>${session.cursor===0?'Amélioration proposée':'Autre amélioration proposée'}</h3><p class="advice-score">${number(session.result.baseline)} % → <strong>${number(choice.probability)} %</strong> · <span>+${number(choice.gain)} points</span></p><ul class="advice-changes">${items.map(item=>`<li>${item}</li>`).join('')}</ul><p class="result-note">Gain estimé pour l’ensemble du changement, ${modeEnemies()?'contre les adversaires renseignés':'face à la méta de ce mode'}. Les gains ne s’additionnent pas.</p><div class="advice-actions"><button id="accept-advice" class="button primary">Accepter ce changement</button><button id="reject-advice" class="button">Proposer autre chose</button></div><details class="advice-availability"><summary>Je n’ai pas une carte ou une forme</summary><label for="missing-resource">Élément indisponible<select id="missing-resource">${resources.map(item=>`<option value="${escapeHtml(item.value)}">${escapeHtml(item.label)}</option>`).join('')}</select></label><button id="exclude-resource" class="button">Rechercher sans cet élément</button><p class="result-note">Exclusion pour cette analyse. Après un changement accepté, la prochaine analyse repart du nouveau deck.</p></details><p class="result-note">${session.result.tested.toLocaleString('fr-FR')} compositions évaluées. Meilleure proposition trouvée ; aucun gain réel garanti.</p>`;
- $('#accept-advice').onclick=()=>{if(state.busy||session.snapshot!==modeSnapshot())return;if(!state.rules.validate(choice.deck).valid||JSON.stringify(state.rules.autoDeck(choice.deck,choice.layout))!==JSON.stringify(choice.deck)){toast('Proposition incompatible avec les emplacements. Relance l’analyse.');return;}const target=multi.mode.teamSize===2?'modeAlly':'modeOwn';state.layouts[target]={...choice.layout};state.decks[target]=[...choice.deck];multi.advice=null;deckChanged(target);$('#mode-result').innerHTML=`<h3>Changement appliqué</h3><p>Ton deck est mis à jour. Relance l’analyse pour rechercher la prochaine amélioration ; les refus et exclusions précédents sont remis à zéro.</p>`;$('#mode-result').hidden=false;};
- $('#reject-advice').onclick=()=>{if(state.busy)return;session.excluded.push(choice.signature);session.cursor++;showAdvice();};
- $('#exclude-resource').onclick=()=>{if(state.busy)return;const value=$('#missing-resource').value,index=value.indexOf(':'),kind=value.slice(0,index),name=value.slice(index+1);if(!session.constraints[kind].includes(name))session.constraints[kind].push(name);modeRun('improve',{constraints:session.constraints,excluded:session.excluded});};
- $('#mode-result').hidden=false;
+ $('#mode-result').innerHTML=`<h3>${session.cursor===0?'Amélioration proposée':'Autre amélioration proposée'}</h3><p class="advice-score">${number(session.result.baseline)} % → <strong>${number(choice.probability)} %</strong> · <span>+${number(choice.gain)} points</span></p><ul class="advice-changes">${items.map(item=>`<li>${item}</li>`).join('')}</ul><p class="result-note">Gain estimé pour l’ensemble du changement, ${session.enemies?'contre les adversaires renseignés':'face à la méta de ce mode'}. Les gains ne s’additionnent pas.</p><div class="advice-actions"><button id="accept-advice" class="button primary">Accepter ce changement</button><button id="reject-advice" class="button">Proposer autre chose</button></div><details class="advice-availability"><summary>Je n’ai pas une carte ou une forme</summary><label for="missing-resource">Élément indisponible<select id="missing-resource">${resources.map(item=>`<option value="${escapeHtml(item.value)}">${escapeHtml(item.label)}</option>`).join('')}</select></label><button id="exclude-resource" class="button">Rechercher sans cet élément</button><p class="result-note">Exclusion pour cette analyse. Après un changement accepté, la prochaine analyse repart du nouveau deck.</p></details><p class="result-note">${session.result.tested.toLocaleString('fr-FR')} compositions évaluées. Meilleure proposition trouvée ; aucun gain réel garanti.</p>`;
+ $('#accept-advice').onclick=()=>{if(state.busy||session.applied||session.snapshot!==modeSnapshot())return;if(!state.rules.validate(choice.deck).valid||JSON.stringify(state.rules.autoDeck(choice.deck,choice.layout))!==JSON.stringify(choice.deck)){toast('Proposition incompatible avec les emplacements. Relance l’analyse.');return;}const target=multi.mode.teamSize===2?'modeAlly':'modeOwn';state.layouts[target]={...choice.layout};state.decks[target]=[...choice.deck];session.applied=true;deckChanged(target);};
+ $('#reject-advice').onclick=()=>{if(state.busy)return;if(session.applied||session.snapshot!==modeSnapshot()){modeRun('improve');return;}session.excluded.push(choice.signature);session.cursor++;showAdvice();};
+ $('#exclude-resource').onclick=()=>{if(state.busy)return;const value=$('#missing-resource').value,index=value.indexOf(':'),kind=value.slice(0,index),name=value.slice(index+1),fresh=session.applied||session.snapshot!==modeSnapshot(),constraints=fresh?{cards:[],evolutions:[],heroes:[]}:session.constraints;if(!constraints[kind].includes(name))constraints[kind].push(name);modeRun('improve',{constraints,excluded:fresh?[]:session.excluded});};
+ $('#mode-result').hidden=false;resultControls();
 }
+function bindWarResult(result){
+   $('#mode-result').querySelectorAll('[data-use-war]').forEach(button=>button.onclick=()=>{if(state.busy)return;const index=Number(button.dataset.useWar);state.layouts.modeOwn={...result.layouts[index]};state.decks.modeOwn=[...result.decks[index]];deckChanged('modeOwn');researchChoose('improve');toast('Deck sélectionné. Tu peux l’analyser ou le modifier.');});
+   $('#copy-war-decks').onclick=async()=>{const text=result.decks.map((deck,index)=>`Deck ${index+1} : ${deck.map(cardLabel).join(', ')}`).join('\n');try{await navigator.clipboard.writeText(text);toast('Les quatre decks ont été copiés.');}catch{toast('Copie indisponible : sélectionne le texte ci-dessous.');const textarea=document.createElement('textarea');textarea.value=text;textarea.rows=6;textarea.className='war-copy-text';$('#mode-result').append(textarea);textarea.focus();textarea.select();}};
+}
+window.restoreClashResult=frozen=>{
+ if(!frozen?.result||frozen.action!==multi.action||frozen.mode!==multi.mode.id)return;
+ multi.result=frozen.result;multi.resultSnapshot=frozen.snapshot;multi.advice=frozen.advice;multi.counterVisible=!!frozen.counterVisible;
+ const container=$('#mode-result');container.innerHTML=frozen.html;container.hidden=false;
+ if(multi.advice)showAdvice();else if(multi.action==='war')bindWarResult(multi.result);
+ bindImages(container);modeControls();
+};
 async function modeRun(type,adviceOptions=null){
  if(state.busy||!multi.ready||$(`#mode-${type}`).disabled)return;
  let allowed;try{allowed=type==='predict'?null:modeCards();}catch(error){toast(error.message);return;}
@@ -154,15 +175,14 @@ async function modeRun(type,adviceOptions=null){
    state.layouts[target]=config;state.decks[target]=result.deck;deckChanged(target);
   }
   if(type==='counter')multi.counterVisible=true;
-  multi.result=result;const currentSnapshot=modeSnapshot();
+  multi.result=result;const currentSnapshot=modeSnapshot();multi.resultSnapshot=currentSnapshot;
   if(type==='war'){
    const families=result.decks.flat().map(key=>state.rules.entry(key)?.name);
    if(result.decks.length!==4||result.decks.some((deck,index)=>!state.rules.validate(deck).valid||JSON.stringify(state.rules.autoDeck(deck,result.layouts[index]))!==JSON.stringify(deck))||families.some(name=>!name)||new Set(families).size!==32)throw new Error('Répartition des decks de guerre incompatible.');
    $('#mode-result').innerHTML=`<h3>Mes 4 decks de guerre</h3><p><strong>32 cartes différentes</strong> · aucun doublon entre les decks, même avec une évolution ou un héros.</p><div class="generation-metrics"><p>Moyenne des quatre scores : <strong>${number(result.meanProbability)} %</strong></p><p>Score du moins bon deck : <strong>${number(result.minimumProbability)} %</strong></p></div><p class="result-note">Chaque score estime un combat classique face à la méta. La moyenne ne représente pas la probabilité de gagner les quatre combats ou un duel de guerre.</p><div class="war-decks">${result.decks.map((deck,index)=>`<article class="deck-panel"><div class="deck-head"><h4>Deck ${index+1}</h4><strong>${number(result.probabilities[index])} %</strong></div><p class="deck-details">${meanCost(deck)}</p><div class="deck-grid">${slotsHtml(deck)}</div><button class="button subtle" data-use-war="${index}">Utiliser le deck ${index+1}</button></article>`).join('')}</div><button id="copy-war-decks" class="button">Copier les 4 decks</button><p class="result-note">${escapeHtml(result.method)} ${result.tested.toLocaleString('fr-FR')} compositions évaluées.</p>`;
-   $('#mode-result').querySelectorAll('[data-use-war]').forEach(button=>button.onclick=()=>{if(state.busy)return;const index=Number(button.dataset.useWar);state.layouts.modeOwn={...result.layouts[index]};state.decks.modeOwn=[...result.decks[index]];deckChanged('modeOwn');researchChoose('improve');toast('Deck sélectionné. Tu peux l’analyser ou le modifier.');});
-   $('#copy-war-decks').onclick=async()=>{const text=result.decks.map((deck,index)=>`Deck ${index+1} : ${deck.map(cardLabel).join(', ')}`).join('\n');try{await navigator.clipboard.writeText(text);toast('Les quatre decks ont été copiés.');}catch{toast('Copie indisponible : sélectionne le texte ci-dessous.');const textarea=document.createElement('textarea');textarea.value=text;textarea.rows=6;textarea.className='war-copy-text';$('#mode-result').append(textarea);textarea.focus();textarea.select();}};
+   bindWarResult(result);
   }else if(type==='improve'){
-   multi.advice={result,cursor:0,snapshot:currentSnapshot,constraints:adviceOptions?.constraints||{cards:[],evolutions:[],heroes:[]},excluded:adviceOptions?.excluded||[]};showAdvice();
+   multi.advice={result,cursor:0,snapshot:currentSnapshot,enemies:!!enemies,applied:false,constraints:adviceOptions?.constraints||{cards:[],evolutions:[],heroes:[]},excluded:adviceOptions?.excluded||[]};showAdvice();
   }else $('#mode-result').innerHTML=`<h3>${type==='predict'?'Estimation de la confrontation':'Composition proposée'}</h3><p><span class="generated-score">${number(result.probability??result.p1)} %</span> de victoire estimée ${enemies?'contre les adversaires choisis':'en moyenne face à la méta de ce mode'}.</p>${result.tested?`<p>${result.tested.toLocaleString('fr-FR')} compositions et répartitions comparées.</p>`:''}<p class="result-note">${escapeHtml(result.method||(isTeam?'Les quatre decks sont évalués ensemble. Le score reste une estimation, sans garantie de victoire.':'Les deux decks sont évalués ensemble. Le score reste une estimation, sans garantie de victoire.'))}</p>`;
   if(result.counterProbability!==undefined)$('#mode-result').insertAdjacentHTML('beforeend',`<div class="generation-metrics"><p>Score moyen : <strong>${number(result.metaProbability)} %</strong></p><p>Victoire face au meilleur contre trouvé : <strong>${number(result.counterProbability)} %</strong></p><p>Défaite face à ce contre : <strong>${number(result.counterLoss)} %</strong></p></div><details><summary>Voir le contre trouvé</summary><div class="counter-preview">${(isTeam?result.counterDeck:[result.counterDeck]).map(deck=>`<div class="deck-grid">${slotsHtml(deck)}</div>`).join('')}</div></details>`);
   $('#mode-result').hidden=false;bindImages($('#mode-result'));researchLayout();
@@ -184,13 +204,13 @@ async function modeStart(){
   $('#mode-select').onchange=()=>modeChoose($('#mode-select').value);
  $('#research-select').onchange=()=>researchChoose($('#research-select').value);
  $('#run-research').onclick=()=>modeRun(multi.action);
- $('#mode-use-enemies').onchange=()=>{multi.specificEnemies=$('#mode-use-enemies').checked;multi.result=null;$('#mode-result').hidden=true;modeControls();};
-  $('#draft-pool').oninput=()=>{$('#mode-result').hidden=true;modeControls();};
- $('#generation-goal').onchange=()=>{$('#mode-result').hidden=true;multi.result=null;modeControls();};
- for(const id of ['war-goal','war-keep-cards'])$(`#${id}`).onchange=()=>{$('#mode-result').hidden=true;multi.result=null;modeControls();};
+ $('#mode-use-enemies').onchange=()=>{multi.specificEnemies=$('#mode-use-enemies').checked;modeControls();};
+  $('#draft-pool').oninput=modeControls;
+ $('#generation-goal').onchange=modeControls;
+ for(const id of ['war-goal','war-keep-cards'])$(`#${id}`).onchange=modeControls;
   for(const [id,type] of [['generate','generate'],['complete','complete'],['improve','improve'],['predict','predict'],['counter','counter']])$(`#mode-${id}`).onclick=()=>modeRun(type);
  $('#multi-example').onclick=()=>{if(state.busy)return;const examples=[['Cannon','Musketeer','Knight','Hog Rider','Fireball','Arrows','Skeletons','Ice Spirit'],['Tesla','Archer Queen','Mini P.E.K.K.A','Giant','Zap','The Log','Bats','Baby Dragon'],['Goblin Giant','Sparky','Mini P.E.K.K.A','Dark Prince','Rage','Arrows','Bats','Goblin Cage'],['Royal Giant','Fisherman','Hunter','Phoenix','Lightning','The Log','Skeletons','Electro Spirit']];modeKeys.forEach((key,index)=>{let deck=state.rules.autoDeck(examples[index],layoutFor(key));if(multi.action==='complete'&&key===(multi.mode.teamSize===2?'modeAlly':'modeOwn'))deck=deck.map((value,slot)=>slot<3?value:null);adoptDeck(key,deck);deckChanged(key);});};
- window.addEventListener('clash:changed',event=>{if(modeKeys.includes(event.detail.key)){$('#mode-result').hidden=true;multi.result=null;multi.advice=null;modeControls();}});
+ window.addEventListener('clash:changed',event=>{if(modeKeys.includes(event.detail.key))modeControls();});
   window.addEventListener('clash:controls',modeControls);
  window.clashChooseResearch=route=>{if(route==='stats'){$('#model-details').open=true;return;}const type={analyse:'predict',contre:'counter',completer:'complete',ameliorer:'improve',allie:'generate',guerre:'war'}[route];if(type)researchChoose(type);};
  $('.brand').onclick=event=>{event.preventDefault();modeChoose('classic-1v1');researchChoose('predict');};
