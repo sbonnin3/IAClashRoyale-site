@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-08T01:27:50.439775+00:00",
+  "updatedAt": "2026-10-08T02:03:07.734924+00:00",
   "metaSince": "20261007T000000.000Z",
   "configuredMetaSince": "20261007T000000.000Z",
   "source": "Journaux de combats de l’API officielle Clash Royale",
   "coverage": "Trois familles de combats à deck libre : 1c1 classique, ligue échecs et 2c2 classique. Les contextes aux mêmes règles sont regroupés ; triple élixir, tirages, decks imposés et autres formats sont exclus des modèles et de l’interface.",
-  "excludedBattles": 142321,
+  "excludedBattles": 166292,
   "modes": [
     {
       "id": "classic-1v1",
@@ -23,9 +23,9 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 712289,
-      "recentBattles": 300757,
-      "lastBattle": "20261008T012339.000Z",
+      "battles": 811635,
+      "recentBattles": 346895,
+      "lastBattle": "20261008T015409.000Z",
       "eventTags": [
         "#2CJUJ028",
         "#2C9JG9GP",
@@ -51,9 +51,9 @@
       "description": "Combats d’échecs à huit cartes avec un deck choisi par le joueur. Modèle propre aux règles de ce mode.",
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 57344,
-      "recentBattles": 27678,
-      "lastBattle": "20261008T011647.000Z",
+      "battles": 89233,
+      "recentBattles": 47434,
+      "lastBattle": "20261008T015115.000Z",
       "eventTags": [
         "#2CJUGQ8G"
       ],
@@ -71,9 +71,9 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 141716,
-      "recentBattles": 76494,
-      "lastBattle": "20261008T011958.000Z",
+      "battles": 155398,
+      "recentBattles": 83135,
+      "lastBattle": "20261008T015835.000Z",
       "eventTags": [
         "#2CJUJYPP",
         "#2C9JGJ2J",
