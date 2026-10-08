@@ -8,13 +8,13 @@
   <title>IA Clash Royale — Atelier de decks</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%23101826'/%3E%3Ctext x='24' y='34' text-anchor='middle' font-size='34' fill='%23f6c85d'%3E♛%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css?version=bfa8ef9d50979eab">
-  <link rel="stylesheet" href="modes.css?version=bbee50cdce20aabc">
+  <link rel="stylesheet" href="modes.css?version=ffeac480474a2fd9">
   <script src="deck-rules.js?version=a5d35740a5e8f48f" defer></script>
   <script src="catalogue.js?version=56d64132fe90e8c5" defer></script>
   <script src="card-filters.js?version=1f0e0784c4ef3f4a" defer></script>
-  <script src="app.js?version=266a9a34c03c3abb" defer></script>
-  <script src="multi-mode.js?version=7cdc9cc2eedf8750" defer></script>
-  <script src="site-updates.js?version=4fcde6fd0835e07b" defer></script>
+  <script src="app.js?version=26ed11e67f5f960f" defer></script>
+  <script src="multi-mode.js?version=aca17409256f3d61" defer></script>
+  <script src="site-updates.js?version=1ca8a8cdddb723b3" defer></script>
 </head>
 <body data-interface="unified">
   <header class="topbar">
@@ -33,6 +33,7 @@
       <label class="enemy-option" id="enemy-option"><input id="mode-use-enemies" type="checkbox"><span id="enemy-option-label">Optimiser contre un deck précis</span></label>
       <p id="mode-objective" class="result-note"></p>
       <label id="generation-options" class="generation-options" hidden>Priorité de génération<select id="generation-goal"><option value="meta">Meilleur score moyen face à la méta</option><option value="robust">Meilleure résistance au contre recherché</option></select></label>
+      <div id="war-options" hidden><label class="enemy-option"><input id="war-keep-cards" type="checkbox"><span>Conserver mes cartes dans le premier deck</span></label><label class="generation-options">Priorité des quatre decks<select id="war-goal"><option value="balanced">Renforcer le moins bon deck, puis la moyenne</option><option value="meta">Meilleure moyenne des quatre decks</option></select></label><p class="result-note">32 cartes différentes, toutes formes confondues. Les cartes conservées peuvent changer d’emplacement ou de forme.</p></div>
       <div id="draft-settings" hidden><label for="draft-pool">Cartes disponibles dans ce tirage</label><textarea id="draft-pool" rows="3" placeholder="Noms français ou anglais, séparés par des virgules"></textarea><p class="result-note">Ajoute aussi les cartes déjà conservées.</p></div>
       <div class="research-launch"><p id="mode-action-hint" class="action-hint" role="status">Chargement des cartes…</p><button id="run-research" class="button primary" disabled>Lancer la recherche</button></div>
       <p id="mode-status" class="mode-status" role="status"></p>
@@ -53,7 +54,7 @@
       <p id="multi-explanation" class="completion-explanation"></p>
       <p class="result-note">Les nouveautés sont détectées automatiquement. Le catalogue et les modes sont publiés régulièrement ; les modèles sont réentraînés après collecte et validation. Une nouvelle carte peut attendre des données, et un mode inédit peut nécessiter une vérification de ses règles. Une page ouverte vérifie aussi les nouvelles versions et conserve tes cartes lors de son actualisation.</p>
       <p class="result-note">Les recherches retiennent le meilleur score trouvé, sans garantir la victoire. Niveaux comparables ; talent, coordination et troupes de tour non modélisés. <a href="https://supercell.com/en/games/clashroyale/blog/news/mid-march-update/" target="_blank" rel="noopener">Règles des emplacements</a>.</p>
-      <details class="mode-inventory"><summary>Modes disponibles et état des modèles</summary><p>Chaque mode utilise ses propres données. Les formats sans modèle validé ou sans règles vérifiées restent visibles avec leur état.</p><button id="refresh-modes" class="button subtle">Actualiser les modes</button><div id="mode-inventory"></div></details>
+      <details class="mode-inventory"><summary>Modes disponibles et état des modèles</summary><p>Quatre familles à deck libre. Le 1c1 classique regroupe trophées, ligue et autres files aux mêmes règles. Le triple élixir regroupe amical, guerre et tournoi. Les tirages, decks miroir et decks imposés sont exclus. Chaque famille utilise son propre modèle.</p><button id="refresh-modes" class="button subtle">Actualiser les modes</button><div id="mode-inventory"></div></details>
     </details>
   </main>
   <div id="legacy-tools" hidden aria-hidden="true">
@@ -91,7 +92,7 @@
       <p class="completion-explanation">Chaque proposition remplace une seule carte et conserve les sept autres, avec leurs formes actives. Les suggestions respectent tes réglages d’activation. Tous les remplacements légaux sont évalués face à la même méta du 1V1 classique. Les gains sont exprimés en points de probabilité et ne s’additionnent pas : applique un changement, puis relance l’analyse. Le score reste une estimation du modèle.</p>
     </section>
 
-    <div hidden><button id="mode-generate"></button><button id="mode-complete"></button><button id="mode-improve"></button><button id="mode-predict"></button><button id="mode-counter"></button></div>
+    <div hidden><button id="mode-generate"></button><button id="mode-complete"></button><button id="mode-improve"></button><button id="mode-predict"></button><button id="mode-counter"></button><button id="mode-war"></button></div>
   </div>
 
   <dialog id="selector" aria-labelledby="selector-title">

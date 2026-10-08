@@ -2,40 +2,45 @@
   "schema_version": 3,
   "mode": {
     "id": "api-72000533",
-    "label": "Échecs terrifiants",
+    "label": "Ligue échecs",
+    "teamSize": 1,
     "apiGameModeIds": [
       72000533
     ],
-    "apiName": "202610_Event_Spooky_Chess",
-    "teamSize": 1,
+    "description": "Combats d’échecs à huit cartes avec un deck choisi par le joueur. Modèle propre aux règles de ce mode.",
     "rules": "standard",
     "strategy": "constructed",
-    "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre."
+    "eventTags": [
+      "#2CJUGQ8G"
+    ],
+    "eventTitles": [
+      "Spooky Chess League"
+    ]
   },
   "team_size": 1,
-  "model_version": "20261007T172916Z",
-  "trained_at": "2026-10-07T17:29:16.237206+00:00",
+  "model_version": "20261007T234350Z",
+  "trained_at": "2026-10-07T23:43:50.871690+00:00",
   "source": "API officielle Clash Royale",
-  "source_battles": 2180,
+  "source_battles": 14054,
   "feature_count": 738,
   "split": {
     "train": {
-      "battles": 1526,
-      "from": "20261007T000024.000Z",
-      "to": "20261007T120447.000Z",
-      "ids_sha256": "81a508e4e2fcc6b8d8c95e7eae89930e856f86d5f575248f583c2a2044db0baa"
+      "battles": 9837,
+      "from": "20261007T000002.000Z",
+      "to": "20261007T150615.000Z",
+      "ids_sha256": "4684d6a8d63ed344661493447a2c9a1244ebca4367cfd03e5a750250154ebb38"
     },
     "validation": {
-      "battles": 326,
-      "from": "20261007T120537.000Z",
-      "to": "20261007T143015.000Z",
-      "ids_sha256": "2b9f5e1f06c8ba4dc9078e47c7309524dab7b8d083f90ce268fb62de9db7fc67"
+      "battles": 2108,
+      "from": "20261007T150627.000Z",
+      "to": "20261007T173003.000Z",
+      "ids_sha256": "fe1a6b18f84c762ce07102c777d7f6a645e2cec7fa373347d660cacac81293b9"
     },
     "test": {
-      "battles": 328,
-      "from": "20261007T143257.000Z",
-      "to": "20261007T172407.000Z",
-      "ids_sha256": "def50caedb1b84aab26448c1571def28a97a99b5ca900e872d1e4f032e7099df"
+      "battles": 2109,
+      "from": "20261007T173006.000Z",
+      "to": "20261007T233424.000Z",
+      "ids_sha256": "254831109e7c2e6eeb00a4f43618ab6b44137492c22740ec4790200958ccec72"
     }
   },
   "candidates": [
@@ -43,18 +48,18 @@
       "depth": 3,
       "trees": 250,
       "validation": {
-        "accuracy": 0.6702453987730062,
-        "log_loss": 0.6032935458426073,
-        "brier": 0.20856264734143523,
-        "auc": 0.7330959012382852,
+        "accuracy": 0.6679316888045541,
+        "log_loss": 0.5955933153363763,
+        "brier": 0.2050767584631086,
+        "auc": 0.7436206922935669,
         "confusion": [
           [
-            218,
-            108
+            1407,
+            701
           ],
           [
-            107,
-            219
+            699,
+            1409
           ]
         ]
       }
@@ -63,18 +68,18 @@
       "depth": 5,
       "trees": 350,
       "validation": {
-        "accuracy": 0.651840490797546,
-        "log_loss": 0.6146788627737816,
-        "brier": 0.21355225708727318,
-        "auc": 0.7221432872896986,
+        "accuracy": 0.6771821631878557,
+        "log_loss": 0.5840006628252293,
+        "brier": 0.20015667089184222,
+        "auc": 0.7562581239265616,
         "confusion": [
           [
-            212,
-            114
+            1427,
+            681
           ],
           [
-            113,
-            213
+            680,
+            1428
           ]
         ]
       }
@@ -83,37 +88,37 @@
       "depth": 7,
       "trees": 400,
       "validation": {
-        "accuracy": 0.6825153374233128,
-        "log_loss": 0.620191333002336,
-        "brier": 0.21508026534530997,
-        "auc": 0.7233853362941773,
+        "accuracy": 0.6869070208728653,
+        "log_loss": 0.5815009479879175,
+        "brier": 0.19907496841861605,
+        "auc": 0.7593273253783366,
         "confusion": [
           [
-            222,
-            104
+            1443,
+            665
           ],
           [
-            103,
-            223
+            655,
+            1453
           ]
         ]
       }
     }
   ],
-  "calibration_scale": 1.0307213611205552,
+  "calibration_scale": 0.9815851812454848,
   "test": {
-    "accuracy": 0.6600609756097561,
-    "log_loss": 0.5804834856122848,
-    "brier": 0.19876286392679635,
-    "auc": 0.7579519259369423,
+    "accuracy": 0.6851588430535799,
+    "log_loss": 0.5862503412919959,
+    "brier": 0.20091054126861158,
+    "auc": 0.7551725192288192,
     "confusion": [
       [
-        216,
-        112
+        1442,
+        667
       ],
       [
-        111,
-        217
+        661,
+        1448
       ]
     ]
   },
@@ -122,77 +127,113 @@
       {
         "from": 0.0,
         "to": 0.1,
-        "examples": 1,
-        "meanPrediction": 0.09560805559158325,
-        "observedWins": 0.0
+        "examples": 101,
+        "meanPrediction": 0.07096382975578308,
+        "observedWins": 0.06930693069306931
       },
       {
         "from": 0.1,
         "to": 0.2,
-        "examples": 48,
-        "meanPrediction": 0.1568872034549713,
-        "observedWins": 0.08333333333333333
+        "examples": 325,
+        "meanPrediction": 0.1527034044265747,
+        "observedWins": 0.15076923076923077
       },
       {
         "from": 0.2,
         "to": 0.3,
-        "examples": 67,
-        "meanPrediction": 0.24933014810085297,
-        "observedWins": 0.208955223880597
+        "examples": 439,
+        "meanPrediction": 0.2506304681301117,
+        "observedWins": 0.23690205011389523
       },
       {
         "from": 0.3,
         "to": 0.4,
-        "examples": 94,
-        "meanPrediction": 0.3503199517726898,
-        "observedWins": 0.30851063829787234
+        "examples": 594,
+        "meanPrediction": 0.3517453968524933,
+        "observedWins": 0.35185185185185186
       },
       {
         "from": 0.4,
         "to": 0.5,
-        "examples": 117,
-        "meanPrediction": 0.45756882429122925,
-        "observedWins": 0.5470085470085471
+        "examples": 644,
+        "meanPrediction": 0.45144492387771606,
+        "observedWins": 0.453416149068323
       },
       {
         "from": 0.5,
         "to": 0.6,
-        "examples": 119,
-        "meanPrediction": 0.5417180061340332,
-        "observedWins": 0.453781512605042
+        "examples": 656,
+        "meanPrediction": 0.5476668477058411,
+        "observedWins": 0.5457317073170732
       },
       {
         "from": 0.6,
         "to": 0.7,
-        "examples": 94,
-        "meanPrediction": 0.6496800184249878,
-        "observedWins": 0.6914893617021277
+        "examples": 594,
+        "meanPrediction": 0.6482545733451843,
+        "observedWins": 0.6481481481481481
       },
       {
         "from": 0.7,
         "to": 0.8,
-        "examples": 67,
-        "meanPrediction": 0.7506697773933411,
-        "observedWins": 0.7910447761194029
+        "examples": 439,
+        "meanPrediction": 0.7493695616722107,
+        "observedWins": 0.7630979498861048
       },
       {
         "from": 0.8,
         "to": 0.9,
-        "examples": 48,
-        "meanPrediction": 0.8431127667427063,
-        "observedWins": 0.9166666666666666
+        "examples": 325,
+        "meanPrediction": 0.8472965955734253,
+        "observedWins": 0.8492307692307692
       },
       {
         "from": 0.9,
         "to": 1.0,
-        "examples": 1,
-        "meanPrediction": 0.9043919444084167,
-        "observedWins": 1.0
+        "examples": 101,
+        "meanPrediction": 0.9290361404418945,
+        "observedWins": 0.9306930693069307
       }
     ],
-    "ece": 0.06318853343496238
+    "ece": 0.0038669557580454992
   },
   "caveat": "Test chronologique, deux orientations groupées par combat. Échantillon de joueurs suivis ; coordination, talent et troupes de tour non modélisés. En 2c2, les cartes sont comptées par équipe sans modéliser leur répartition entre les deux joueurs.",
-  "model_sha256": "d3baae133716bda630e9b484bb63e0e3c8255aa5aa4669d1c4df099ec6fb75cb",
+  "comparison_previous": {
+    "same_test_battles": 2109,
+    "previous": {
+      "accuracy": 0.6567093409198672,
+      "log_loss": 0.6180038213412827,
+      "brier": 0.21491987099260956,
+      "auc": 0.7147599047726321,
+      "confusion": [
+        [
+          1383,
+          726
+        ],
+        [
+          722,
+          1387
+        ]
+      ]
+    },
+    "candidate": {
+      "accuracy": 0.6851588430535799,
+      "log_loss": 0.5862503412919959,
+      "brier": 0.20091054126861158,
+      "auc": 0.7551725192288192,
+      "confusion": [
+        [
+          1442,
+          667
+        ],
+        [
+          661,
+          1448
+        ]
+      ]
+    },
+    "freshBattles": 2184
+  },
+  "model_sha256": "33cad523fdac587d9be737d3ce9eb5b820b1febbec9eb5f7949d39236ca27cac",
   "promotion_eligible": true
 }

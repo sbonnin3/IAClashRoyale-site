@@ -1,5 +1,5 @@
 'use strict';
-importScripts(...['engine.js','deck-rules.js','team-engine.js','advice-engine.js'].map(file=>file+(self.location?.search||'')));
+importScripts(...['engine.js','deck-rules.js','team-engine.js','advice-engine.js','war-engine.js'].map(file=>file+(self.location?.search||'')));
 let model,meta,mode,generation=0;
 self.onmessage=async event=>{
  const message=event.data,{id,type,catalogue}=message;
@@ -13,6 +13,10 @@ self.onmessage=async event=>{
   }
   if(!model)throw new Error('Le modèle du mode se prépare.');
   const rules=ClashDeckRules.createRules(catalogue,model.cardNames),{own,ally,enemies,layout,layouts,allowed,goal,constraints,excluded}=message;
+  if(type==='war'){
+   const result=createClashWarEngine(model,meta,rules).generate(message.keepWarCards?own:Array(8).fill(null),layout,goal,(step,total)=>self.postMessage({id,type:'progress',step,total}));
+   self.postMessage({id,type:'result',result});return;
+  }
   const validate=(deck,complete=true)=>{const v=rules.validate(deck,complete);if(!v.valid)throw new Error(v.reason);if(rules.coverage(deck).unknown.length)throw new Error('Une carte est absente du modèle de ce mode.');};
   if(type!=='counter')validate(own,!(type==='complete'&&mode.teamSize===1));if(enemies)enemies.forEach(deck=>validate(deck));
   if(ally&&!['counter','generate'].includes(type))validate(ally,type==='improve'||type==='predict');

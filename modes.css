@@ -73,4 +73,7 @@ body[data-interface="unified"] .result-box{margin:0}
 .generation-metrics p{margin:0;font-size:.9375rem}
 .counter-preview{margin-top:16px;display:grid;gap:18px}
 #mode-result details>summary{cursor:pointer}
+.war-decks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:20px 0}
+.war-decks .deck-panel{min-width:0}.war-decks h4{margin:0;font-size:1.05rem}.war-decks .deck-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.war-decks .button{margin-top:14px}.war-copy-text{display:block;width:100%;margin-top:16px;padding:12px;background:var(--surface2);color:var(--text);font:inherit;border:1px solid var(--line);border-radius:8px}
+@media(max-width:760px){.war-decks{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.advice-actions .button{flex:1 1 180px}.advice-score{font-size:1rem}body[data-interface="unified"] main{padding-bottom:170px}.generation-metrics{flex-direction:column}}

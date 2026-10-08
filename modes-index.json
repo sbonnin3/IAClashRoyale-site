@@ -1,100 +1,59 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T23:07:18.646343+00:00",
+  "updatedAt": "2026-10-08T00:11:43.091109+00:00",
   "metaSince": "20261007T000000.000Z",
   "configuredMetaSince": "20261007T000000.000Z",
   "source": "Journaux de combats de l’API officielle Clash Royale",
-  "coverage": "Tous les identifiants de modes observés sont conservés, y compris ceux sans règles ou modèle validés.",
+  "coverage": "Quatre familles de combats à deck libre. Les contextes aux mêmes règles sont regroupés ; tirages, decks imposés et autres formats sont exclus des modèles et de l’interface.",
+  "excludedBattles": 68158,
   "modes": [
     {
-      "id": "seasonal-1v1",
-      "label": "Route des trophées saisonnière",
+      "id": "classic-1v1",
+      "label": "1c1 classique · trophées et ligue",
       "teamSize": 1,
+      "description": "Règles normales et deck libre : trophées, ligue, arènes saisonnières, défis, amicaux, tournois et combats de guerre classiques sont regroupés. Les tirages, decks imposés et effets spéciaux sont exclus.",
       "apiGameModeIds": [
-        72000006
+        72000006,
+        72000007,
+        72000009,
+        72000065,
+        72000268,
+        72000450,
+        72000464
       ],
-      "description": "Arènes saisonnières identifiées dans les journaux officiels, séparées de la Route des trophées permanente.",
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 259088,
-      "recentBattles": 109341,
-      "lastBattle": "20261007T225900.000Z",
+      "battles": 559736,
+      "recentBattles": 229578,
+      "lastBattle": "20261008T000828.000Z",
       "eventTags": [
         "#2CJUJ028",
         "#2C9JG9GP",
         "#2RC8C0JU",
-        "#2R2GCR2L"
+        "#2C9JGGCL",
+        "#2CJUJP00",
+        "#2RC8CPRJ",
+        "#2R2GCR2L",
+        "#2R2GU0PG"
       ],
       "eventTitles": [
-        "Seasonal Trophy Road"
+        "Seasonal Trophy Road",
+        "Classic 1v1"
       ]
     },
     {
-      "id": "api-72000268",
-      "label": "Guerre · combat 1c1",
-      "apiGameModeIds": [
-        72000268
-      ],
-      "apiName": "CW_Battle_1v1",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 7312,
-      "recentBattles": 798,
-      "lastBattle": "20261007T215204.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "classic-1v1",
-      "label": "1V1 classique",
-      "description": "Duels à huit cartes avec les règles normales, issus de la Route des trophées et du Classé. Hors 2V2, draft, événements, guerre et modes à élixir modifié.",
-      "apiGameModeIds": [
-        72000006,
-        72000450,
-        72000464
-      ],
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "battles": 223801,
-      "recentBattles": 89506,
-      "lastBattle": "20261007T225519.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000070",
-      "label": "Élixir progressif · guerre",
-      "apiGameModeIds": [
-        72000070
-      ],
-      "apiName": "RampUpElixir_Ladder",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 642,
-      "recentBattles": 0,
-      "lastBattle": "20260928T094906.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
       "id": "api-72000533",
-      "label": "Échecs terrifiants",
+      "label": "Ligue échecs",
+      "teamSize": 1,
       "apiGameModeIds": [
         72000533
       ],
-      "apiName": "202610_Event_Spooky_Chess",
-      "teamSize": 1,
+      "description": "Combats d’échecs à huit cartes avec un deck choisi par le joueur. Modèle propre aux règles de ce mode.",
       "rules": "standard",
       "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 24487,
-      "recentBattles": 11043,
-      "lastBattle": "20261007T225614.000Z",
+      "battles": 34083,
+      "recentBattles": 15761,
+      "lastBattle": "20261007T235801.000Z",
       "eventTags": [
         "#2CJUGQ8G"
       ],
@@ -103,830 +62,23 @@
       ]
     },
     {
-      "id": "api-72000062",
-      "label": "Triple élixir · guerre",
-      "apiGameModeIds": [
-        72000062
-      ],
-      "apiName": "TripleElixir_Ladder",
+      "id": "triple-elixir-1v1",
+      "label": "1c1 triple élixir",
       "teamSize": 1,
+      "apiGameModeIds": [
+        72000032,
+        72000062,
+        72000027
+      ],
+      "description": "Triple élixir avec deck libre : combats amicaux, de guerre et de tournoi regroupés dans un seul modèle.",
       "rules": "standard",
       "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2878,
-      "recentBattles": 1164,
-      "lastBattle": "20261007T220141.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000007",
-      "label": "Amical 1c1",
-      "apiGameModeIds": [
-        72000007
-      ],
-      "apiName": "Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 4848,
-      "recentBattles": 1799,
-      "lastBattle": "20261007T213926.000Z",
-      "eventTags": [
-        "#2CJUJ028",
-        "#2C9JG9GP",
-        "#2RC8C0JU"
-      ],
-      "eventTitles": [
-        "Seasonal Trophy Road"
-      ]
-    },
-    {
-      "id": "api-72000512-modified",
-      "label": "C.H.A.O.S · méga tirage · effets spéciaux",
-      "apiGameModeIds": [
-        72000512
-      ],
-      "apiName": "Chaos_1v1_MegaDraft_All",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 5680,
-      "recentBattles": 2219,
-      "lastBattle": "20261007T225022.000Z",
-      "eventTags": [
-        "#2RC8LG28",
-        "#2CJYY8JP"
-      ],
-      "eventTitles": [
-        "C.H.A.O.S Mega Draft Challenge"
-      ]
-    },
-    {
-      "id": "api-72000060",
-      "label": "Mort subite · guerre",
-      "apiGameModeIds": [
-        72000060
-      ],
-      "apiName": "Overtime_Ladder",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 130,
-      "recentBattles": 0,
-      "lastBattle": "20260921T072050.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000321",
-      "label": "Touchdown · guerre",
-      "apiGameModeIds": [
-        72000321
-      ],
-      "apiName": "Touchdown_ClanWar",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 1028,
-      "recentBattles": 0,
-      "lastBattle": "20261005T093530.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000525",
-      "label": "Royale Shuffle · braquage",
-      "apiGameModeIds": [
-        72000525
-      ],
-      "apiName": "RR_Heist_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 688,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085229.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000521",
-      "label": "Royale Shuffle · triple élixir",
-      "apiGameModeIds": [
-        72000521
-      ],
-      "apiName": "RR_TripleElixir_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 660,
-      "recentBattles": 0,
-      "lastBattle": "20261005T084625.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000530",
-      "label": "Royale Shuffle · capture du mortier",
-      "apiGameModeIds": [
-        72000530
-      ],
-      "apiName": "RR_MortarCapture_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 718,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085216.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000523",
-      "label": "Royale Shuffle · mort subite",
-      "apiGameModeIds": [
-        72000523
-      ],
-      "apiName": "RR_Overtime_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 638,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085056.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000522",
-      "label": "Royale Shuffle · super troupes",
-      "apiGameModeIds": [
-        72000522
-      ],
-      "apiName": "RR_SuperTroopBattle_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 697,
-      "recentBattles": 0,
-      "lastBattle": "20261005T084848.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000528",
-      "label": "Royale Shuffle · obscurité",
-      "apiGameModeIds": [
-        72000528
-      ],
-      "apiName": "RR_Blackout_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 704,
-      "recentBattles": 0,
-      "lastBattle": "20261005T084220.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000526",
-      "label": "Royale Shuffle · bombardement",
-      "apiGameModeIds": [
-        72000526
-      ],
-      "apiName": "RR_Snowball_bombardment",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 708,
-      "recentBattles": 0,
-      "lastBattle": "20261005T084938.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000065",
-      "label": "Défi 1c1",
-      "apiGameModeIds": [
-        72000065
-      ],
-      "apiName": "Showdown_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 12306,
-      "recentBattles": 6494,
-      "lastBattle": "20261007T225101.000Z",
-      "eventTags": [
-        "#2C9JGGCL",
-        "#2CJUJP00",
-        "#2RC8CPRJ",
-        "#2R2GU0PG"
-      ],
-      "eventTitles": [
-        "Classic 1v1"
-      ]
-    },
-    {
-      "id": "api-72000194",
-      "label": "Méga tirage",
-      "apiGameModeIds": [
-        72000194
-      ],
-      "apiName": "Draft_Competitive",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "draft",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 4392,
-      "recentBattles": 1623,
-      "lastBattle": "20261007T220110.000Z",
-      "eventTags": [
-        "#2CJUCGP0",
-        "#2C9JRV2L",
-        "#2RC8UGVJ"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000527",
-      "label": "Royale Shuffle · méga moine",
-      "apiGameModeIds": [
-        72000527
-      ],
-      "apiName": "RR_Event_Mega_Monk",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 701,
-      "recentBattles": 0,
-      "lastBattle": "20261005T084515.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000031",
-      "label": "Mort subite · amical",
-      "apiGameModeIds": [
-        72000031
-      ],
-      "apiName": "Overtime_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 147,
-      "recentBattles": 101,
-      "lastBattle": "20261007T173559.000Z",
-      "eventTags": [
-        "#2CJUJJQL",
-        "#2C9JR2PU",
-        "#2RC8CC98"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000520",
-      "label": "Tout évolué",
-      "apiGameModeIds": [
-        72000520
-      ],
-      "apiName": "RR_AllEvoBattle_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 704,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085246.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000524",
-      "label": "Royale Shuffle · rage",
-      "apiGameModeIds": [
-        72000524
-      ],
-      "apiName": "RR_Rage_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 654,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085038.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000232",
-      "label": "Élixir ×7 · amical",
-      "apiGameModeIds": [
-        72000232
-      ],
-      "apiName": "7xElixir_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 887,
-      "recentBattles": 428,
-      "lastBattle": "20261007T213534.000Z",
-      "eventTags": [
-        "#2C9JRJLU",
-        "#2CJUCYRL",
-        "#2RC8ULY8"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000087",
-      "label": "Decks classiques imposés",
-      "apiGameModeIds": [
-        72000087
-      ],
-      "apiName": "ClassicDecks_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 344,
-      "recentBattles": 125,
-      "lastBattle": "20261007T215235.000Z",
-      "eventTags": [
-        "#2CJUCLVJ",
-        "#2RC8UQRL",
-        "#2C9JRCC8"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000531",
-      "label": "Royale Shuffle · chasse aux dragons",
-      "apiGameModeIds": [
-        72000531
-      ],
-      "apiName": "RR_CaptureTheEgg_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 685,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085055.000Z",
-      "eventTags": [
-        "#2C9J8JQL",
-        "#2C9J8QUU"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000474",
-      "label": "Défi · deck événement",
-      "apiGameModeIds": [
-        72000474
-      ],
-      "apiName": "Challenge_AllCards_EventDeck_NoSet",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2504,
-      "recentBattles": 1231,
-      "lastBattle": "20261007T225304.000Z",
-      "eventTags": [
-        "#2PRCR998",
-        "#2PRCRPQL"
-      ],
-      "eventTitles": [
-        "Classic Challenge",
-        "Grand Challenge"
-      ]
-    },
-    {
-      "id": "api-72000261",
-      "label": "Élixir ×7 · guerre",
-      "apiGameModeIds": [
-        72000261
-      ],
-      "apiName": "7xElixir_Ladder",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 110,
-      "recentBattles": 0,
-      "lastBattle": "20260907T084759.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000073",
-      "label": "Rage · guerre",
-      "apiGameModeIds": [
-        72000073
-      ],
-      "apiName": "Rage_Ladder",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 7,
-      "recentBattles": 0,
-      "lastBattle": "20260814T204849.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000032",
-      "label": "Triple élixir · amical",
-      "apiGameModeIds": [
-        72000032
-      ],
-      "apiName": "TripleElixir_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 222,
-      "recentBattles": 99,
-      "lastBattle": "20261007T213016.000Z",
+      "battles": 13448,
+      "recentBattles": 6365,
+      "lastBattle": "20261007T235126.000Z",
       "eventTags": [
         "#2CJUCRGP",
         "#2C9JJ0YJ"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000054",
-      "label": "Amical · ordre de deck imposé",
-      "apiGameModeIds": [
-        72000054
-      ],
-      "apiName": "Friendly_FixedDeckOrder",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 3,
-      "recentBattles": 2,
-      "lastBattle": "20261007T164535.000Z",
-      "eventTags": [
-        "#2CJUJ028"
-      ],
-      "eventTitles": [
-        "Seasonal Trophy Road"
-      ]
-    },
-    {
-      "id": "api-72000005",
-      "label": "Tirage",
-      "apiGameModeIds": [
-        72000005
-      ],
-      "apiName": "DraftMode",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "draft",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 1455,
-      "recentBattles": 590,
-      "lastBattle": "20261007T215701.000Z",
-      "eventTags": [
-        "#2CJUCVQ8",
-        "#2C9JJPPG",
-        "#2RC8V08U"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000042",
-      "label": "Triple tirage",
-      "apiGameModeIds": [
-        72000042
-      ],
-      "apiName": "PickMode",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "draft",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 1807,
-      "recentBattles": 634,
-      "lastBattle": "20261007T215854.000Z",
-      "eventTags": [
-        "#2PRCR2UU",
-        "#2CJUJQUU",
-        "#2RC8CGGG",
-        "#2C9JGUJP"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000050",
-      "label": "Touchdown · tirage",
-      "apiGameModeIds": [
-        72000050
-      ],
-      "apiName": "Touchdown_Draft",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 328,
-      "recentBattles": 141,
-      "lastBattle": "20261007T205642.000Z",
-      "eventTags": [
-        "#2C9JJ2J0",
-        "#2CJUCJUG",
-        "#2RC8UCGP"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000254",
-      "label": "Deck miroir imposé",
-      "apiGameModeIds": [
-        72000254
-      ],
-      "apiName": "MirrorDeck_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 302,
-      "recentBattles": 127,
-      "lastBattle": "20261007T213127.000Z",
-      "eventTags": [
-        "#2C9JRR8G",
-        "#2CJUCPY8"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000505-modified",
-      "label": "C.H.A.O.S · tirage · effets spéciaux",
-      "apiGameModeIds": [
-        72000505
-      ],
-      "apiName": "Chaos_1v1_Draft",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 367,
-      "recentBattles": 0,
-      "lastBattle": "20260907T052359.000Z",
-      "eventTags": [
-        "#2RC8LYLG",
-        "#2RC8YR0P"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000011",
-      "label": "Double élixir · amical",
-      "apiGameModeIds": [
-        72000011
-      ],
-      "apiName": "DoubleElixir_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 109,
-      "recentBattles": 70,
-      "lastBattle": "20261007T193859.000Z",
-      "eventTags": [
-        "#2C9JRLG0"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000129",
-      "label": "Défi · molosses en arène",
-      "apiGameModeIds": [
-        72000129
-      ],
-      "apiName": "BlindDeck_FloodHounds",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 12,
-      "recentBattles": 12,
-      "lastBattle": "20261007T014717.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000091",
-      "label": "Braquage",
-      "apiGameModeIds": [
-        72000091
-      ],
-      "apiName": "Heist_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 52,
-      "recentBattles": 15,
-      "lastBattle": "20261007T180713.000Z",
-      "eventTags": [
-        "#2C9JRY9J",
-        "#2CJUC0LP"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000071",
-      "label": "Rage · amical",
-      "apiGameModeIds": [
-        72000071
-      ],
-      "apiName": "Rage_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 48,
-      "recentBattles": 19,
-      "lastBattle": "20261007T173712.000Z",
-      "eventTags": [
-        "#2CJUJV80",
-        "#2C9JR9VL"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000009",
-      "label": "Tournoi 1c1",
-      "apiGameModeIds": [
-        72000009
-      ],
-      "apiName": "Tournament",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 92,
-      "recentBattles": 53,
-      "lastBattle": "20261007T041536.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000033",
-      "label": "Élixir progressif · amical",
-      "apiGameModeIds": [
-        72000033
-      ],
-      "apiName": "RampUpElixir_Friendly",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 56,
-      "recentBattles": 22,
-      "lastBattle": "20261007T220236.000Z",
-      "eventTags": [
-        "#2C9JR8R8",
-        "#2CJUJCCJ"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000001",
-      "label": "Double élixir",
-      "apiGameModeIds": [
-        72000001
-      ],
-      "apiName": "DoubleElixir",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 3,
-      "recentBattles": 0,
-      "lastBattle": "20261006T225006.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000266",
-      "label": "Guerre · attaque de bateau",
-      "apiGameModeIds": [
-        72000266
-      ],
-      "apiName": "ClanWar_BoatBattle",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 15427,
-      "recentBattles": 0,
-      "lastBattle": "20260928T095321.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000267",
-      "label": "Guerre · duel",
-      "apiGameModeIds": [
-        72000267
-      ],
-      "apiName": "CW_Duel_1v1",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 2015,
-      "recentBattles": 206,
-      "lastBattle": "20261007T214024.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000510-modified",
-      "label": "Élixir infini · effets spéciaux",
-      "apiGameModeIds": [
-        72000510
-      ],
-      "apiName": "Crazy_Arena_InfiniteElixir",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 138,
-      "recentBattles": 0,
-      "lastBattle": "20260907T080151.000Z",
-      "eventTags": [
-        "#2RC8YLYJ"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000519",
-      "label": "Gambit de la princesse",
-      "apiGameModeIds": [
-        72000519
-      ],
-      "apiName": "All_Random_Princess_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 370,
-      "recentBattles": 0,
-      "lastBattle": "20260926T080101.000Z",
-      "eventTags": [
-        "#2C9J9YRL"
       ],
       "eventTitles": []
     },
@@ -940,293 +92,21 @@
       ],
       "rules": "standard",
       "strategy": "constructed",
-      "battles": 85071,
-      "recentBattles": 45614,
-      "lastBattle": "20261007T224840.000Z",
+      "battles": 105884,
+      "recentBattles": 56355,
+      "lastBattle": "20261008T000733.000Z",
       "eventTags": [
         "#2CJUJYPP",
         "#2C9JGJ2J",
         "#2RC8CL00",
         "#2R2GU2GU",
+        "#2C9J990U",
         "#2CJUJ028",
         "#2C9JG9GP"
       ],
       "eventTitles": [
         "Classic 2v2",
         "Seasonal Trophy Road"
-      ]
-    },
-    {
-      "id": "api-72000529",
-      "label": "Royale Shuffle · quatre cartes",
-      "apiGameModeIds": [
-        72000529
-      ],
-      "apiName": "RR_FourCard_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 656,
-      "recentBattles": 0,
-      "lastBattle": "20261005T085249.000Z",
-      "eventTags": [
-        "#2C9J8QUU",
-        "#2C9J8JQL"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "league-2v2",
-      "label": "Ligue 2c2",
-      "teamSize": 2,
-      "description": "Deux decks par équipe, population de la ligue 2c2 séparée des combats classiques.",
-      "apiGameModeIds": [
-        72000014
-      ],
-      "rules": "standard",
-      "strategy": "constructed",
-      "battles": 658,
-      "recentBattles": 0,
-      "lastBattle": "20260921T085709.000Z",
-      "eventTags": [
-        "#2C9J990U"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000506-modified",
-      "label": "C.H.A.O.S · triple tirage · effets spéciaux",
-      "apiGameModeIds": [
-        72000506
-      ],
-      "apiName": "Chaos_1v1_TripleDraft",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 214,
-      "recentBattles": 0,
-      "lastBattle": "20260907T084010.000Z",
-      "eventTags": [
-        "#2RC8YJPG"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000051",
-      "label": "Touchdown 2c2 · tirage",
-      "apiGameModeIds": [
-        72000051
-      ],
-      "apiName": "TeamVsTeam_Touchdown_Draft",
-      "teamSize": 2,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 17,
-      "recentBattles": 7,
-      "lastBattle": "20261007T142242.000Z",
-      "eventTags": [
-        "#2CJUC90U",
-        "#2C9JRQUP"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000286",
-      "label": "2c2 · triple élixir",
-      "apiGameModeIds": [
-        72000286
-      ],
-      "apiName": "TeamVsTeam_TripleElixir_Friendly",
-      "teamSize": 2,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 56,
-      "recentBattles": 15,
-      "lastBattle": "20261007T205848.000Z",
-      "eventTags": [
-        "#2C9JR00G",
-        "#2CJUJR98"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000504-modified",
-      "label": "Arène folle · épiques · effets spéciaux",
-      "apiGameModeIds": [
-        72000504
-      ],
-      "apiName": "Crazy_Arena_EpicOnly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 27,
-      "recentBattles": 0,
-      "lastBattle": "20260824T044057.000Z",
-      "eventTags": [
-        "#2RC8YQJ0"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000511-modified",
-      "label": "Arène folle · mort subite · effets spéciaux",
-      "apiGameModeIds": [
-        72000511
-      ],
-      "apiName": "Crazy_Arena_SuddenDeath",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 6,
-      "recentBattles": 0,
-      "lastBattle": "20260829T190503.000Z",
-      "eventTags": [
-        "#2RC8YY2L"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000314",
-      "label": "Duel · amical",
-      "apiGameModeIds": [
-        72000314
-      ],
-      "apiName": "Duel_1v1_Friendly",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 29,
-      "recentBattles": 6,
-      "lastBattle": "20261007T072820.000Z",
-      "eventTags": [
-        "#2CJUCU8U"
-      ],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000027",
-      "label": "Triple élixir · tournoi",
-      "apiGameModeIds": [
-        72000027
-      ],
-      "apiName": "TripleElixir_Tournament",
-      "teamSize": 1,
-      "rules": "standard",
-      "strategy": "constructed",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 3,
-      "recentBattles": 2,
-      "lastBattle": "20261007T163641.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000316",
-      "label": "Duel · tournoi",
-      "apiGameModeIds": [
-        72000316
-      ],
-      "apiName": "Duel_1v1_Tournament",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 4,
-      "recentBattles": 4,
-      "lastBattle": "20261007T024634.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000024",
-      "label": "Overtime_Tournament",
-      "apiGameModeIds": [
-        72000024
-      ],
-      "apiName": "Overtime_Tournament",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 91,
-      "recentBattles": 87,
-      "lastBattle": "20261007T180059.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "api-72000457",
-      "label": "202410_Event_Spooky_Chess",
-      "apiGameModeIds": [
-        72000457
-      ],
-      "apiName": "202410_Event_Spooky_Chess",
-      "teamSize": 1,
-      "rules": "unverified",
-      "strategy": "special",
-      "description": "Modèle et données séparés pour ce mode. Les formats imposés et règles non vérifiées ne proposent pas de génération libre.",
-      "battles": 7,
-      "recentBattles": 7,
-      "lastBattle": "20261007T132741.000Z",
-      "eventTags": [],
-      "eventTitles": []
-    },
-    {
-      "id": "classic-challenge-1v1",
-      "label": "Défi classique",
-      "teamSize": 1,
-      "apiGameModeIds": [
-        72000006
-      ],
-      "description": "Duels du défi classique, identifiés par le catalogue officiel des événements.",
-      "rules": "standard",
-      "strategy": "constructed",
-      "battles": 0,
-      "recentBattles": 0,
-      "lastBattle": null,
-      "eventTitles": [
-        "Classic Challenge"
-      ]
-    },
-    {
-      "id": "grand-challenge-1v1",
-      "label": "Grand défi",
-      "teamSize": 1,
-      "apiGameModeIds": [
-        72000006
-      ],
-      "description": "Duels du grand défi, identifiés par le catalogue officiel des événements.",
-      "rules": "standard",
-      "strategy": "constructed",
-      "battles": 0,
-      "recentBattles": 0,
-      "lastBattle": null,
-      "eventTitles": [
-        "Grand Challenge"
-      ]
-    },
-    {
-      "id": "casual-1v1",
-      "label": "1c1 classique · événement",
-      "teamSize": 1,
-      "apiGameModeIds": [
-        72000006
-      ],
-      "description": "Duels collection de l’événement classique, séparés des duels PvP et classés.",
-      "rules": "standard",
-      "strategy": "constructed",
-      "battles": 0,
-      "recentBattles": 0,
-      "lastBattle": null,
-      "eventTitles": [
-        "Classic 1v1"
       ]
     }
   ],
@@ -1236,391 +116,95 @@
       "modelPath": "model.json",
       "metaPath": "meta-decks.json",
       "reportPath": "training-report.json",
-      "modelVersion": "20261007T172653Z",
+      "modelVersion": "20261007T235458Z",
       "metrics": {
-        "accuracy": 0.5973008997000999,
-        "log_loss": 0.6627145127917433,
-        "brier": 0.2354083704055441,
-        "auc": 0.6347619770417525,
+        "accuracy": 0.654058226731363,
+        "log_loss": 0.6126694045242683,
+        "brier": 0.21247060131199605,
+        "auc": 0.7212458462153033,
         "confusion": [
           [
-            1792,
-            1209
+            11853,
+            6283
           ],
           [
-            1208,
-            1793
+            6265,
+            11871
           ]
         ]
       },
-      "sourceBattles": 20006
-    },
-    "seasonal-1v1": {
-      "status": "ready",
-      "modelPath": "modes/seasonal-1v1/model.json",
-      "metaPath": "modes/seasonal-1v1/meta-decks.json",
-      "reportPath": "modes/seasonal-1v1/report.json",
-      "modelVersion": "20261007T174242Z",
-      "metrics": {
-        "accuracy": 0.7365269461077845,
-        "log_loss": 0.5508886550867911,
-        "brier": 0.1842135911827582,
-        "auc": 0.7938784668686578,
-        "confusion": [
-          [
-            1968,
-            704
-          ],
-          [
-            704,
-            1968
-          ]
-        ]
-      },
-      "sourceBattles": 17809
-    },
-    "api-72000268": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 798
-    },
-    "api-72000070": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
+      "sourceBattles": 120900
     },
     "api-72000533": {
       "status": "ready",
       "modelPath": "modes/api-72000533/model.json",
       "metaPath": "modes/api-72000533/meta-decks.json",
       "reportPath": "modes/api-72000533/report.json",
-      "modelVersion": "20261007T172916Z",
+      "modelVersion": "20261007T234350Z",
       "metrics": {
-        "accuracy": 0.6600609756097561,
-        "log_loss": 0.5804834856122848,
-        "brier": 0.19876286392679635,
-        "auc": 0.7579519259369423,
+        "accuracy": 0.6851588430535799,
+        "log_loss": 0.5862503412919959,
+        "brier": 0.20091054126861158,
+        "auc": 0.7551725192288192,
         "confusion": [
           [
-            216,
-            112
+            1442,
+            667
           ],
           [
-            111,
-            217
+            661,
+            1448
           ]
         ]
       },
-      "sourceBattles": 2180
+      "sourceBattles": 14054
     },
-    "api-72000062": {
-      "status": "collecting",
+    "triple-elixir-1v1": {
+      "status": "validation_pending",
       "minimumBattles": 2000,
-      "availableBattles": 1164
-    },
-    "api-72000007": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 1799
-    },
-    "api-72000512-modified": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 2219
-    },
-    "api-72000060": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000321": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000525": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000521": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000530": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000523": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000522": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000528": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000526": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000065": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 6494
-    },
-    "api-72000194": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 1623
-    },
-    "api-72000527": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000031": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 101
-    },
-    "api-72000520": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000524": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000232": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 428
-    },
-    "api-72000087": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 125
-    },
-    "api-72000531": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000474": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 1231
-    },
-    "api-72000261": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000073": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000032": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 99
-    },
-    "api-72000054": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 2
-    },
-    "api-72000005": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 590
-    },
-    "api-72000042": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 634
-    },
-    "api-72000050": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 141
-    },
-    "api-72000254": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 127
-    },
-    "api-72000505-modified": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000011": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 70
-    },
-    "api-72000129": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 12
-    },
-    "api-72000091": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 15
-    },
-    "api-72000071": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 19
-    },
-    "api-72000009": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 53
-    },
-    "api-72000033": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 22
-    },
-    "api-72000001": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000266": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000267": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 206
-    },
-    "api-72000510-modified": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000519": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
+      "availableBattles": 6365,
+      "candidateBattles": 3009,
+      "candidateMetrics": {
+        "accuracy": 0.5685840707964602,
+        "log_loss": 0.6955795662343857,
+        "brier": 0.2503246548734197,
+        "auc": 0.5774678909859817,
+        "confusion": [
+          [
+            257,
+            195
+          ],
+          [
+            195,
+            257
+          ]
+        ]
+      },
+      "reason": "Le dernier candidat ne passe pas les critères de validation. La collecte continue ; aucun pourcentage de victoire ne sera proposé avant validation."
     },
     "standard-2v2": {
       "status": "ready",
       "modelPath": "modes/standard-2v2/model.json",
       "metaPath": "modes/standard-2v2/meta-decks.json",
       "reportPath": "modes/standard-2v2/report.json",
-      "modelVersion": "20261007T171916Z",
+      "modelVersion": "20261007T232835Z",
       "metrics": {
-        "accuracy": 0.5639445300462249,
-        "log_loss": 0.6806164672115466,
-        "brier": 0.24379427594278982,
-        "auc": 0.5902170222767753,
+        "accuracy": 0.6080531453362256,
+        "log_loss": 0.6561561366704249,
+        "brier": 0.23223924595381576,
+        "auc": 0.6512273529733532,
         "confusion": [
           [
-            366,
-            283
+            4485,
+            2891
           ],
           [
-            283,
-            366
+            2891,
+            4485
           ]
         ]
       },
-      "sourceBattles": 4323
-    },
-    "api-72000529": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "league-2v2": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000506-modified": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000051": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 7
-    },
-    "api-72000286": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 15
-    },
-    "api-72000504-modified": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000511-modified": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "api-72000314": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 6
-    },
-    "api-72000027": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 2
-    },
-    "api-72000316": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 4
-    },
-    "api-72000024": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 87
-    },
-    "api-72000457": {
-      "status": "rules_pending",
-      "minimumBattles": 2000,
-      "availableBattles": 7
-    },
-    "classic-challenge-1v1": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "grand-challenge-1v1": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
-    },
-    "casual-1v1": {
-      "status": "collecting",
-      "minimumBattles": 2000,
-      "availableBattles": 0
+      "sourceBattles": 49170
     }
   }
 }

@@ -2,7 +2,7 @@
 const multi={index:null,mode:null,ready:false,worker:null,pending:new Map(),nextId:0,saved:new Map(),result:null,action:'predict',specificEnemies:false,counterVisible:false,advice:null};
 const modeKeys=['modeOwn','modeAlly','modeEnemy1','modeEnemy2'];
 const modePanels={modeOwn:{title:'Mon deck de départ',element:'#mode-own-panel'},modeAlly:{title:'Deck de mon allié',element:'#mode-ally-panel'},modeEnemy1:{title:'Adversaire 1',element:'#mode-enemy1-panel'},modeEnemy2:{title:'Adversaire 2',element:'#mode-enemy2-panel'}};
-const modeSnapshot=()=>JSON.stringify({id:multi.mode?.id,action:multi.action,decks:modeKeys.map(key=>state.decks[key]),layouts:modeKeys.map(key=>layoutFor(key)),enemies:$('#mode-use-enemies').checked,pool:$('#draft-pool').value,goal:$('#generation-goal').value});
+const modeSnapshot=()=>JSON.stringify({id:multi.mode?.id,action:multi.action,decks:modeKeys.map(key=>state.decks[key]),layouts:modeKeys.map(key=>layoutFor(key)),enemies:$('#mode-use-enemies').checked,pool:$('#draft-pool').value,goal:$('#generation-goal').value,warGoal:$('#war-goal').value,keepWarCards:$('#war-keep-cards').checked});
 function modeCards(){
  if(multi.mode?.strategy!=='draft')return null;
  const values=$('#draft-pool').value.split(/[\n,;]+/).map(value=>normalize(value.trim())).filter(Boolean),result=[];
@@ -10,16 +10,16 @@ function modeCards(){
  return result;
 }
 function modeEnemies(){if(!$('#mode-use-enemies').checked)return null;return [state.decks.modeEnemy1,...(multi.mode.teamSize===2?[state.decks.modeEnemy2]:[])];}
-function researchActions(){const team=multi.mode?.teamSize===2;return {predict:team?'Comparer deux équipes':'Comparer deux decks',complete:team?'Compléter le deck allié':'Compléter mon deck',improve:team?'Améliorer le deck allié':'Améliorer mon deck',counter:team?'Trouver une contre-équipe':'Trouver un contre-deck',...(team?{generate:'Créer un deck allié'}:{})};}
+function researchActions(){const team=multi.mode?.teamSize===2;return {predict:team?'Comparer deux équipes':'Comparer deux decks',complete:team?'Compléter le deck allié':'Compléter mon deck',improve:team?'Améliorer le deck allié':'Améliorer mon deck',counter:team?'Trouver une contre-équipe':'Trouver un contre-deck',...(team?{generate:'Créer un deck allié'}:multi.mode?.id==='classic-1v1'?{war:'Créer 4 decks de guerre'}:{})};}
 function researchLayout(){
  if(!multi.mode)return;
  const team=multi.mode.teamSize===2,type=multi.action,forced=['predict','counter'].includes(type),supported=multi.mode.rules==='standard';
- $('#mode-use-enemies').checked=forced||multi.specificEnemies;
- $('#enemy-option').hidden=forced||!supported;
+ $('#mode-use-enemies').checked=type!=='war'&&(forced||multi.specificEnemies);
+ $('#enemy-option').hidden=forced||!supported||type==='war';
  $('#enemy-option-label').textContent=team?'Optimiser contre une équipe précise':'Optimiser contre un deck précis';
  $('#mode-objective').hidden=forced||!supported;
- $('#mode-objective').textContent=multi.specificEnemies?(team?'La recherche utilise les deux decks adverses renseignés.':'La recherche utilise le deck adverse renseigné.'):(team?'La recherche utilise les équipes récentes de la méta du 2c2.':'La recherche utilise les decks récents de la méta de ce mode.');
- $('#mode-allies').hidden=type==='counter'&&!multi.counterVisible;
+ $('#mode-objective').textContent=type==='war'?'Les quatre decks sont évalués face à la même méta du 1c1 classique, avec 32 cartes différentes.':multi.specificEnemies?(team?'La recherche utilise les deux decks adverses renseignés.':'La recherche utilise le deck adverse renseigné.'):(team?'La recherche utilise les équipes récentes de la méta du 2c2.':'La recherche utilise les decks récents de la méta de ce mode.');
+ $('#mode-allies').hidden=type==='counter'&&!multi.counterVisible||type==='war'&&!$('#war-keep-cards').checked;
  $('#mode-ally-panel').hidden=!team||(type==='generate'&&!count(state.decks.modeAlly));
  $('#mode-allies .team-grid').classList.toggle('single-deck',!team||$('#mode-ally-panel').hidden);
  $('#mode-enemies').hidden=!$('#mode-use-enemies').checked||!supported;
@@ -30,11 +30,12 @@ function researchLayout(){
  $('#multi-composers').classList.toggle('counter-search',type==='counter');
  $('#multi-composers').hidden=!supported;
  $('#draft-settings').hidden=multi.mode.strategy!=='draft';
- $('#multi-example').hidden=!supported;
+ $('#multi-example').hidden=!supported||type==='war'&&!$('#war-keep-cards').checked;
  $('#classic-model-details').hidden=multi.mode.id!=='classic-1v1';
  $('#generation-options').hidden=!supported||!(type==='generate'||type==='complete'&&count(state.decks[team?'modeAlly':'modeOwn'])===0);
+ $('#war-options').hidden=type!=='war';
  const descriptions={predict:team?'Ajoute les quatre decks pour estimer le résultat de la confrontation.':'Ajoute ton deck et celui de l’adversaire pour estimer le résultat.',complete:team?'Garde ton deck de départ complet. L’IA crée le deck allié ou complète jusqu’à sept cartes conservées.':'Pars d’un deck vide ou conserve jusqu’à sept cartes : l’IA complète la composition.',improve:team?'Ajoute ton deck et celui de ton allié : l’IA propose le changement le plus intéressant trouvé pour le deck allié.':'Ajoute tes huit cartes : l’IA propose le changement le plus intéressant trouvé.',counter:team?'Renseigne les deux decks adverses : l’IA propose deux decks pour les affronter.':'Renseigne le deck adverse : l’IA propose un contre-deck.',generate:'Ajoute tes huit cartes : l’IA cherche un deck complémentaire pour ton allié.'};
- $('#multi-intro').textContent=descriptions[type];
+ $('#multi-intro').textContent=type==='war'?'L’IA recherche quatre decks de huit cartes sans doublon. Tu peux conserver des cartes dans le premier deck.':descriptions[type];
  $('#multi-example').textContent=type==='complete'?'Essayer avec 3 cartes':team?'Essayer une équipe':type==='predict'?'Essayer un duel':'Essayer un deck';
 }
 function researchChoose(type,writeHash=true){
@@ -43,7 +44,7 @@ function researchChoose(type,writeHash=true){
  if(multi.action!==type){multi.result=null;multi.advice=null;$('#mode-result').hidden=true;multi.counterVisible=false;}
  multi.action=type;$('#research-select').value=type;
  researchLayout();modeControls();
- if(writeHash){const routes={predict:'analyse',counter:'contre',complete:'completer',improve:'ameliorer',generate:'allie'};history.replaceState(null,'',`#${routes[type]}`);}
+ if(writeHash){const routes={predict:'analyse',counter:'contre',complete:'completer',improve:'ameliorer',generate:'allie',war:'guerre'};history.replaceState(null,'',`#${routes[type]}`);}
 }
 function modeControls(){
  if(!multi.mode||!state.rules)return;
@@ -61,16 +62,18 @@ function modeControls(){
  $('#mode-improve').disabled=!base||!ownReady||!complete(ally)||!candidates;
  $('#mode-predict').disabled=!base||!ownReady||!complete(ally)||!enemies;
  $('#mode-counter').disabled=!base||!enemies||!candidates;
+ $('#mode-war').disabled=!multi.ready||state.busy||multi.mode.id!=='classic-1v1'||$('#war-keep-cards').checked&&(!state.rules.validate(own,false).valid||state.rules.coverage(own).unknown.length>0);
  $('#mode-select').disabled=state.busy;
  $('#research-select').disabled=state.busy;
  $('#mode-use-enemies').disabled=state.busy;
  $('#generation-goal').disabled=state.busy;
+ $('#war-goal').disabled=state.busy;$('#war-keep-cards').disabled=state.busy;
  $('#refresh-modes').disabled=state.busy;
  $('#multi-example').disabled=state.busy||!state.rules;
  const button=$(`#mode-${multi.action}`);$('#run-research').disabled=button.disabled;
  $('#run-research').textContent=state.busy?'Recherche en cours…':multi.action==='complete'&&n===0?(isTeam?'Générer un deck allié':'Générer mon deck'):researchActions()[multi.action];
  const partial=state.rules.validate(ally,false),unknown=state.rules.coverage(ally).unknown.length;
- $('#mode-action-hint').textContent=state.busy?'Recherche en cours…':!multi.ready?'Un modèle validé est nécessaire pour ce mode.':!enemyReady?'Ajoute huit cartes dans chaque deck adverse.':!ownReady?'Ajoute huit cartes dans ton deck de départ.':!candidates&&multi.action!=='predict'?'Indique au moins huit cartes disponibles dans ce tirage.':multi.action==='complete'?(n===0?'Deck vide : l’IA crée une composition complète.':n===8?'Retire une carte pour rechercher une nouvelle composition.':!partial.valid?partial.reason:unknown?'Une carte choisie est absente de ce modèle.':`${n} carte(s) conservée(s) · ${8-n} place(s) à compléter.`):['predict','improve'].includes(multi.action)&&!complete(ally)?'Ajoute huit cartes dans chaque deck de ton équipe.':'Prêt à lancer la recherche.';
+ $('#mode-action-hint').textContent=state.busy?'Recherche en cours…':!multi.ready?'Un modèle validé est nécessaire pour ce mode.':multi.action==='war'?$('#mode-war').disabled?'Les cartes à conserver sont incompatibles avec le modèle.':`${$('#war-keep-cards').checked?count(own):0} carte(s) conservée(s) · 4 decks et 32 cartes différentes.`:!enemyReady?'Ajoute huit cartes dans chaque deck adverse.':!ownReady?'Ajoute huit cartes dans ton deck de départ.':!candidates&&multi.action!=='predict'?'Indique au moins huit cartes disponibles dans ce tirage.':multi.action==='complete'?(n===0?'Deck vide : l’IA crée une composition complète.':n===8?'Retire une carte pour rechercher une nouvelle composition.':!partial.valid?partial.reason:unknown?'Une carte choisie est absente de ce modèle.':`${n} carte(s) conservée(s) · ${8-n} place(s) à compléter.`):['predict','improve'].includes(multi.action)&&!complete(ally)?'Ajoute huit cartes dans chaque deck de ton équipe.':'Prêt à lancer la recherche.';
 }
 function modeSend(type,payload){return new Promise((resolve,reject)=>{const id=++multi.nextId;multi.pending.set(id,{resolve,reject});multi.worker.postMessage({id,type,catalogue:state.catalogue,...payload});});}
 function modeLoad(){
@@ -113,7 +116,7 @@ function modeChoose(identity){
  $('.slot-explanation').hidden=!supported;
  $('#multi-explanation').textContent=isTeam?'Les cartes et formes actives sont évaluées ensemble. Le deck de départ est conservé lors de la création de l’allié ; la complétion conserve aussi les cartes déjà choisies dans le deck allié. Le contre-équipe remplace les deux decks alliés. Les remplacements proposés sont comparés séparément. La recherche retient le meilleur score trouvé, sans garantir un maximum absolu ni la victoire.':'La complétion garde toutes les cartes choisies et peut adapter leur placement. Les remplacements sont comparés séparément ; applique un changement, puis relance l’analyse. La recherche retient le meilleur score trouvé sans garantir la victoire.';
  modeKeys.forEach(renderDeck);$('#mode-enemies').hidden=!$('#mode-use-enemies').checked;
- $('#mode-status').textContent=info?.status==='ready'?`Modèle validé pour ${mode.label} · ${info.sourceBattles.toLocaleString('fr-FR')} combats admissibles.`:supported?`${mode.recentBattles.toLocaleString('fr-FR')} combats récents collectés. Il faut au moins ${info?.minimumBattles||2000} combats admissibles et une validation avant de proposer des pourcentages.`:'Ce mode est conservé dans la collecte. Ses règles de composition, decks imposés ou informations supplémentaires doivent être vérifiés avant de proposer une optimisation.';
+ $('#mode-status').textContent=info?.status==='ready'?`Modèle validé pour ${mode.label} · ${info.sourceBattles.toLocaleString('fr-FR')} combats admissibles.`:info?.status==='validation_pending'?`${info.candidateBattles.toLocaleString('fr-FR')} combats admissibles dans le dernier candidat. ${info.reason}`:supported?`${mode.recentBattles.toLocaleString('fr-FR')} combats récents collectés. Il faut au moins ${info?.minimumBattles||2000} combats admissibles et une validation avant de proposer des pourcentages.`:'Ce mode est conservé dans la collecte. Ses règles de composition, decks imposés ou informations supplémentaires doivent être vérifiés avant de proposer une optimisation.';
  $('#mode-quality').innerHTML=info?.status==='ready'?`<h3>Fiabilité pour ${escapeHtml(mode.label)}</h3><p><strong>${number(info.metrics.accuracy*100)} %</strong> de bonnes prédictions sur le test chronologique. AUC : ${number(info.metrics.auc)} · Brier : ${number(info.metrics.brier)}.</p><p>Ces résultats ne garantissent pas les gains d’un remplacement. La coordination et le niveau de jeu individuel ne sont pas modélisés.</p><a href="${escapeHtml(info.reportPath)}" target="_blank" rel="noopener">Rapport de ce modèle</a>`:'<h3>Un modèle propre à chaque mode</h3><p>Le modèle classique reste réservé au 1V1 classique. Aucun pourcentage n’est calculé avec un modèle d’un autre mode.</p>';
  const actions=researchActions();$('#research-select').innerHTML=Object.entries(actions).map(([value,label])=>`<option value="${value}">${label}</option>`).join('');
  researchChoose(saved?.action||multi.action);$('#multi').hidden=false;modeLoad();
@@ -141,7 +144,7 @@ async function modeRun(type,adviceOptions=null){
  const own=[...state.decks.modeOwn],ally=[...state.decks.modeAlly],enemies=modeEnemies()?.map(deck=>[...deck]);
  state.busy=true;multi.result=null;multi.advice=null;$('#mode-result').hidden=true;modeControls();
  try{
-  const result=await modeSend(type,{own,ally:isTeam?ally:null,enemies,allowed,layout,layouts:[{...layoutFor('modeOwn')},{...layoutFor('modeAlly')}],goal:$('#generation-options').hidden?'meta':$('#generation-goal').value,constraints:adviceOptions?.constraints||{},excluded:adviceOptions?.excluded||[]});
+  const result=await modeSend(type,{own,ally:isTeam?ally:null,enemies,allowed,layout,layouts:[{...layoutFor('modeOwn')},{...layoutFor('modeAlly')}],goal:type==='war'?$('#war-goal').value:$('#generation-options').hidden?'meta':$('#generation-goal').value,keepWarCards:$('#war-keep-cards').checked,constraints:adviceOptions?.constraints||{},excluded:adviceOptions?.excluded||[]});
   if(identity!==multi.mode.id||snapshot!==modeSnapshot())return;
   const target=isTeam?'modeAlly':'modeOwn';
   if(type==='counter'&&isTeam){result.decks.forEach((deck,index)=>{const key=index===0?'modeOwn':'modeAlly';if(!state.rules.validate(deck).valid||JSON.stringify(state.rules.autoDeck(deck,result.layouts[index]))!==JSON.stringify(deck))throw new Error('Équipe proposée incompatible.');state.decks[key]=deck;state.layouts[key]=result.layouts[index];deckChanged(key);});}
@@ -152,7 +155,13 @@ async function modeRun(type,adviceOptions=null){
   }
   if(type==='counter')multi.counterVisible=true;
   multi.result=result;const currentSnapshot=modeSnapshot();
-  if(type==='improve'){
+  if(type==='war'){
+   const families=result.decks.flat().map(key=>state.rules.entry(key)?.name);
+   if(result.decks.length!==4||result.decks.some((deck,index)=>!state.rules.validate(deck).valid||JSON.stringify(state.rules.autoDeck(deck,result.layouts[index]))!==JSON.stringify(deck))||families.some(name=>!name)||new Set(families).size!==32)throw new Error('Répartition des decks de guerre incompatible.');
+   $('#mode-result').innerHTML=`<h3>Mes 4 decks de guerre</h3><p><strong>32 cartes différentes</strong> · aucun doublon entre les decks, même avec une évolution ou un héros.</p><div class="generation-metrics"><p>Moyenne des quatre scores : <strong>${number(result.meanProbability)} %</strong></p><p>Score du moins bon deck : <strong>${number(result.minimumProbability)} %</strong></p></div><p class="result-note">Chaque score estime un combat classique face à la méta. La moyenne ne représente pas la probabilité de gagner les quatre combats ou un duel de guerre.</p><div class="war-decks">${result.decks.map((deck,index)=>`<article class="deck-panel"><div class="deck-head"><h4>Deck ${index+1}</h4><strong>${number(result.probabilities[index])} %</strong></div><p class="deck-details">${meanCost(deck)}</p><div class="deck-grid">${slotsHtml(deck)}</div><button class="button subtle" data-use-war="${index}">Utiliser le deck ${index+1}</button></article>`).join('')}</div><button id="copy-war-decks" class="button">Copier les 4 decks</button><p class="result-note">${escapeHtml(result.method)} ${result.tested.toLocaleString('fr-FR')} compositions évaluées.</p>`;
+   $('#mode-result').querySelectorAll('[data-use-war]').forEach(button=>button.onclick=()=>{if(state.busy)return;const index=Number(button.dataset.useWar);state.layouts.modeOwn={...result.layouts[index]};state.decks.modeOwn=[...result.decks[index]];deckChanged('modeOwn');researchChoose('improve');toast('Deck sélectionné. Tu peux l’analyser ou le modifier.');});
+   $('#copy-war-decks').onclick=async()=>{const text=result.decks.map((deck,index)=>`Deck ${index+1} : ${deck.map(cardLabel).join(', ')}`).join('\n');try{await navigator.clipboard.writeText(text);toast('Les quatre decks ont été copiés.');}catch{toast('Copie indisponible : sélectionne le texte ci-dessous.');const textarea=document.createElement('textarea');textarea.value=text;textarea.rows=6;textarea.className='war-copy-text';$('#mode-result').append(textarea);textarea.focus();textarea.select();}};
+  }else if(type==='improve'){
    multi.advice={result,cursor:0,snapshot:currentSnapshot,constraints:adviceOptions?.constraints||{cards:[],evolutions:[],heroes:[]},excluded:adviceOptions?.excluded||[]};showAdvice();
   }else $('#mode-result').innerHTML=`<h3>${type==='predict'?'Estimation de la confrontation':'Composition proposée'}</h3><p><span class="generated-score">${number(result.probability??result.p1)} %</span> de victoire estimée ${enemies?'contre les adversaires choisis':'en moyenne face à la méta de ce mode'}.</p>${result.tested?`<p>${result.tested.toLocaleString('fr-FR')} compositions et répartitions comparées.</p>`:''}<p class="result-note">${escapeHtml(result.method||(isTeam?'Les quatre decks sont évalués ensemble. Le score reste une estimation, sans garantie de victoire.':'Les deux decks sont évalués ensemble. Le score reste une estimation, sans garantie de victoire.'))}</p>`;
   if(result.counterProbability!==undefined)$('#mode-result').insertAdjacentHTML('beforeend',`<div class="generation-metrics"><p>Score moyen : <strong>${number(result.metaProbability)} %</strong></p><p>Victoire face au meilleur contre trouvé : <strong>${number(result.counterProbability)} %</strong></p><p>Défaite face à ce contre : <strong>${number(result.counterLoss)} %</strong></p></div><details><summary>Voir le contre trouvé</summary><div class="counter-preview">${(isTeam?result.counterDeck:[result.counterDeck]).map(deck=>`<div class="deck-grid">${slotsHtml(deck)}</div>`).join('')}</div></details>`);
@@ -162,9 +171,10 @@ async function modeRun(type,adviceOptions=null){
 async function modeRefresh(){
  const response=await fetch(`modes-index.json?check=${Math.floor(Date.now()/60000)}`,{cache:'no-store'});if(!response.ok)throw new Error('Catalogue des modes indisponible.');
  const next=await response.json();if(next.schemaVersion!==1||!next.modes?.length||!next.models)throw new Error('Catalogue des modes incompatible.');multi.index=next;
- const sorted=[...next.modes].sort((a,b)=>(a.id==='classic-1v1'?-2:a.id==='standard-2v2'?-1:0)-(b.id==='classic-1v1'?-2:b.id==='standard-2v2'?-1:0)||a.label.localeCompare(b.label,'fr'));
- $('#mode-select').innerHTML=sorted.map(mode=>`<option value="${escapeHtml(mode.id)}">${escapeHtml(mode.label)}${next.models[mode.id]?.status==='ready'?'':' · collecte'}</option>`).join('');
- $('#mode-inventory').innerHTML=`<table><thead><tr><th>Mode</th><th>Combats récents</th><th>État</th></tr></thead><tbody>${sorted.map(mode=>`<tr><td>${escapeHtml(mode.label)}</td><td>${mode.recentBattles.toLocaleString('fr-FR')}</td><td>${next.models[mode.id]?.status==='ready'?'Modèle validé':mode.rules==='standard'?'Collecte à enrichir':'Règles à vérifier'}</td></tr>`).join('')}</tbody></table><p class="result-note">Mis à jour le ${new Date(next.updatedAt).toLocaleString('fr-FR')}. Les volumes collectés incluent les combats exclus ensuite pour niveaux, formes ou résultat incompatibles.</p>`;
+ const order=['classic-1v1','triple-elixir-1v1','api-72000533','standard-2v2'];next.modes=next.modes.filter(mode=>order.includes(mode.id));
+ const sorted=[...next.modes].sort((a,b)=>order.indexOf(a.id)-order.indexOf(b.id));
+ $('#mode-select').innerHTML=sorted.map(mode=>`<option value="${escapeHtml(mode.id)}">${escapeHtml(mode.label)}${next.models[mode.id]?.status==='ready'?'':next.models[mode.id]?.status==='validation_pending'?' · validation en attente':' · collecte'}</option>`).join('');
+ $('#mode-inventory').innerHTML=`<table><thead><tr><th>Mode</th><th>Combats récents</th><th>État</th></tr></thead><tbody>${sorted.map(mode=>`<tr><td>${escapeHtml(mode.label)}</td><td>${mode.recentBattles.toLocaleString('fr-FR')}</td><td>${next.models[mode.id]?.status==='ready'?'Modèle validé':next.models[mode.id]?.status==='validation_pending'?'Dernier candidat non validé':mode.rules==='standard'?'Collecte à enrichir':'Règles à vérifier'}</td></tr>`).join('')}</tbody></table><p class="result-note">Mis à jour le ${new Date(next.updatedAt).toLocaleString('fr-FR')}. Les volumes collectés incluent les combats exclus ensuite pour niveaux, formes ou résultat incompatibles.</p>`;
  $('#mode-select').value=multi.mode?.id||'classic-1v1';
 }
 async function modeStart(){
@@ -177,14 +187,15 @@ async function modeStart(){
  $('#mode-use-enemies').onchange=()=>{multi.specificEnemies=$('#mode-use-enemies').checked;multi.result=null;$('#mode-result').hidden=true;modeControls();};
   $('#draft-pool').oninput=()=>{$('#mode-result').hidden=true;modeControls();};
  $('#generation-goal').onchange=()=>{$('#mode-result').hidden=true;multi.result=null;modeControls();};
+ for(const id of ['war-goal','war-keep-cards'])$(`#${id}`).onchange=()=>{$('#mode-result').hidden=true;multi.result=null;modeControls();};
   for(const [id,type] of [['generate','generate'],['complete','complete'],['improve','improve'],['predict','predict'],['counter','counter']])$(`#mode-${id}`).onclick=()=>modeRun(type);
- $('#multi-example').onclick=()=>{if(state.busy)return;const examples=[['Cannon','Musketeer','Knight','Hog Rider','Fireball','Arrows','Skeletons','Ice Spirit'],['Tesla','Archer Queen','Mini P.E.K.K.A','Giant','Zap','The Log','Bats','Baby Dragon']];modeKeys.forEach((key,index)=>{let deck=state.rules.autoDeck(examples[index%2],layoutFor(key));if(multi.action==='complete'&&key===(multi.mode.teamSize===2?'modeAlly':'modeOwn'))deck=deck.map((value,slot)=>slot<3?value:null);adoptDeck(key,deck);deckChanged(key);});};
+ $('#multi-example').onclick=()=>{if(state.busy)return;const examples=[['Cannon','Musketeer','Knight','Hog Rider','Fireball','Arrows','Skeletons','Ice Spirit'],['Tesla','Archer Queen','Mini P.E.K.K.A','Giant','Zap','The Log','Bats','Baby Dragon'],['Goblin Giant','Sparky','Mini P.E.K.K.A','Dark Prince','Rage','Arrows','Bats','Goblin Cage'],['Royal Giant','Fisherman','Hunter','Phoenix','Lightning','The Log','Skeletons','Electro Spirit']];modeKeys.forEach((key,index)=>{let deck=state.rules.autoDeck(examples[index],layoutFor(key));if(multi.action==='complete'&&key===(multi.mode.teamSize===2?'modeAlly':'modeOwn'))deck=deck.map((value,slot)=>slot<3?value:null);adoptDeck(key,deck);deckChanged(key);});};
  window.addEventListener('clash:changed',event=>{if(modeKeys.includes(event.detail.key)){$('#mode-result').hidden=true;multi.result=null;multi.advice=null;modeControls();}});
   window.addEventListener('clash:controls',modeControls);
- window.clashChooseResearch=route=>{if(route==='stats'){$('#model-details').open=true;return;}const type={analyse:'predict',contre:'counter',completer:'complete',ameliorer:'improve',allie:'generate'}[route];if(type)researchChoose(type);};
+ window.clashChooseResearch=route=>{if(route==='stats'){$('#model-details').open=true;return;}const type={analyse:'predict',contre:'counter',completer:'complete',ameliorer:'improve',allie:'generate',guerre:'war'}[route];if(type)researchChoose(type);};
  $('.brand').onclick=event=>{event.preventDefault();modeChoose('classic-1v1');researchChoose('predict');};
   $('#refresh-modes').onclick=()=>modeRefresh().then(()=>modeChoose(multi.mode.id)).catch(error=>toast(error.message));
- const route=location.hash.slice(1);let identity='classic-1v1';try{identity=localStorage.getItem('clash-mode-v1')||identity;}catch{}if(!multi.index.modes.some(mode=>mode.id===identity))identity='classic-1v1';modeChoose(identity);window.clashChooseResearch(route);window.restoreClashUpdateDraft?.();
+ const route=location.hash.slice(1);let identity='classic-1v1';try{identity=localStorage.getItem('clash-mode-v1')||identity;}catch{}if(route==='guerre'||!multi.index.modes.some(mode=>mode.id===identity))identity='classic-1v1';modeChoose(identity);window.clashChooseResearch(route);window.restoreClashUpdateDraft?.();
   setInterval(()=>{if(!state.busy)modeRefresh().then(()=>modeChoose(multi.mode.id)).catch(()=>{});},30*60*1000);
  }catch(error){$('#mode-description').textContent=error.message;}
 }

@@ -10,34 +10,44 @@
     ],
     "rules": "standard",
     "strategy": "constructed",
-    "battles": 7946,
-    "recentBattles": 4269,
-    "lastBattle": "20261007T171729.000Z"
+    "eventTags": [
+      "#2CJUJYPP",
+      "#2C9JGJ2J",
+      "#2RC8CL00",
+      "#2R2GU2GU",
+      "#2C9J990U",
+      "#2CJUJ028",
+      "#2C9JG9GP"
+    ],
+    "eventTitles": [
+      "Classic 2v2",
+      "Seasonal Trophy Road"
+    ]
   },
   "team_size": 2,
-  "model_version": "20261007T171916Z",
-  "trained_at": "2026-10-07T17:19:16.819983+00:00",
+  "model_version": "20261007T232835Z",
+  "trained_at": "2026-10-07T23:28:35.209914+00:00",
   "source": "API officielle Clash Royale",
-  "source_battles": 4323,
+  "source_battles": 49170,
   "feature_count": 738,
   "split": {
     "train": {
-      "battles": 3026,
-      "from": "20261007T000248.000Z",
-      "to": "20261007T134455.000Z",
-      "ids_sha256": "3f2287997e90adf00dd975b48b21977fc2a1afa9615b6e05b263281f424826f1"
+      "battles": 34419,
+      "from": "20261007T000001.000Z",
+      "to": "20261007T153107.000Z",
+      "ids_sha256": "b1e635df5cb637624130885cc0253bea6bf58ad41d69c4b6c0923c7804b34330"
     },
     "validation": {
-      "battles": 648,
-      "from": "20261007T134501.000Z",
-      "to": "20261007T153328.000Z",
-      "ids_sha256": "acb7e9859f7fda6c330ced13812141de35a519f000631255c50273a537e9718a"
+      "battles": 7375,
+      "from": "20261007T153109.000Z",
+      "to": "20261007T174540.000Z",
+      "ids_sha256": "769ee498387b975d75a328e11e5d3add9cfecb7868cc4723bca1c38fea6a1e62"
     },
     "test": {
-      "battles": 649,
-      "from": "20261007T153332.000Z",
-      "to": "20261007T171729.000Z",
-      "ids_sha256": "10fbf1908c7263e79d917cd130e8691fa0b6c01a88efab6d223a85752f82e903"
+      "battles": 7376,
+      "from": "20261007T174543.000Z",
+      "to": "20261007T230606.000Z",
+      "ids_sha256": "be0a6deb12d52defcf66b37a5ea7bb795153944d7dbbcca1915a97dab9c11dea"
     }
   },
   "candidates": [
@@ -45,18 +55,18 @@
       "depth": 3,
       "trees": 250,
       "validation": {
-        "accuracy": 0.5709876543209876,
-        "log_loss": 0.6809619745452778,
-        "brier": 0.2440173124172567,
-        "auc": 0.5863435451912818,
+        "accuracy": 0.5818305084745763,
+        "log_loss": 0.6745727587129642,
+        "brier": 0.2409011381604641,
+        "auc": 0.6123091985061764,
         "confusion": [
           [
-            370,
-            278
+            4291,
+            3084
           ],
           [
-            278,
-            370
+            3084,
+            4291
           ]
         ]
       }
@@ -65,18 +75,18 @@
       "depth": 5,
       "trees": 350,
       "validation": {
-        "accuracy": 0.5555555555555556,
-        "log_loss": 0.6820146884799664,
-        "brier": 0.24438819633451672,
-        "auc": 0.592921239140375,
+        "accuracy": 0.5911864406779661,
+        "log_loss": 0.6679564232439044,
+        "brier": 0.23781124882654886,
+        "auc": 0.6249600459638035,
         "confusion": [
           [
-            360,
-            288
+            4360,
+            3015
           ],
           [
-            288,
-            360
+            3015,
+            4360
           ]
         ]
       }
@@ -85,88 +95,152 @@
       "depth": 7,
       "trees": 400,
       "validation": {
-        "accuracy": 0.5447530864197531,
-        "log_loss": 0.6801600610721519,
-        "brier": 0.24351069279811388,
-        "auc": 0.5995965744551135,
+        "accuracy": 0.5975593220338983,
+        "log_loss": 0.6643272237376981,
+        "brier": 0.2361112295748915,
+        "auc": 0.6333633415685148,
         "confusion": [
           [
-            353,
-            295
+            4407,
+            2968
           ],
           [
-            295,
-            353
+            2968,
+            4407
           ]
         ]
       }
     }
   ],
-  "calibration_scale": 0.63993868044281,
+  "calibration_scale": 1.0616105043169681,
   "test": {
-    "accuracy": 0.5639445300462249,
-    "log_loss": 0.6806164672115466,
-    "brier": 0.24379427594278982,
-    "auc": 0.5902170222767753,
+    "accuracy": 0.6080531453362256,
+    "log_loss": 0.6561561366704249,
+    "brier": 0.23223924595381576,
+    "auc": 0.6512273529733532,
     "confusion": [
       [
-        366,
-        283
+        4485,
+        2891
       ],
       [
-        283,
-        366
+        2891,
+        4485
       ]
     ]
   },
   "calibration": {
     "bins": [
       {
+        "from": 0.0,
+        "to": 0.1,
+        "examples": 5,
+        "meanPrediction": 0.08367732167243958,
+        "observedWins": 0.0
+      },
+      {
+        "from": 0.1,
+        "to": 0.2,
+        "examples": 81,
+        "meanPrediction": 0.16398054361343384,
+        "observedWins": 0.1111111111111111
+      },
+      {
         "from": 0.2,
         "to": 0.3,
-        "examples": 14,
-        "meanPrediction": 0.27741751074790955,
-        "observedWins": 0.2857142857142857
+        "examples": 512,
+        "meanPrediction": 0.26313894987106323,
+        "observedWins": 0.193359375
       },
       {
         "from": 0.3,
         "to": 0.4,
-        "examples": 187,
-        "meanPrediction": 0.36223721504211426,
-        "observedWins": 0.40106951871657753
+        "examples": 2283,
+        "meanPrediction": 0.3592924177646637,
+        "observedWins": 0.35435830048182215
       },
       {
         "from": 0.4,
         "to": 0.5,
-        "examples": 448,
-        "meanPrediction": 0.45454639196395874,
-        "observedWins": 0.45535714285714285
+        "examples": 4495,
+        "meanPrediction": 0.4528457522392273,
+        "observedWins": 0.43915461624026697
       },
       {
         "from": 0.5,
         "to": 0.6,
-        "examples": 448,
-        "meanPrediction": 0.545453667640686,
-        "observedWins": 0.5446428571428571
+        "examples": 4495,
+        "meanPrediction": 0.5471543073654175,
+        "observedWins": 0.560845383759733
       },
       {
         "from": 0.6,
         "to": 0.7,
-        "examples": 187,
-        "meanPrediction": 0.6377627849578857,
-        "observedWins": 0.5989304812834224
+        "examples": 2283,
+        "meanPrediction": 0.6407076120376587,
+        "observedWins": 0.6456416995181778
       },
       {
         "from": 0.7,
         "to": 0.8,
-        "examples": 14,
-        "meanPrediction": 0.7225824594497681,
-        "observedWins": 0.7142857142857143
+        "examples": 512,
+        "meanPrediction": 0.736860990524292,
+        "observedWins": 0.806640625
+      },
+      {
+        "from": 0.8,
+        "to": 0.9,
+        "examples": 81,
+        "meanPrediction": 0.8360194563865662,
+        "observedWins": 0.8888888888888888
+      },
+      {
+        "from": 0.9,
+        "to": 1.0,
+        "examples": 5,
+        "meanPrediction": 0.9163225889205933,
+        "observedWins": 1.0
       }
     ],
-    "ece": 0.011927619691255116
+    "ece": 0.015351687438802192
   },
   "caveat": "Test chronologique, deux orientations groupées par combat. Échantillon de joueurs suivis ; coordination, talent et troupes de tour non modélisés. En 2c2, les cartes sont comptées par équipe sans modéliser leur répartition entre les deux joueurs.",
-  "model_sha256": "1a2efff1b2fb08050395be6c99a6ba33cd06ca57b73074169cf208c6a73ceb6b",
+  "comparison_previous": {
+    "same_test_battles": 7376,
+    "previous": {
+      "accuracy": 0.5668383947939263,
+      "log_loss": 0.6775733653596498,
+      "brier": 0.24236722815773884,
+      "auc": 0.5966823021313188,
+      "confusion": [
+        [
+          4181,
+          3195
+        ],
+        [
+          3195,
+          4181
+        ]
+      ]
+    },
+    "candidate": {
+      "accuracy": 0.6080531453362256,
+      "log_loss": 0.6561561366704249,
+      "brier": 0.23223924595381576,
+      "auc": 0.6512273529733532,
+      "confusion": [
+        [
+          4485,
+          2891
+        ],
+        [
+          2891,
+          4485
+        ]
+      ]
+    },
+    "freshBattles": 8716
+  },
+  "model_sha256": "14c6737f54e306bba71376b6394f384de47fde59d96fcf03a9adba888fd6858d",
   "promotion_eligible": true
 }
