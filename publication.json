@@ -1,5 +1,5 @@
 {
-  "source_commit": "bc5d3b28715efecbbff86ee95b4b8d0658acc4b2",
+  "source_commit": "6ee33003590a6bfd3900779880a5496e6acc417f",
   "model_versions": {
     "classic-1v1": "20261007T235458Z",
     "api-72000533": "20261007T234350Z",
@@ -7,7 +7,7 @@
   },
   "files": {
     "advice-engine.js": "4669dba306b693852ffb60ec5c4bd05f13c7fba967279abce4821b4a30e18bae",
-    "app.js": "82c3cda96d6e60cf5a7983c86c18642802baaf4fbb33faa6b898ff3a97c59179",
+    "app.js": "a1081589c24472a9fc3fc1086d5e2b0eb87b7e6ea187fc40a65dc4ff678b3cb7",
     "assets/card-0.png": "0d6078b239f30681017512edbc3bb8750874e77fac04c585b6918965317d1d86",
     "assets/card-1.png": "cf4991ca55be74e38801f21e83f234579dde63dc1b1a179921304aac8ce181d5",
     "assets/card-10.png": "7eccf9628278c70b28b22a7510c8d8ba2cc1acd481a5c1d3d5c63a57aaae41a4",
@@ -199,7 +199,7 @@
     "data.json": "d3fb5ce580a5334a8cc7bd301878b0adfeba8d25e6eb4ae75a843502b62360c7",
     "deck-rules.js": "a5d35740a5e8f48f2c8a2f6d7ff1599f5eb9004a939bc349b7d6efccfe53f7ba",
     "engine.js": "559bc47d7cabb32a0727dff145976304e48ece5cadc2beabcb704e89d2c10610",
-    "index.html": "81cbe62c144c7f200ff6ff5bd772ad360d01f44aed8b8e4ef51d54694f0b1e5c",
+    "index.html": "3c194aceab8fd739ab02fea5d302adcb0e47aa826e9d26bebea90e7cc49655ce",
     "meta-decks.json": "e3941187d99a391a81200bfd40d4df26893962d0c64da3d182fe7fada6a65e15",
     "mode-worker.js": "125a3e2c025aa4b22d1dab709b2147e4eef4d0bfb71cd6e9638cc908a5140644",
     "model.json": "1c712172b0a06f4bf5c136ae5624b75e012d356272f5ec4a5dabb72c9bf32ea2",
