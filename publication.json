@@ -209,7 +209,7 @@
     "card-filters.js": "1f0e0784c4ef3f4ae6185d03661e3498044eadd382dddee3c41b96e37683fee8",
     "catalogue-overrides.json": "9efca03aef1348d9010985bff6c77a66e154d307aca06f5204ed660cd737d754",
     "catalogue.js": "cc201bc6979210cbdfaf0b2edede78789353fcfb5cf9090e79e9a781e8fd8aab",
-    "catalogue.json": "588fe905ba3422cf11ba2a24464ad4d4d962e93a16ce874657823a3573a3d5bb",
+    "catalogue.json": "f805ddb6a807edd84a4b7dc9a75de69db5eba4d4c33d1a07c4c3f33bef4c645f",
     "data.json": "373201cac98abda33a859bca7d4033d2a140fef63a2c781bcd47f5f30e083cce",
     "deck-rules.js": "a5d35740a5e8f48f2c8a2f6d7ff1599f5eb9004a939bc349b7d6efccfe53f7ba",
     "engine.js": "ea3941fa5b6e0d9621044da6d9384ed4e16b9b20b02d2579a80544cd4e6c460d",
@@ -236,5 +236,5 @@
     "worker.js": "095a8364f1e0bee9a758667db719f4f592a6071f4cedf46284f59106df2dbb00",
     "assets/variant-28000006-evolution.png": "38ddfbbeff8483992052c5d12e5e43157237d4a6f29c1ca1a91b6292bf43bb11"
   },
-  "catalogue_checked_at": "2026-11-20T12:26:44.721Z"
+  "catalogue_checked_at": "2026-11-20T18:23:55.637Z"
 }
