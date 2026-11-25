@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-25T00:41:23.189Z",
+  "checkedAt": "2026-11-25T06:31:25.287Z",
   "sourceUpdatedAt": "2026-11-17T18:58:07.867Z",
   "source": "https://raw.githubusercontent.com/n-zad/cr-deck-organizer/main/src/data/cards.json",
   "heroSource": "https://raw.githubusercontent.com/n-zad/cr-deck-organizer/main/src/lib/heroes.ts",
